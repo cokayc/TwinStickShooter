@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D myRB;
     private bool canShoot;
     private int directionMethod;
+    private Vector2 pointing;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,17 +27,21 @@ public class PlayerController : MonoBehaviour
         {
             directionMethod = 1;
         }
+        else
+        {
+            directionMethod = 2;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         myRB.velocity = speed * new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        determineDirection();
+        pointing = determineDirection(pointing);
         if(Input.GetButton("Fire1") && canShoot)
         {
             StartCoroutine(ShotCooldown());
-            //Instantiate(bulletPrefab, transform.position, transform.rotation).GetComponent<Bullet>().direction=transform.rotation;
+            Instantiate(bulletPrefab, transform.position, transform.rotation).GetComponent<Bullet>().direction=pointing;
 
         }
     }
@@ -48,28 +53,38 @@ public class PlayerController : MonoBehaviour
         canShoot = true;
     }
 
-    private void determineDirection()
+    private Vector2 determineDirection(Vector2 directionIn)
     {
+        Vector2 direction = directionIn;
         switch (directionMethod)
         {
             //Mouse
             case 1:
                 Vector2 origin = transform.position;
                 Vector2 target = GetMouseWorldPosition();
-                Vector2 direction = target - origin;
+                direction = target - origin;
                 direction.Normalize();
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
                 transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
                 break;
             //PS4
             case 2:
-                if (Input.GetAxis("Mouse X") > 0.01 || Input.GetAxis("Mouse Y") > 0.01 || Input.GetAxis("Mouse X") < -0.01 || Input.GetAxis("Mouse Y") < -0.01)
-                    transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X")) * Mathf.Rad2Deg, Vector3.forward);
+                float mouseX = Input.GetAxis("Mouse X");
+                float mouseY = Input.GetAxis("Mouse Y");
+                if (Mathf.Abs(mouseX)>0.01 || Mathf.Abs(mouseY)>0.01)
+                {
+                    direction = new Vector2(mouseX, mouseY);
+                    direction.Normalize();
+                    
+                    transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
+                    direction = Vector2.Perpendicular(direction);
+                }
                 break;
             //XBOX
             case 3:
                 break;   
         }
+        return direction;
     }
 
     private Vector3 GetMouseWorldPosition()
