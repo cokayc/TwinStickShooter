@@ -22,8 +22,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         myRB.velocity = speed * new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        if(Mathf.Abs(Input.GetAxis("Mouse Y"))>0.01&&Mathf.Abs(Input.GetAxis("Mouse X"))>0.01)
-            transform.rotation = Quaternion.RotateTowards(transform.rotation,Quaternion.AngleAxis(Mathf.Atan2(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"))*Mathf.Rad2Deg, Vector3.forward), rotationSpeed);
+        if (Input.GetAxis("Mouse X") > 0.01 || Input.GetAxis("Mouse Y") > 0.01|| Input.GetAxis("Mouse X") < -0.01 || Input.GetAxis("Mouse Y") < -0.01)
+            transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X")) * Mathf.Rad2Deg, Vector3.forward);
         if(Input.GetButton("Fire1") && canShoot)
         {
             StartCoroutine(ShotCooldown());
