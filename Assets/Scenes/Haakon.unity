@@ -275,6 +275,16 @@ PrefabInstance:
       propertyPath: shootButton
       value: 323
       objectReference: {fileID: 0}
+    - target: {fileID: 2464862800423335011, guid: f7668d4eb32adc2409f302ddebb1e84e,
+        type: 3}
+      propertyPath: coolDownTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464862800423335011, guid: f7668d4eb32adc2409f302ddebb1e84e,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2464862800423335014, guid: f7668d4eb32adc2409f302ddebb1e84e,
         type: 3}
       propertyPath: m_Name
