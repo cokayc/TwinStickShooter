@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log(joystick);
         }
-        if(joysticks.Length == 0)
+        if(joysticks[0].Length == 0)
         {
             directionMethod = 1;
         }
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         myRB.velocity = speed * new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        
+        determineDirection();
         if(Input.GetButton("Fire1") && canShoot)
         {
             StartCoroutine(ShotCooldown());
