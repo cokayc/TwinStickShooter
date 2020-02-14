@@ -27,14 +27,14 @@ public abstract class Bullet : MonoBehaviour
     {
         GameObject otherObj = collision.collider.gameObject;
 
-        //if (otherObj.CompareTag("Enemy"))
-        //{
-        //    otherObj.GetComponent<Enemy>().Hurt(damage, isPossesive);
-        //    Destroy(gameObject);
-        //}
-        //else if (otherObj.CompareTag("Wall"))
-        //{
-        //    Destroy(gameObject);
-        //}
+        if (otherObj.CompareTag("Enemy"))
+        {
+            otherObj.GetComponent<Enemy>().Hurt(damage, isPossesive);
+            Destroy(gameObject);
+        }
+        else if (otherObj.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
