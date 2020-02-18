@@ -23,9 +23,9 @@ public abstract class Bullet : MonoBehaviour
 
     public abstract void Shoot();
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collide)
     {
-        GameObject otherObj = collision.collider.gameObject;
+        GameObject otherObj = collide.gameObject;
 
         if (otherObj.CompareTag("Enemy"))
         {

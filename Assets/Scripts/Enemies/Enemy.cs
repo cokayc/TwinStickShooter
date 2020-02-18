@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     public int health;
+    public BulletGroup bulletGroup;
 
     //generates a random position between min and max
     protected Vector3 GeneratePosition(float min, float max) 
