@@ -22,13 +22,7 @@ public class WanderingEnemy : Enemy
         wait = Random.Range(1f, 3f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        WanderingMovement();
-    }
-
-    private void WanderingMovement() {
+    protected override void EnemyMovement() {
         if (moving) 
         {
             transform.Translate((wayPoint - transform.position).normalized * Time.deltaTime);
