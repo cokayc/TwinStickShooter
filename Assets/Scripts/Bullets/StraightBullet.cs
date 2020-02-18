@@ -8,6 +8,6 @@ public class StraightBullet : Bullet
 
     public override void Shoot()
     {
-        transform.position += direction * speed;
+        transform.position += direction * speed * Time.deltaTime;
     }
 }
