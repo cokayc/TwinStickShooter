@@ -11,7 +11,7 @@ using UnityEngine;
 /// <summary>
 /// Controller for a playerfocused 2D camera.
 /// </summary>
-public class CameraController2D : MonoBehaviour
+public class CameraControl : MonoBehaviour
 {
 	[Tooltip("The target transform to follow.")]
 	[SerializeField] Transform target = null;
@@ -41,7 +41,7 @@ public class CameraController2D : MonoBehaviour
 	float screenShakeStrength = 0;
 	float screenShakeTimer = 0;
 
-	static CameraController2D instance;
+	static CameraControl instance;
 	Vector3 offset;
 
 	void Awake()

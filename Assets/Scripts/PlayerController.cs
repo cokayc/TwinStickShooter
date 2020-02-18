@@ -20,10 +20,6 @@ public class PlayerController : MonoBehaviour
         canShoot = true;
         
         var joysticks = Input.GetJoystickNames();
-        foreach (string joystick in joysticks)
-        {
-            Debug.Log(joystick);
-        }
         if(joysticks.Length ==0 || joysticks[0].Length == 0)
         {
             directionMethod = 1;
