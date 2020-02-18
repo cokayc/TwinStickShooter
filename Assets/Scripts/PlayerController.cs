@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public GameObject bulletPrefab;
     public float coolDownTime;
+    public float movementThreshold;
 
     private Rigidbody2D myRB;
     private bool canShoot;
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log(joystick);
         }
-        if(joysticks[0].Length == 0)
+        if(joysticks.Length ==0 || joysticks[0].Length == 0)
         {
             directionMethod = 1;
         }
@@ -71,7 +72,7 @@ public class PlayerController : MonoBehaviour
             case 2:
                 float mouseX = Input.GetAxis("Mouse X");
                 float mouseY = Input.GetAxis("Mouse Y");
-                if (Mathf.Abs(mouseX)>0.01 || Mathf.Abs(mouseY)>0.01)
+                if (Mathf.Abs(mouseX)>movementThreshold || Mathf.Abs(mouseY)>movementThreshold)
                 {
                     direction = new Vector2(mouseX, mouseY);
                     direction.Normalize();
