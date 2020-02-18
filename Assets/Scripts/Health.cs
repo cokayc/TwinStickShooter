@@ -15,7 +15,7 @@ public class Health : MonoBehaviour
     {
         maxHealth = transform.parent.parent.GetComponent<Enemy>().maxHealth;
         currentHealth = maxHealth;
-        transform.parent.localScale = new Vector3(maxHealth/(float) healthScale, 0.4f, 1);
+        transform.parent.localScale = new Vector3(maxHealth / (float)healthScale, 0.4f, 1);
         hs = GetComponent<Slider>();
         hs.value = 1;
     }
