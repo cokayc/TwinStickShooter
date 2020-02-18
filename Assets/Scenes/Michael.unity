@@ -145,17 +145,17 @@ PrefabInstance:
     - target: {fileID: 2464862800423335008, guid: f7668d4eb32adc2409f302ddebb1e84e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2464862800423335008, guid: f7668d4eb32adc2409f302ddebb1e84e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2464862800423335008, guid: f7668d4eb32adc2409f302ddebb1e84e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2464862800423335008, guid: f7668d4eb32adc2409f302ddebb1e84e,
         type: 3}
@@ -165,7 +165,7 @@ PrefabInstance:
     - target: {fileID: 2464862800423335008, guid: f7668d4eb32adc2409f302ddebb1e84e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2464862800423335008, guid: f7668d4eb32adc2409f302ddebb1e84e,
         type: 3}
@@ -308,8 +308,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: HorizontalUI
-  m_VerticalAxis: VerticalUI
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
@@ -342,7 +342,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1132434685543328446
 PrefabInstance:
@@ -389,7 +389,7 @@ PrefabInstance:
     - target: {fileID: 1132434685808590359, guid: 7afb528e95cf7ac46812792587897c79,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1132434685808590359, guid: 7afb528e95cf7ac46812792587897c79,
         type: 3}
@@ -587,7 +587,7 @@ PrefabInstance:
     - target: {fileID: 8631149581478993491, guid: 1843ce738f9cfc040baaecee96d74d91,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8631149581478993491, guid: 1843ce738f9cfc040baaecee96d74d91,
         type: 3}
