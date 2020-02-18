@@ -4,19 +4,29 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // Singleton
+    public static PlayerController instance;
+
     public float speed;
     public GameObject bulletPrefab;
     public float coolDownTime;
     public float movementThreshold;
 
-    private Rigidbody2D myRB;
+    private Rigidbody2D currentRB;
+    private Enemy currentEnemy;
     private bool canShoot;
     private int directionMethod;
     private Vector2 pointing;
     // Start is called before the first frame update
     void Start()
     {
-        myRB = GetComponent<Rigidbody2D>();
+        // Singleton
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(this);
+
+        currentRB = GetComponent<Rigidbody2D>();
         canShoot = true;
         
         var joysticks = Input.GetJoystickNames();
@@ -33,7 +43,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        myRB.velocity = speed * new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        currentRB.velocity = speed * new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         pointing = determineDirection(pointing);
         if(Input.GetButton("Fire1") && canShoot)
         {
@@ -92,5 +102,13 @@ public class PlayerController : MonoBehaviour
         mouseWorldPos.z = 0;
 
         return mouseWorldPos;
+    }
+
+    public void Possess(GameObject target)
+    {
+        GetComponent<Enemy>().enabled = true;
+
+        currentRB = target.GetComponent<Rigidbody2D>();
+        currentEnemy = target.GetComponent<Enemy>();
     }
 }

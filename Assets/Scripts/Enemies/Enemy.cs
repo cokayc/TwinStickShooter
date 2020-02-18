@@ -26,6 +26,7 @@ public abstract class Enemy : MonoBehaviour
         else 
         {
             //TODO: possession 
+            PlayerController.instance.Possess(gameObject);
         }
     }
 

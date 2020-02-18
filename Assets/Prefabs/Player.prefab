@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  bulletPrefab: {fileID: 6022568692942639834, guid: b047cb6e6338a3c448368735d94e683e,
+  bulletPrefab: {fileID: 6022568692942639834, guid: e6318e7f366724543a9563b0ce75d18e,
     type: 3}
   coolDownTime: 0.5
-  rotationSpeed: 0
+  movementThreshold: 0
