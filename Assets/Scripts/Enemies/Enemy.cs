@@ -12,12 +12,16 @@ public abstract class Enemy : MonoBehaviour
         return new Vector3(Random.Range(min, max), Random.Range(min, max), 0.0f);
     }
 
-    public void Hurt(int damage, bool bullet)  
+    public void Hurt(int damage, bool isPossessive)  
     {
         //if normal bullet
-        if (!bullet) 
+        if (!isPossessive) 
         {
             health -= damage;
+            if (health < 0)
+            {
+                Destroy(gameObject);
+            }
         } 
         else 
         {
