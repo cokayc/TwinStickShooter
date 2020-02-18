@@ -18,6 +18,7 @@ public abstract class Enemy : MonoBehaviour
         //if normal bullet
         if (!isPossessive) 
         {
+            GetComponentInChildren<Health>().Damage(damage);
             health -= damage;
             if (health < 0)
             {
