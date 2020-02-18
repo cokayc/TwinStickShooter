@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         backgroundMusic.volume = totalSoundLevel * musicLevel;
     }
 
+
     public void StartGame()
     {
         SceneManager.LoadScene("Level One");
@@ -54,23 +55,28 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Sound Settings");
     }
 
-    public void setMasterVolume(float val)
+    public void SetMasterVolume(float val)
     {
         totalSoundLevel=val;
     }
 
-    public float getEffectsLevel()
+    public float GetEffectsLevel()
     {
         return effectsLevel * totalSoundLevel;
     }
 
-    public void setEffectsVolume(float val)
+    public void SetEffectsVolume(float val)
     {
         effectsLevel = val;
     }
 
-    public void setMusicLevel(float val)
+    public void SetMusicLevel(float val)
     {
         musicLevel = val;
+    }
+
+    public Vector3 GetVolumes()
+    {
+        return new Vector3(totalSoundLevel, musicLevel, effectsLevel);
     }
 }
