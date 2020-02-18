@@ -7,13 +7,14 @@ public abstract class Bullet : MonoBehaviour
     public float speed;
     public bool isPossesive;
     public int damage;
-
+   
     [HideInInspector]
     public Vector3 direction;
 
     public virtual void Start()
     {
         direction = Vector3.Normalize(direction);
+        StartCoroutine(Lifetime());
     }
 
     public virtual void Update()
@@ -36,5 +37,11 @@ public abstract class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public IEnumerator Lifetime()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(gameObject);
     }
 }
