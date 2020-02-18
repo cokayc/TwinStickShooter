@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButton("Fire1") && canShoot)
         {
             StartCoroutine(ShotCooldown());
-            Instantiate(bulletPrefab, transform.position, transform.rotation).GetComponent<Bullet>().direction=pointing;
+            Instantiate(bulletPrefab, transform.position, transform.rotation).GetComponent<BulletGroup>().direction=pointing;
 
         }
     }

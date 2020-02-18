@@ -275,6 +275,12 @@ PrefabInstance:
       propertyPath: shootButton
       value: 323
       objectReference: {fileID: 0}
+    - target: {fileID: 2464862800423335011, guid: f7668d4eb32adc2409f302ddebb1e84e,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 6022568692942639834, guid: e6318e7f366724543a9563b0ce75d18e,
+        type: 3}
     - target: {fileID: 2464862800423335014, guid: f7668d4eb32adc2409f302ddebb1e84e,
         type: 3}
       propertyPath: m_Name
