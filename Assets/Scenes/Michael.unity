@@ -120,6 +120,24 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &958328625 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4751393711913851299, guid: f7668d4eb32adc2409f302ddebb1e84e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1391506363}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &958328630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958328625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c999285dd7b88fd41a8b4f0e837555f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1391506363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -194,6 +212,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4751393711700106263, guid: f7668d4eb32adc2409f302ddebb1e84e,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4751393711700106263, guid: f7668d4eb32adc2409f302ddebb1e84e,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7668d4eb32adc2409f302ddebb1e84e, type: 3}
@@ -413,6 +441,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: WanderingEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1750282778025327245, guid: 7afb528e95cf7ac46812792587897c79,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750282778025327245, guid: 7afb528e95cf7ac46812792587897c79,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7afb528e95cf7ac46812792587897c79, type: 3}
 --- !u!1001 &8631149582359503565
@@ -422,6 +460,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3585661441885471110, guid: 1843ce738f9cfc040baaecee96d74d91,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585661441885471110, guid: 1843ce738f9cfc040baaecee96d74d91,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8631149581478993489, guid: 1843ce738f9cfc040baaecee96d74d91,
         type: 3}
       propertyPath: bulletGroup
@@ -487,6 +535,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FocusedEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8631149581478993494, guid: 1843ce738f9cfc040baaecee96d74d91,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1843ce738f9cfc040baaecee96d74d91, type: 3}

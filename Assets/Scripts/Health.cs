@@ -26,5 +26,9 @@ public class Health : MonoBehaviour
     public void Damage(int damagePoints)
     {
         currentHealth -= damagePoints;
+        if (currentHealth <= 0)
+        {
+            Destroy(transform.parent.parent.gameObject);
+        }
     }
 }
