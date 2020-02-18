@@ -4,7 +4,8 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    public int health;
+    public int maxHealth;
+    private int health;
     public BulletGroup bulletGroup;
 
     //generates a random position between min and max
@@ -18,9 +19,8 @@ public abstract class Enemy : MonoBehaviour
         //if normal bullet
         if (!isPossessive) 
         {
-            GetComponentInChildren<Health>().Damage(damage);
-            health -= damage;
-            if (health < 0)
+            health = GetComponentInChildren<Health>().Damage(damage);
+            if (health <= 0)
             {
                 Destroy(gameObject);
             }
