@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.75, b: 0.75, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6320754, g: 0.08646317, b: 0.08646317, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -205,12 +205,12 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.6226415, g: 0.09692062, b: 0.09692062, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
+    m_NormalColor: {r: 0.30980393, g: 0.13127448, b: 0.13127448, a: 1}
+    m_HighlightedColor: {r: 0.30980393, g: 0.12941177, b: 0.12941177, a: 1}
+    m_PressedColor: {r: 0.30980393, g: 0.12941177, b: 0.12941177, a: 1}
+    m_SelectedColor: {r: 0.30980393, g: 0.12941177, b: 0.12941177, a: 1}
+    m_DisabledColor: {r: 0.30980393, g: 0.12941177, b: 0.12941177, a: 0.5019608}
+    m_ColorMultiplier: 2.76
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
@@ -223,7 +223,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 5436676692035487152}
   m_FillRect: {fileID: 5436676692035487167}
   m_HandleRect: {fileID: 0}
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.34
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -247,7 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7bf4cfd08bef24f902baa28b0c240b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
 --- !u!1 &5436676692316078091
 GameObject:
   m_ObjectHideFlags: 0

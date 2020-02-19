@@ -33,13 +33,19 @@ public abstract class Enemy : MonoBehaviour
             health = GetComponentInChildren<Health>().Damage(damage);
             if (health <= 0)
             {
-                Destroy(gameObject);
+                StartCoroutine(Die());
             }
         }
         else
         {
             //TODO: possession 
         }
+    }
+
+    public IEnumerator Die()
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
     }
 
 }
