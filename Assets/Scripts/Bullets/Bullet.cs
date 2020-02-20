@@ -13,7 +13,6 @@ public abstract class Bullet : MonoBehaviour
     [HideInInspector]
     public Vector3 direction;
 
-    private AudioSource sound;
     private float volume;
     private GameManager gm;
 
@@ -23,8 +22,7 @@ public abstract class Bullet : MonoBehaviour
         StartCoroutine(Lifetime());
         gm = FindObjectOfType<GameManager>().GetComponent<GameManager>();
         volume = gm.GetEffectsLevel();
-        sound.volume = volume;
-        sound.PlayOneShot(shotSound);
+        AudioSource.PlayClipAtPoint(shotSound, transform.position, volume);
     }
 
     public virtual void Update()
@@ -47,8 +45,8 @@ public abstract class Bullet : MonoBehaviour
         }
         else if (otherObj.CompareTag("Wall"))
         {
-            sound.PlayOneShot(hitWallSound);
-            StartCoroutine(HitWall());
+            AudioSource.PlayClipAtPoint(hitWallSound, transform.position, volume);
+            Destroy(gameObject);
         }
     }
 
@@ -58,11 +56,5 @@ public abstract class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public IEnumerator HitWall()
-    {
-        GetComponent<Collider2D>().enabled = false;
-        GetComponent<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(hitWallSound.length);
-        Destroy(gameObject);
-    }
+   
 }
