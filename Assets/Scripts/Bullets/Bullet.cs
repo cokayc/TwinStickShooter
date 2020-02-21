@@ -39,8 +39,7 @@ public abstract class Bullet : MonoBehaviour
         if (otherObj.CompareTag("Enemy"))
         {
             otherObj.GetComponent<Enemy>().Hurt(damage, isPossesive);
-            otherObj.GetComponent<AudioSource>().volume = gm.GetEffectsLevel();
-            otherObj.GetComponent<AudioSource>().PlayOneShot(hitEnemySound);
+            AudioSource.PlayClipAtPoint(hitEnemySound, transform.position, volume);
             Destroy(gameObject);
         }
         else if (otherObj.CompareTag("Wall"))

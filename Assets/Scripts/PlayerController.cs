@@ -13,9 +13,11 @@ public class PlayerController : MonoBehaviour
     private bool canShoot;
     private int directionMethod;
     private Vector2 pointing;
+    private GameManager gm;
     // Start is called before the first frame update
     void Start()
     {
+        gm = FindObjectOfType<GameManager>().GetComponent<GameManager>();
         myRB = GetComponent<Rigidbody2D>();
         canShoot = true;
         
@@ -33,12 +35,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(gm.isPaused)
+        {
+            return;
+        }
         myRB.velocity = speed * new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         pointing = determineDirection(pointing);
+        Vector3 bulletSpawnDirection = pointing;
         if(Input.GetButton("Fire1") && canShoot)
         {
             StartCoroutine(ShotCooldown());
-            Instantiate(bulletPrefab, transform.position, transform.rotation).GetComponent<BulletGroup>().direction=pointing;
+            Instantiate(bulletPrefab, transform.position+bulletSpawnDirection.normalized, transform.rotation).GetComponent<BulletGroup>().direction=pointing;
 
         }
     }

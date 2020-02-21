@@ -4,8 +4,10 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
+    public Sprite[] deathSprites;
     public bool isPlayer;
     public int maxHealth;
+    public AudioClip deathSound;
     private int health;
     public BulletGroup bulletGroup;
 
@@ -44,7 +46,20 @@ public abstract class Enemy : MonoBehaviour
 
     public IEnumerator Die()
     {
-        yield return new WaitForSeconds(1);
+        AudioSource.PlayClipAtPoint(deathSound, transform.position);
+        int n = 0;
+        int k = 0;
+        while(k<deathSprites.Length)
+        {
+            GetComponent<SpriteRenderer>().sprite = deathSprites[k];
+            while(n<5)
+            {
+                yield return null;
+                n++;
+            }
+            n = 0;
+            k++;
+        }
         Destroy(gameObject);
     }
 

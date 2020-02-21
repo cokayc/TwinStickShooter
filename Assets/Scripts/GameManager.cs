@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public bool isPaused;
     private AudioSource backgroundMusic;
     private float effectsLevel;
     private float totalSoundLevel;
