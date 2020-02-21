@@ -12,7 +12,6 @@ public class FocusedEnemy : Enemy
     void Start()
     {
         player = GameObject.Find("Player");
-        StartCoroutine(FireBullets());
     }
 
     protected override void EnemyMovement() 
@@ -26,13 +25,9 @@ public class FocusedEnemy : Enemy
         transform.Translate((player.transform.position - transform.position).normalized * Time.deltaTime, Space.World);
     }
 
-    IEnumerator FireBullets()
+    protected override void Shoot()
     {
-        while (!isPlayer)
-        {
-            yield return new WaitForSeconds(5.0f);
 
-            Instantiate(bulletGroup, transform.position+playerPos, transform.rotation).GetComponent<BulletGroup>().direction = playerPos;
-        }
+        Instantiate(bulletGroup, transform.position + playerPos, transform.rotation).GetComponent<BulletGroup>().direction = playerPos;
     }
 }

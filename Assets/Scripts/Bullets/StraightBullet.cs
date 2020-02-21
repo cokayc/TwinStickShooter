@@ -6,7 +6,7 @@ public class StraightBullet : Bullet
 {
 
 
-    public override void Shoot()
+    public override void BulletTravel()
     {
         transform.position += direction * speed * Time.deltaTime;
     }
