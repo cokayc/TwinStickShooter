@@ -192,6 +192,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1750282778025327245, guid: 7afb528e95cf7ac46812792587897c79,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750282778025327245, guid: 7afb528e95cf7ac46812792587897c79,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7afb528e95cf7ac46812792587897c79, type: 3}
 --- !u!1 &276884361
@@ -284,6 +294,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1710748908, guid: f7668d4eb32adc2409f302ddebb1e84e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710748908, guid: f7668d4eb32adc2409f302ddebb1e84e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2464862800423335008, guid: f7668d4eb32adc2409f302ddebb1e84e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -359,6 +377,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4751393711700106263, guid: f7668d4eb32adc2409f302ddebb1e84e,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4751393711700106263, guid: f7668d4eb32adc2409f302ddebb1e84e,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7668d4eb32adc2409f302ddebb1e84e, type: 3}

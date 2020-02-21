@@ -67,12 +67,12 @@ public class PlayerController : MonoBehaviour
         {
             //Mouse
             case 1:
-                Vector2 origin = transform.position;
+                Vector2 origin = currentRB.gameObject.transform.position;
                 Vector2 target = GetMouseWorldPosition();
                 direction = target - origin;
                 direction.Normalize();
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
-                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                currentRB.gameObject.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
                 break;
             //PS4
             case 2:
@@ -82,8 +82,8 @@ public class PlayerController : MonoBehaviour
                 {
                     direction = new Vector2(mouseX, mouseY);
                     direction.Normalize();
-                    
-                    transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
+
+                    currentRB.gameObject.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
                     direction = Vector2.Perpendicular(direction);
                 }
                 break;
@@ -106,9 +106,11 @@ public class PlayerController : MonoBehaviour
 
     public void Possess(GameObject target)
     {
-        GetComponent<Enemy>().enabled = true;
+        if (currentEnemy != null)
+            currentEnemy.enabled = true;
 
         currentRB = target.GetComponent<Rigidbody2D>();
         currentEnemy = target.GetComponent<Enemy>();
+        currentEnemy.enabled = false;
     }
 }
