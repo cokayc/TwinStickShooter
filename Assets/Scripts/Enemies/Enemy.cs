@@ -19,6 +19,11 @@ public abstract class Enemy : MonoBehaviour
         return new Vector3(Random.Range(min, max), Random.Range(min, max), 0.0f);
     }
 
+    private void Awake()
+    {
+        canShoot = true;
+    }
+
     private void Update()
     {
         if (!isPlayer)

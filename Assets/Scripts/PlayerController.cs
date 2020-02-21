@@ -21,12 +21,14 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         // Singleton
+
         if (instance == null)
             instance = this;
         else
             Destroy(this);
 
         currentRB = GetComponent<Rigidbody2D>();
+        currentEnemy = GetComponent<Enemy>();
         gm = GameManager.instance;
         var joysticks = Input.GetJoystickNames();
         if (joysticks.Length == 0 || joysticks[0].Length == 0)
@@ -49,10 +51,11 @@ public class PlayerController : MonoBehaviour
 
         currentRB.velocity = speed * new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         pointing = determineDirection(pointing);
+        Vector3 bulletPlacement = pointing;
         if(Input.GetButton("Fire1") && currentEnemy.canShoot)
         {
             StartCoroutine(currentEnemy.ShotCooldown());
-            Instantiate(bulletPrefab, transform.position, transform.rotation).GetComponent<BulletGroup>().direction = pointing;
+            Instantiate(bulletPrefab, currentRB.gameObject.transform.position + bulletPlacement.normalized, transform.rotation).GetComponent<BulletGroup>().direction = pointing;
 
         }
     }
