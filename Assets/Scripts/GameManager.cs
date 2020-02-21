@@ -9,12 +9,12 @@ public class GameManager : MonoBehaviour
     private float effectsLevel;
     private float totalSoundLevel;
     private float musicLevel;
-    private static GameObject instance;
+    public static GameManager instance;
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
         if (instance == null)
-            instance = gameObject;
+            instance = this;
         else
             Destroy(gameObject);
     }

@@ -6,6 +6,9 @@ public abstract class Enemy : MonoBehaviour
 {
     public bool isPlayer;
     public int maxHealth;
+    public bool canShoot;
+    public float shotCooldown;
+
     private int health;
     public BulletGroup bulletGroup;
 
@@ -47,6 +50,13 @@ public abstract class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         Destroy(gameObject);
+    }
+
+    public IEnumerator ShotCooldown()
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(shotCooldown);
+        canShoot = true;
     }
 
 }

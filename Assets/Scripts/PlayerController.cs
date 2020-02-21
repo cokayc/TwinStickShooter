@@ -9,14 +9,14 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
     public GameObject bulletPrefab;
-    public float coolDownTime;
     public float movementThreshold;
 
     private Rigidbody2D currentRB;
     private Enemy currentEnemy;
-    private bool canShoot;
     private int directionMethod;
     private Vector2 pointing;
+    private GameManager gm;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
             Destroy(this);
 
         currentRB = GetComponent<Rigidbody2D>();
-        canShoot = true;
+        gm = GameManager.instance;
         
         var joysticks = Input.GetJoystickNames();
         if(joysticks.Length ==0 || joysticks[0].Length == 0)
@@ -43,21 +43,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gm.isPaused)
+        {
+            return;
+        }
+
         currentRB.velocity = speed * new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         pointing = determineDirection(pointing);
-        if(Input.GetButton("Fire1") && canShoot)
+        if(Input.GetButton("Fire1") && currentEnemy.canShoot)
         {
-            StartCoroutine(ShotCooldown());
+            StartCoroutine(currentEnemy.ShotCooldown());
             Instantiate(bulletPrefab, transform.position, transform.rotation).GetComponent<BulletGroup>().direction=pointing;
 
         }
-    }
-
-    private IEnumerator ShotCooldown()
-    {
-        canShoot = false;
-        yield return new WaitForSeconds(coolDownTime);
-        canShoot = true;
     }
 
     private Vector2 determineDirection(Vector2 directionIn)
@@ -107,10 +105,10 @@ public class PlayerController : MonoBehaviour
     public void Possess(GameObject target)
     {
         if (currentEnemy != null)
-            currentEnemy.enabled = true;
-
+            currentEnemy.isPlayer = false;
+            
         currentRB = target.GetComponent<Rigidbody2D>();
         currentEnemy = target.GetComponent<Enemy>();
-        currentEnemy.enabled = false;
+        currentEnemy.isPlayer = true;
     }
 }
