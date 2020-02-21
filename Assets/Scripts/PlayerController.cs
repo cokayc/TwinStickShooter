@@ -28,9 +28,8 @@ public class PlayerController : MonoBehaviour
 
         currentRB = GetComponent<Rigidbody2D>();
         gm = GameManager.instance;
-        
         var joysticks = Input.GetJoystickNames();
-        if(joysticks.Length ==0 || joysticks[0].Length == 0)
+        if (joysticks.Length == 0 || joysticks[0].Length == 0)
         {
             directionMethod = 1;
         }
@@ -53,7 +52,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButton("Fire1") && currentEnemy.canShoot)
         {
             StartCoroutine(currentEnemy.ShotCooldown());
-            Instantiate(bulletPrefab, transform.position, transform.rotation).GetComponent<BulletGroup>().direction=pointing;
+            Instantiate(bulletPrefab, transform.position, transform.rotation).GetComponent<BulletGroup>().direction = pointing;
 
         }
     }
@@ -76,7 +75,7 @@ public class PlayerController : MonoBehaviour
             case 2:
                 float mouseX = Input.GetAxis("Mouse X");
                 float mouseY = Input.GetAxis("Mouse Y");
-                if (Mathf.Abs(mouseX)>movementThreshold || Mathf.Abs(mouseY)>movementThreshold)
+                if (Mathf.Abs(mouseX) > movementThreshold || Mathf.Abs(mouseY) > movementThreshold)
                 {
                     direction = new Vector2(mouseX, mouseY);
                     direction.Normalize();
@@ -87,7 +86,7 @@ public class PlayerController : MonoBehaviour
                 break;
             //XBOX
             case 3:
-                break;   
+                break;
         }
         return direction;
     }
@@ -106,7 +105,6 @@ public class PlayerController : MonoBehaviour
     {
         if (currentEnemy != null)
             currentEnemy.isPlayer = false;
-            
         currentRB = target.GetComponent<Rigidbody2D>();
         currentEnemy = target.GetComponent<Enemy>();
         currentEnemy.isPlayer = true;

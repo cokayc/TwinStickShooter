@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 2464862800423335021}
   - component: {fileID: 2464862800423335010}
   - component: {fileID: 2464862800423335011}
+  - component: {fileID: 331155695}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +99,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 10
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -143,11 +144,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce1b1b64656cfb24fbb749852740c7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 4
   bulletPrefab: {fileID: 6022568692942639834, guid: e6318e7f366724543a9563b0ce75d18e,
     type: 3}
-  coolDownTime: 0.5
-  movementThreshold: 0
+  coolDownTime: 1
+  movementThreshold: 0.05
+--- !u!114 &331155695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2464862800423335014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa9b4a37cb33e9e4081f4035d55bb401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSprites: []
+  isPlayer: 1
+  maxHealth: 4
+  deathSound: {fileID: 0}
+  bulletGroup: {fileID: 6973885432061448264, guid: e6318e7f366724543a9563b0ce75d18e,
+    type: 3}
 --- !u!1001 &757347791143115176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -155,21 +174,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2464862800423335008}
     m_Modifications:
-    - target: {fileID: 5436676692035487167, guid: 3833864ab80e52b46b03246c935b3787,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5436676692035487167, guid: 3833864ab80e52b46b03246c935b3787,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5436676692237932506, guid: 3833864ab80e52b46b03246c935b3787,
-        type: 3}
-      propertyPath: m_Interactable
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5436676692316078091, guid: 3833864ab80e52b46b03246c935b3787,
         type: 3}
       propertyPath: m_Name

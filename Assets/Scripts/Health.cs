@@ -13,7 +13,12 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maxHealth = 0;
         maxHealth = transform.parent.parent.GetComponent<Enemy>().maxHealth;
+        if(maxHealth==0)
+        {
+            Application.ForceCrash(4);
+        }
         currentHealth = maxHealth;
         transform.parent.localScale = new Vector3(maxHealth / (float)healthScale, 0.4f, 1);
         hs = GetComponent<Slider>();
