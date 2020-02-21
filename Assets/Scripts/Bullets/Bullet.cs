@@ -27,10 +27,10 @@ public abstract class Bullet : MonoBehaviour
 
     public virtual void Update()
     {
-        Shoot();
+        BulletTravel();
     }
 
-    public abstract void Shoot();
+    public abstract void BulletTravel();
 
     private void OnTriggerEnter2D(Collider2D collide)
     {

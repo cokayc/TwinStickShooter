@@ -23,9 +23,14 @@ public abstract class Enemy : MonoBehaviour
         if (!isPlayer)
         {
             EnemyMovement();
+            if (canShoot)
+            {
+                Shoot();
+            }
         }
     }
 
+    protected abstract void Shoot();
     protected abstract void EnemyMovement();
 
     public void Hurt(int damage, bool isPossessive)
