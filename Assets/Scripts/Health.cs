@@ -6,25 +6,31 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     public static int healthScale = 10;
-    public int maxHealth;
+    private int maxHealth;
     private int currentHealth;
     private float healthPercent;
+    private Slider hs;
     // Start is called before the first frame update
     void Start()
     {
+        maxHealth = transform.parent.parent.GetComponent<Enemy>().maxHealth;
         currentHealth = maxHealth;
-        transform.parent.localScale = new Vector3(maxHealth/(float) healthScale, 0.4f, 1);
+        transform.parent.localScale = new Vector3(maxHealth / (float)healthScale, 0.4f, 1);
+        hs = GetComponent<Slider>();
+        hs.value = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        healthPercent = (float)currentHealth / (float)maxHealth;
-        GetComponent<Slider>().value = healthPercent;
+
     }
 
-    public void Damage(int damagePoints)
+    public int Damage(int damagePoints)
     {
         currentHealth -= damagePoints;
+        healthPercent = (float)currentHealth / (float)maxHealth;
+        hs.value = healthPercent;
+        return currentHealth;
     }
 }

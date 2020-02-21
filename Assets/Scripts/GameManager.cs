@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
+    private AudioSource backgroundMusic;
+    private float effectsLevel;
+    private float totalSoundLevel;
+    private float musicLevel;
     private static GameObject instance;
     void Awake()
     {
@@ -19,14 +22,18 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        backgroundMusic = GetComponent<AudioSource>();
+        effectsLevel = 1;
+        musicLevel = 1;
+        totalSoundLevel = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        backgroundMusic.volume = totalSoundLevel * musicLevel;
     }
+
 
     public void StartGame()
     {
@@ -46,5 +53,30 @@ public class GameManager : MonoBehaviour
     public void SoundSettings()
     {
         SceneManager.LoadScene("Sound Settings");
+    }
+
+    public void SetMasterVolume(float val)
+    {
+        totalSoundLevel=val;
+    }
+
+    public float GetEffectsLevel()
+    {
+        return effectsLevel * totalSoundLevel;
+    }
+
+    public void SetEffectsVolume(float val)
+    {
+        effectsLevel = val;
+    }
+
+    public void SetMusicLevel(float val)
+    {
+        musicLevel = val;
+    }
+
+    public Vector3 GetVolumes()
+    {
+        return new Vector3(totalSoundLevel, musicLevel, effectsLevel);
     }
 }
