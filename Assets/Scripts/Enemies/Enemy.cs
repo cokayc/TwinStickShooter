@@ -8,6 +8,8 @@ public abstract class Enemy : MonoBehaviour
     public bool isPlayer;
     public int maxHealth;
     public AudioClip deathSound;
+    public bool canShoot;
+    public float shotCooldown;
     private int health;
     public BulletGroup bulletGroup;
 
@@ -41,6 +43,7 @@ public abstract class Enemy : MonoBehaviour
         else
         {
             //TODO: possession 
+            PlayerController.instance.Possess(gameObject);
         }
     }
 
@@ -61,6 +64,13 @@ public abstract class Enemy : MonoBehaviour
             k++;
         }
         Destroy(gameObject);
+    }
+
+    public IEnumerator ShotCooldown()
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(shotCooldown);
+        canShoot = true;
     }
 
 }
