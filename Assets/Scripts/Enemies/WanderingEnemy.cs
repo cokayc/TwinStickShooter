@@ -44,5 +44,8 @@ public class WanderingEnemy : Enemy
         }
     }
 
- 
+    protected override void Shoot()
+    {
+        //throw new System.NotImplementedException();
+    }
 }

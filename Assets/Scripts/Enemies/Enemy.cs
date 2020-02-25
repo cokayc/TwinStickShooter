@@ -8,10 +8,13 @@ public abstract class Enemy : MonoBehaviour
     public bool isPlayer;
     public int maxHealth;
     public AudioClip deathSound;
-    public bool canShoot;
     public float shotCooldown;
-    private int health;
     public BulletGroup bulletGroup;
+
+    private int health;
+
+    [HideInInspector]
+    public bool canShoot;
 
     //generates a random position between min and max
     protected Vector3 GeneratePosition(float min, float max)
@@ -32,6 +35,7 @@ public abstract class Enemy : MonoBehaviour
             if (canShoot)
             {
                 Shoot();
+                StartCoroutine(ShotCooldown());
             }
         }
     }
@@ -52,7 +56,6 @@ public abstract class Enemy : MonoBehaviour
         }
         else
         {
-            //TODO: possession 
             PlayerController.instance.Possess(gameObject);
         }
     }
