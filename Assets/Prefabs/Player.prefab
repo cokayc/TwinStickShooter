@@ -147,7 +147,6 @@ MonoBehaviour:
   speed: 4
   bulletPrefab: {fileID: 6022568692942639834, guid: e6318e7f366724543a9563b0ce75d18e,
     type: 3}
-  coolDownTime: 1
   movementThreshold: 0.05
 --- !u!114 &331155695
 MonoBehaviour:
@@ -165,6 +164,8 @@ MonoBehaviour:
   isPlayer: 1
   maxHealth: 4
   deathSound: {fileID: 0}
+  canShoot: 0
+  shotCooldown: 0
   bulletGroup: {fileID: 6973885432061448264, guid: e6318e7f366724543a9563b0ce75d18e,
     type: 3}
 --- !u!1001 &757347791143115176
@@ -174,6 +175,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2464862800423335008}
     m_Modifications:
+    - target: {fileID: 5436676692035487167, guid: 3833864ab80e52b46b03246c935b3787,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436676692035487167, guid: 3833864ab80e52b46b03246c935b3787,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5436676692316078091, guid: 3833864ab80e52b46b03246c935b3787,
         type: 3}
       propertyPath: m_Name
