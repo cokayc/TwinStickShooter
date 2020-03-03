@@ -783,6 +783,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7027137682238734053, guid: 6ce11652b5252bd4c8e21c54afe789a1,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 97c95d6e9efb0b444a35399242e503ff, type: 3}
     - target: {fileID: 7027137682238734054, guid: 6ce11652b5252bd4c8e21c54afe789a1,
         type: 3}
       propertyPath: currentEnemy
@@ -793,5 +798,15 @@ PrefabInstance:
       propertyPath: redFlash
       value: 
       objectReference: {fileID: 924793078}
+    - target: {fileID: 7027137682238734054, guid: 6ce11652b5252bd4c8e21c54afe789a1,
+        type: 3}
+      propertyPath: movementThreshold
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7027137682238734055, guid: 6ce11652b5252bd4c8e21c54afe789a1,
+        type: 3}
+      propertyPath: startSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 28f34cb251ee9184f98db6a57ca030b3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ce11652b5252bd4c8e21c54afe789a1, type: 3}
