@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPaused: 0
+  startSound: {fileID: 8300000, guid: 28f34cb251ee9184f98db6a57ca030b3, type: 3}
 --- !u!114 &7027137682238734054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,8 +64,8 @@ MonoBehaviour:
     type: 3}
   possessBulletPrefab: {fileID: 6022568692942639834, guid: df468d2f516385448a08d321b0d7a618,
     type: 3}
-  movementThreshold: 5
-  redFlash: {fileID: 199887337901657771, guid: 166e143b29637f2488c46e782fa23b92, type: 3}
+  movementThreshold: 0.02
+  redFlash: {fileID: 0}
   currentEnemy: {fileID: 0}
 --- !u!82 &7027137682238734053
 AudioSource:
@@ -76,7 +77,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ff20c728412c98e4baa45ecb26441c17, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 97c95d6e9efb0b444a35399242e503ff, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

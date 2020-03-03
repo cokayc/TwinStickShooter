@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour
     public Enemy currentEnemy;
 
     private Rigidbody2D currentRB;
-    private int directionMethod;
+    [HideInInspector]
+    public int directionMethod;
     private Vector2 pointing;
     private GameManager gm;
     private GameObject mainCamera; 
@@ -31,12 +32,14 @@ public class PlayerController : MonoBehaviour
             instance = this;
         else
             Destroy(this);
-        redFlash.gameObject.SetActive(false);
+        if(redFlash!=null)
+            redFlash.gameObject.SetActive(false);
 
         gm = GameManager.instance;
         mainCamera = GameObject.Find("Main Camera");
 
-        Possess(currentEnemy.gameObject);
+        if(currentEnemy!=null)
+            Possess(currentEnemy.gameObject);
 
         var joysticks = Input.GetJoystickNames();
         if (joysticks.Length == 0 || joysticks[0].Length == 0)
@@ -48,11 +51,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gm.isPaused)
+        if (gm.isPaused||currentEnemy==null)
         {
             return;
         }
-
         currentRB.velocity = speed * new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         pointing = determineDirection(pointing);
         Vector3 bulletPlacement = pointing;
