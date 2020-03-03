@@ -27,8 +27,9 @@ public class Health : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-
+    { 
+        transform.parent.localRotation = Quaternion.Euler(new Vector3(0,0,-transform.parent.parent.rotation.eulerAngles.z));
+        transform.parent.localPosition = FindOneUnitAbove(transform.parent.localRotation);
     }
 
     public int Damage(int damagePoints)
@@ -37,5 +38,11 @@ public class Health : MonoBehaviour
         healthPercent = (float)currentHealth / (float)maxHealth;
         hs.value = healthPercent;
         return currentHealth;
+    }
+
+    public Vector2 FindOneUnitAbove(Quaternion direction)
+    {
+        float angle = -direction.eulerAngles.z*Mathf.Deg2Rad;
+        return new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
     }
 }
