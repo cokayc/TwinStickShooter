@@ -30,6 +30,7 @@ public class PauseButton : MonoBehaviour
 
     public void TogglePause()
     {
+        gm.ToggleMusic();
         if (isPaused)
         {
             image.sprite = pauseImage;
