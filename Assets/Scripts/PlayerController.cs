@@ -22,7 +22,9 @@ public class PlayerController : MonoBehaviour
     public int directionMethod;
     private Vector2 pointing;
     private GameManager gm;
-    private GameObject mainCamera; 
+    private GameObject mainCamera;
+
+    private bool instantiated;
 
     // Start is called before the first frame update
     void Start()
@@ -34,12 +36,12 @@ public class PlayerController : MonoBehaviour
             Destroy(this);
         if(redFlash!=null)
             redFlash.gameObject.SetActive(false);
+        instantiated = false;
 
         gm = GameManager.instance;
         mainCamera = GameObject.Find("Main Camera");
 
-        if(currentEnemy!=null)
-            Possess(currentEnemy.gameObject);
+
 
         var joysticks = Input.GetJoystickNames();
         if (joysticks.Length == 0 || joysticks[0].Length == 0)
@@ -51,10 +53,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gm.isPaused||currentEnemy==null)
+        if (gm.isPaused||!instantiated)
         {
             return;
         }
+        mainCamera = GameObject.Find("Main Camera");
         currentRB.velocity = speed * new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         pointing = Vector3.up;
         pointing = determineDirection(pointing);
@@ -75,6 +78,17 @@ public class PlayerController : MonoBehaviour
             bullet.GetComponent<BulletGroup>().direction = pointing;
             bullet.GetComponent<BulletGroup>().SetShooter(currentEnemy.gameObject);
 
+        }
+    }
+
+    public void OnLevelWasLoaded(int level)
+    {
+        if (level == 4)
+        {
+            mainCamera = GameObject.Find("Main Camera");
+            instantiated = true;
+            currentEnemy = Instantiate(currentEnemy).GetComponent<Enemy>();
+            Possess(currentEnemy.gameObject);
         }
     }
 
@@ -124,8 +138,6 @@ public class PlayerController : MonoBehaviour
 
     public void Possess(GameObject target)
     {
-        if (currentEnemy != null)
-            currentEnemy.isPlayer = false;
         currentRB = target.GetComponent<Rigidbody2D>();
         currentEnemy = target.GetComponent<Enemy>();
         currentEnemy.isPlayer = true;

@@ -409,6 +409,12 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7027137682238734054, guid: 6ce11652b5252bd4c8e21c54afe789a1,
+        type: 3}
+      propertyPath: currentEnemy
+      value: 
+      objectReference: {fileID: 1132434685808590361, guid: 7afb528e95cf7ac46812792587897c79,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ce11652b5252bd4c8e21c54afe789a1, type: 3}
 --- !u!1 &799331361
