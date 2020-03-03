@@ -35,13 +35,13 @@ public class LevelGenerator : MonoBehaviour
     void Start()
     {
         Node head = new Node(0, 0, width, height);
-        Split(head);
+        SplitGenerate(head);
 
         //TODO: Tidy up (non repeating code, better var names)
         foreach (Node leaf in leafList)
         {
             // Generate two points of the room in the split section
-            //TODO: Generate in a smarter way
+            //TODO: Generate in a smarter way (keeps generating until a room matches the area)
             float area = 0;
             Vector3 p1 = new Vector3();
             Vector3 p2 = new Vector3();
@@ -84,7 +84,7 @@ public class LevelGenerator : MonoBehaviour
         obj.transform.LookAt(p2);
     }
 
-    private void Split(Node target)
+    private void SplitGenerate(Node target)
     {
         // Base Case
         float width = target.topRight.x - target.bottomLeft.x;
@@ -112,7 +112,7 @@ public class LevelGenerator : MonoBehaviour
             target.right = new Node(target.bottomLeft.x, target.bottomLeft.y, target.topRight.x, cutPointY);
         }
 
-        Split(target.left);
-        Split(target.right);
+        SplitGenerate(target.left);
+        SplitGenerate(target.right);
     }
 }
