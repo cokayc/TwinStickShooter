@@ -9,13 +9,16 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
     public GameObject bulletPrefab;
+    public GameObject possessBulletPrefab;
+
     public float movementThreshold;
+    public Enemy currentEnemy;
 
     private Rigidbody2D currentRB;
-    private Enemy currentEnemy;
     private int directionMethod;
     private Vector2 pointing;
     private GameManager gm;
+    private GameObject mainCamera; 
 
     // Start is called before the first frame update
     void Start()
@@ -26,21 +29,16 @@ public class PlayerController : MonoBehaviour
         else
             Destroy(this);
 
-        currentRB = GetComponent<Rigidbody2D>();
-        currentEnemy = GetComponent<Enemy>();
-        currentEnemy.isPlayer = true;
-
         gm = GameManager.instance;
+        mainCamera = GameObject.Find("Main Camera");
+
+        Possess(currentEnemy.gameObject);
 
         var joysticks = Input.GetJoystickNames();
         if (joysticks.Length == 0 || joysticks[0].Length == 0)
-        {
             directionMethod = 1;
-        }
         else
-        {
             directionMethod = 2;
-        }
     }
 
     // Update is called once per frame
@@ -58,6 +56,13 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(currentEnemy.ShotCooldown());
             Instantiate(bulletPrefab, currentRB.gameObject.transform.position + bulletPlacement.normalized, transform.rotation).GetComponent<BulletGroup>().direction = pointing;
+
+        }
+
+        if (Input.GetButton("Fire2") && currentEnemy.canShoot)
+        {
+            StartCoroutine(currentEnemy.ShotCooldown());
+            Instantiate(possessBulletPrefab, currentRB.gameObject.transform.position + bulletPlacement.normalized, transform.rotation).GetComponent<BulletGroup>().direction = pointing;
 
         }
     }
@@ -113,5 +118,6 @@ public class PlayerController : MonoBehaviour
         currentRB = target.GetComponent<Rigidbody2D>();
         currentEnemy = target.GetComponent<Enemy>();
         currentEnemy.isPlayer = true;
+        mainCamera.GetComponent<CameraControl>().target = currentEnemy.gameObject.transform;
     }
 }

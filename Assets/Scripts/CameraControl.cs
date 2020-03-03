@@ -14,7 +14,7 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
 	[Tooltip("The target transform to follow.")]
-	[SerializeField] Transform target = null;
+	public Transform target;
 	[Tooltip("Global minimum x value of the cameras position.")]
 	[SerializeField] float xMin = -10;
 	[Tooltip("Global maximum x value of the cameras position.")]
