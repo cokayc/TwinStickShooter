@@ -32,6 +32,11 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("Credits");
     }
 
+    public void Restart()
+    {
+        SceneManager.LoadScene("Title");
+    }
+
     public void SoundSettings()
     {
         SceneManager.LoadScene("Sound Settings");
