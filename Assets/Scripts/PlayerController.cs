@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         // Singleton
-
         if (instance == null)
             instance = this;
         else
@@ -29,7 +28,10 @@ public class PlayerController : MonoBehaviour
 
         currentRB = GetComponent<Rigidbody2D>();
         currentEnemy = GetComponent<Enemy>();
+        currentEnemy.isPlayer = true;
+
         gm = GameManager.instance;
+
         var joysticks = Input.GetJoystickNames();
         if (joysticks.Length == 0 || joysticks[0].Length == 0)
         {

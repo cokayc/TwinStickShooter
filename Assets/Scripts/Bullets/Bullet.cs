@@ -20,7 +20,7 @@ public abstract class Bullet : MonoBehaviour
     {
         direction = Vector3.Normalize(direction);
         StartCoroutine(Lifetime());
-        gm = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+        gm = GameManager.instance;
         volume = gm.GetEffectsLevel();
         AudioSource.PlayClipAtPoint(shotSound, transform.position, volume);
     }
