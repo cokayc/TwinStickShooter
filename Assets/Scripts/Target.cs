@@ -37,13 +37,13 @@ public class Target : MonoBehaviour
         if (PlayerController.instance.directionMethod == 1)
             gameObject.SetActive(false);
         Vector3 direction;
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
+        float mouseX = Input.GetAxis("Horizontal");
+        float mouseY = Input.GetAxis("Vertical");
         if (Mathf.Abs(mouseX) > movementThreshold || Mathf.Abs(mouseY) > movementThreshold)
         {
             direction = new Vector3(mouseX, mouseY, 0);
             direction.Normalize();
-            direction = Vector2.Perpendicular(direction);
+            //direction = Vector2.Perpendicular(direction);
             transform.position += direction * 5 * Time.deltaTime;
         }
         if (FitsInBox(transform.position, startButtonPos, buttonSize))

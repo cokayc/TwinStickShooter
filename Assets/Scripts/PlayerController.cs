@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
         currentRB.velocity = speed * new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        pointing = Vector3.up;
         pointing = determineDirection(pointing);
         Vector3 bulletPlacement = pointing;
         if(Input.GetButton("Fire1") && currentEnemy.canShoot)

@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
     {
         startMusicDone = false;
         backgroundMusic.PlayOneShot(startSound);
-        yield return new WaitForSeconds(startSound.length);
+        yield return new WaitForSeconds(startSound.length-0.1f);
         startMusicDone = true;
         backgroundMusic.Play();
     }
@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
     {
         if (backgroundMusic.isPlaying)
             backgroundMusic.Pause();
-        if(startMusicDone)
+        else if(startMusicDone)
             backgroundMusic.Play();
     }
 }
