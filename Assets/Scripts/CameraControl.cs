@@ -50,7 +50,7 @@ public class CameraControl : MonoBehaviour
 		instance = this;
 	}
 
-	void Update()
+	void LateUpdate()
 	{
 		if (target == null)
 		{
