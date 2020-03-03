@@ -60,6 +60,18 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collide)
+    {
+        GameObject otherObj = collide.gameObject;
+        if (otherObj.CompareTag("Heart"))
+        {
+            health = GetComponentInChildren<Health>().Restore(1);
+            Destroy(otherObj);
+        }
+    }
+
+
+
     public IEnumerator Die()
     {
         AudioSource.PlayClipAtPoint(deathSound, transform.position);
