@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public GameObject bulletPrefab;
     public float movementThreshold;
+    public Canvas redFlash;
 
     private Rigidbody2D currentRB;
     private Enemy currentEnemy;
@@ -25,7 +27,7 @@ public class PlayerController : MonoBehaviour
             instance = this;
         else
             Destroy(this);
-
+        redFlash.GetComponentInChildren<Image>().gameObject.SetActive(false);
         currentRB = GetComponent<Rigidbody2D>();
         currentEnemy = GetComponent<Enemy>();
         currentEnemy.isPlayer = true;
@@ -114,4 +116,5 @@ public class PlayerController : MonoBehaviour
         currentEnemy = target.GetComponent<Enemy>();
         currentEnemy.isPlayer = true;
     }
+
 }

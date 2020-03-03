@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -49,6 +50,10 @@ public abstract class Enemy : MonoBehaviour
         if (!isPossessive)
         {
             health = GetComponentInChildren<Health>().Damage(damage);
+            if(isPlayer)
+            {
+                StartCoroutine(PlayerHurt());
+            }
             if (health <= 0)
             {
                 StartCoroutine(Die());
@@ -84,6 +89,13 @@ public abstract class Enemy : MonoBehaviour
         canShoot = false;
         yield return new WaitForSeconds(shotCooldown);
         canShoot = true;
+    }
+
+    public IEnumerator PlayerHurt()
+    {
+        PlayerController.instance.redFlash.GetComponentInChildren<Image>().gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        PlayerController.instance.redFlash.GetComponentInChildren<Image>().gameObject.SetActive(false);
     }
 
 }
