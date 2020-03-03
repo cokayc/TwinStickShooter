@@ -64,6 +64,7 @@ MonoBehaviour:
   possessBulletPrefab: {fileID: 6022568692942639834, guid: df468d2f516385448a08d321b0d7a618,
     type: 3}
   movementThreshold: 5
+  redFlash: {fileID: 199887337901657771, guid: 166e143b29637f2488c46e782fa23b92, type: 3}
   currentEnemy: {fileID: 0}
 --- !u!82 &7027137682238734053
 AudioSource:

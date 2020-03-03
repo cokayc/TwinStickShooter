@@ -93,9 +93,9 @@ public abstract class Enemy : MonoBehaviour
 
     public IEnumerator PlayerHurt()
     {
-        PlayerController.instance.redFlash.GetComponentInChildren<Image>().gameObject.SetActive(true);
+        PlayerController.instance.redFlash.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        PlayerController.instance.redFlash.GetComponentInChildren<Image>().gameObject.SetActive(false);
+        PlayerController.instance.redFlash.gameObject.SetActive(false);
     }
 
 }

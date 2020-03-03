@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     public float movementThreshold;
 
-    public Canvas redFlash;
+    public Image redFlash;
     public Enemy currentEnemy;
 
     private Rigidbody2D currentRB;
@@ -31,10 +31,7 @@ public class PlayerController : MonoBehaviour
             instance = this;
         else
             Destroy(this);
-        redFlash.GetComponentInChildren<Image>().gameObject.SetActive(false);
-        currentRB = GetComponent<Rigidbody2D>();
-        currentEnemy = GetComponent<Enemy>();
-        currentEnemy.isPlayer = true;
+        redFlash.gameObject.SetActive(false);
 
         gm = GameManager.instance;
         mainCamera = GameObject.Find("Main Camera");
@@ -62,14 +59,18 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButton("Fire1") && currentEnemy.canShoot)
         {
             StartCoroutine(currentEnemy.ShotCooldown());
-            Instantiate(bulletPrefab, currentRB.gameObject.transform.position + bulletPlacement.normalized, transform.rotation).GetComponent<BulletGroup>().direction = pointing;
+            GameObject bullet = Instantiate(bulletPrefab, currentRB.gameObject.transform.position + bulletPlacement.normalized, transform.rotation);
+            bullet.GetComponent<BulletGroup>().direction = pointing;
+            bullet.GetComponent<BulletGroup>().SetShooter(currentEnemy.gameObject);
 
         }
 
         if (Input.GetButton("Fire2") && currentEnemy.canShoot)
         {
             StartCoroutine(currentEnemy.ShotCooldown());
-            Instantiate(possessBulletPrefab, currentRB.gameObject.transform.position + bulletPlacement.normalized, transform.rotation).GetComponent<BulletGroup>().direction = pointing;
+            GameObject bullet = Instantiate(possessBulletPrefab, currentRB.gameObject.transform.position + bulletPlacement.normalized, transform.rotation);
+            bullet.GetComponent<BulletGroup>().direction = pointing;
+            bullet.GetComponent<BulletGroup>().SetShooter(currentEnemy.gameObject);
 
         }
     }
