@@ -9,13 +9,9 @@ public class FocusedEnemy : Enemy
 
     private Vector3 playerPos;
 
-    void Start()
-    {
-        player = GameObject.Find("Player");
-    }
-
     protected override void EnemyMovement() 
     {
+        player = PlayerController.instance.currentEnemy.gameObject;
         playerPos = player.transform.position - transform.position;
         playerPos.Normalize();
 
