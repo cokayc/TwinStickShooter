@@ -36,24 +36,9 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void StartGame()
+    public void LoadLevel(string levelname)
     {
-        SceneManager.LoadScene("Level One");
-    }
-
-    public void Tutorial()
-    {
-        SceneManager.LoadScene("Tutorial");
-    }
-
-    public void Credits()
-    {
-        SceneManager.LoadScene("Credits");
-    }
-
-    public void SoundSettings()
-    {
-        SceneManager.LoadScene("Sound Settings");
+        SceneManager.LoadScene(levelname);
     }
 
     public void SetMasterVolume(float val)
