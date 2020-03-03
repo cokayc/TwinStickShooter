@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPaused: 0
+  startSound: {fileID: 8300000, guid: 28f34cb251ee9184f98db6a57ca030b3, type: 3}
 --- !u!224 &278234600
 RectTransform:
   m_ObjectHideFlags: 0
@@ -263,8 +264,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 63de83d9c94a62741a3ffcbd7dccbbfd, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 97c95d6e9efb0b444a35399242e503ff, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1

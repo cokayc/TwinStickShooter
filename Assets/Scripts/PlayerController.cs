@@ -129,4 +129,9 @@ public class PlayerController : MonoBehaviour
         mainCamera.GetComponent<CameraControl>().target = currentEnemy.gameObject.transform;
     }
 
+    public GameObject GetMainCamera()
+    {
+        return mainCamera;
+    }
+
 }
