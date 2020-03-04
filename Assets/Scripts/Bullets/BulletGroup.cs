@@ -12,6 +12,7 @@ public class  BulletGroup : MonoBehaviour
 
     private void Start()
     {
+       
         for  (int i = 0; i < bullets.Length; i++)
         {
             Vector3 dir = Quaternion.Euler(0, 0, angleDiff[i]) * direction;

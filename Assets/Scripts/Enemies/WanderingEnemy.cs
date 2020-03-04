@@ -46,7 +46,7 @@ public class WanderingEnemy : Enemy
 
     protected override void Shoot()
     {
-        //throw new UnityException("Method Not Implemented");
+        Instantiate(bulletGroup, transform.position, transform.rotation).GetComponent<BulletGroup>().direction = Vector3.up;
     }
 
  

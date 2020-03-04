@@ -133,6 +133,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1132434685808590357, guid: 7afb528e95cf7ac46812792587897c79,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1132434685808590359, guid: 7afb528e95cf7ac46812792587897c79,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -193,6 +198,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: WanderingEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1132434685808590361, guid: 7afb528e95cf7ac46812792587897c79,
+        type: 3}
+      propertyPath: bulletGroup
+      value: 
+      objectReference: {fileID: 4723715459326950389, guid: 944177fd4a3f98645b5a5fe18262344a,
+        type: 3}
     - target: {fileID: 1750282778025327245, guid: 7afb528e95cf7ac46812792587897c79,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -280,7 +291,7 @@ Transform:
   m_GameObject: {fileID: 459039200}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 6, y: 7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -375,16 +386,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1843ce738f9cfc040baaecee96d74d91, type: 3}
---- !u!114 &1698862886 stripped
+--- !u!114 &1485332213 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1132434685808590361, guid: 7afb528e95cf7ac46812792587897c79,
+  m_CorrespondingSourceObject: {fileID: 8631149581478993489, guid: 1843ce738f9cfc040baaecee96d74d91,
     type: 3}
-  m_PrefabInstance: {fileID: 375078518}
+  m_PrefabInstance: {fileID: 1024567532}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 154928a0e6402a14d8d7dbc9ee69f329, type: 3}
+  m_Script: {fileID: 11500000, guid: aa9b4a37cb33e9e4081f4035d55bb401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1876993352
@@ -631,6 +642,6 @@ PrefabInstance:
         type: 3}
       propertyPath: currentEnemy
       value: 
-      objectReference: {fileID: 1698862886}
+      objectReference: {fileID: 1485332213}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ce11652b5252bd4c8e21c54afe789a1, type: 3}
