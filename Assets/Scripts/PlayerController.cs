@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,13 +13,18 @@ public class PlayerController : MonoBehaviour
     public GameObject possessBulletPrefab;
 
     public float movementThreshold;
+
+    public Image redFlash;
     public Enemy currentEnemy;
 
     private Rigidbody2D currentRB;
-    private int directionMethod;
+    [HideInInspector]
+    public int directionMethod;
     private Vector2 pointing;
     private GameManager gm;
-    private GameObject mainCamera; 
+    private GameObject mainCamera;
+
+    private bool instantiated;
 
     // Start is called before the first frame update
     void Start()
@@ -28,11 +34,14 @@ public class PlayerController : MonoBehaviour
             instance = this;
         else
             Destroy(this);
+        if(redFlash!=null)
+            redFlash.gameObject.SetActive(false);
+        instantiated = false;
 
         gm = GameManager.instance;
         mainCamera = GameObject.Find("Main Camera");
 
-        Possess(currentEnemy.gameObject);
+
 
         var joysticks = Input.GetJoystickNames();
         if (joysticks.Length == 0 || joysticks[0].Length == 0)
@@ -44,26 +53,42 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gm.isPaused)
+        if (gm.isPaused||!instantiated)
         {
             return;
         }
-
+        mainCamera = GameObject.Find("Main Camera");
         currentRB.velocity = speed * new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        pointing = Vector3.up;
         pointing = determineDirection(pointing);
         Vector3 bulletPlacement = pointing;
         if(Input.GetButton("Fire1") && currentEnemy.canShoot)
         {
             StartCoroutine(currentEnemy.ShotCooldown());
-            Instantiate(bulletPrefab, currentRB.gameObject.transform.position + bulletPlacement.normalized, transform.rotation).GetComponent<BulletGroup>().direction = pointing;
+            GameObject bullet = Instantiate(bulletPrefab, currentRB.gameObject.transform.position + bulletPlacement.normalized, transform.rotation);
+            bullet.GetComponent<BulletGroup>().direction = pointing;
+            bullet.GetComponent<BulletGroup>().SetShooter(currentEnemy.gameObject);
 
         }
 
         if (Input.GetButton("Fire2") && currentEnemy.canShoot)
         {
             StartCoroutine(currentEnemy.ShotCooldown());
-            Instantiate(possessBulletPrefab, currentRB.gameObject.transform.position + bulletPlacement.normalized, transform.rotation).GetComponent<BulletGroup>().direction = pointing;
+            GameObject bullet = Instantiate(possessBulletPrefab, currentRB.gameObject.transform.position + bulletPlacement.normalized, transform.rotation);
+            bullet.GetComponent<BulletGroup>().direction = pointing;
+            bullet.GetComponent<BulletGroup>().SetShooter(currentEnemy.gameObject);
 
+        }
+    }
+
+    public void OnLevelWasLoaded(int level)
+    {
+        if (level == 4)
+        {
+            mainCamera = GameObject.Find("Main Camera");
+            instantiated = true;
+            currentEnemy = Instantiate(currentEnemy).GetComponent<Enemy>();
+            Possess(currentEnemy.gameObject);
         }
     }
 
@@ -113,11 +138,11 @@ public class PlayerController : MonoBehaviour
 
     public void Possess(GameObject target)
     {
-        if (currentEnemy != null)
-            currentEnemy.isPlayer = false;
         currentRB = target.GetComponent<Rigidbody2D>();
         currentEnemy = target.GetComponent<Enemy>();
         currentEnemy.isPlayer = true;
         mainCamera.GetComponent<CameraControl>().target = currentEnemy.gameObject.transform;
     }
+
+
 }

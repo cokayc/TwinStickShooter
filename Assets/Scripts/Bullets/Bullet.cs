@@ -15,6 +15,7 @@ public abstract class Bullet : MonoBehaviour
 
     private float volume;
     private GameManager gm;
+    private GameObject shooter;
 
     public virtual void Start()
     {
@@ -36,7 +37,7 @@ public abstract class Bullet : MonoBehaviour
     {
         GameObject otherObj = collide.gameObject;
 
-        if (otherObj.CompareTag("Enemy"))
+        if (otherObj.CompareTag("Enemy")&&DifferentTeams(otherObj, shooter))
         {
             otherObj.GetComponent<Enemy>().Hurt(damage, isPossesive);
             AudioSource.PlayClipAtPoint(hitEnemySound, transform.position, volume);
@@ -53,6 +54,18 @@ public abstract class Bullet : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         Destroy(gameObject);
+    }
+
+    public void SetShooter(GameObject s)
+    {
+        shooter = s;
+    }
+
+    public bool DifferentTeams(GameObject one, GameObject two)
+    {
+        bool p1 = one.GetComponent<Enemy>().isPlayer;
+        bool p2 = two.GetComponent<Enemy>().isPlayer;
+        return p1 != p2;
     }
 
    

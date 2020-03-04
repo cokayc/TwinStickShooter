@@ -24,6 +24,8 @@ public class FocusedEnemy : Enemy
     protected override void Shoot()
     {
 
-        Instantiate(bulletGroup, transform.position + playerPos, transform.rotation).GetComponent<BulletGroup>().direction = playerPos;
+        BulletGroup bullet = Instantiate(bulletGroup, transform.position + playerPos, transform.rotation);
+        bullet.GetComponent<BulletGroup>().direction = playerPos;
+        bullet.SetShooter(gameObject);
     }
 }

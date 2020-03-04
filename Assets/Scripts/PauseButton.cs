@@ -15,7 +15,7 @@ public class PauseButton : MonoBehaviour
     {
         isPaused = false;
         image = GetComponent<Image>();
-        gm = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+        gm = GameManager.instance;
         gm.isPaused = false;
     }
 
@@ -30,6 +30,7 @@ public class PauseButton : MonoBehaviour
 
     public void TogglePause()
     {
+        gm.ToggleMusic();
         if (isPaused)
         {
             image.sprite = pauseImage;
