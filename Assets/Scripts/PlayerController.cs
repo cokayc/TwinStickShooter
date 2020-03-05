@@ -15,7 +15,9 @@ public class PlayerController : MonoBehaviour
     public float movementThreshold;
 
     public Image redFlash;
+    public Canvas UICanvas;
     public Enemy currentEnemy;
+    public GameObject startingEnemy;
 
     private Rigidbody2D currentRB;
     [HideInInspector]
@@ -34,8 +36,7 @@ public class PlayerController : MonoBehaviour
             instance = this;
         else
             Destroy(this);
-        if(redFlash!=null)
-            redFlash.gameObject.SetActive(false);
+        GetComponentInChildren<Canvas>().gameObject.SetActive(false);
         instantiated = false;
 
         gm = GameManager.instance;
@@ -83,11 +84,20 @@ public class PlayerController : MonoBehaviour
 
     public void OnLevelWasLoaded(int level)
     {
+        mainCamera = GameObject.Find("Main Camera");
+        UICanvas.worldCamera = mainCamera.GetComponent<Camera>();
+        if(level == 0)
+        {
+            UICanvas.gameObject.SetActive(false);
+            instantiated = false;
+        }
         if (level == 4)
         {
-            mainCamera = GameObject.Find("Main Camera");
+            UICanvas.gameObject.SetActive(true);
+            redFlash.gameObject.SetActive(false);
+            
             instantiated = true;
-            currentEnemy = Instantiate(currentEnemy).GetComponent<Enemy>();
+            currentEnemy = Instantiate(startingEnemy).GetComponent<Enemy>();
             Possess(currentEnemy.gameObject);
         }
     }
@@ -138,6 +148,7 @@ public class PlayerController : MonoBehaviour
 
     public void Possess(GameObject target)
     {
+        currentEnemy.isPlayer = false;
         currentRB = target.GetComponent<Rigidbody2D>();
         currentEnemy = target.GetComponent<Enemy>();
         currentEnemy.isPlayer = true;

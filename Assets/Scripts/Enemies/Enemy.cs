@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -82,6 +83,7 @@ public abstract class Enemy : MonoBehaviour
             k++;
         }
         Destroy(gameObject);
+        SceneManager.LoadScene("Gameover");
     }
 
     public IEnumerator ShotCooldown()
@@ -94,7 +96,7 @@ public abstract class Enemy : MonoBehaviour
     public IEnumerator PlayerHurt()
     {
         PlayerController.instance.redFlash.gameObject.SetActive(true);
-        CameraControl.ScreenShakeStrong();
+        CameraControl.ScreenShake(0.5f, 0.3f);
         yield return new WaitForSeconds(0.5f);
         PlayerController.instance.redFlash.gameObject.SetActive(false);
     }
