@@ -44,7 +44,7 @@ public class WanderingEnemy : Enemy
         }
     }
 
-    protected override void Shoot()
+    public override void Shoot()
     {
         BulletGroup bullet = Instantiate(bulletGroup, transform.position, transform.rotation);
         bullet.GetComponent<BulletGroup>().direction = Vector3.up;

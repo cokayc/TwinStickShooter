@@ -21,7 +21,7 @@ public class FocusedEnemy : Enemy
         transform.Translate((player.transform.position - transform.position).normalized * Time.deltaTime, Space.World);
     }
 
-    protected override void Shoot()
+    public override void Shoot()
     {
 
         BulletGroup bullet = Instantiate(bulletGroup, transform.position + playerPos, transform.rotation);

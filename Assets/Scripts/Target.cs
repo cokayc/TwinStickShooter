@@ -71,7 +71,7 @@ public class Target : MonoBehaviour
 
     }
 
-    private bool FitsInBox(Vector3 pos, Vector3 boxPos, Vector3 boxSize)
+    public static bool FitsInBox(Vector3 pos, Vector3 boxPos, Vector3 boxSize)
     {
         Vector3 lowerCorner = boxPos - boxSize;
         Vector3 upperCorner = boxPos + boxSize;

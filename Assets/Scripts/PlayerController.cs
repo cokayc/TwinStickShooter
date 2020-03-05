@@ -66,9 +66,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButton("Fire1") && currentEnemy.canShoot)
         {
             StartCoroutine(currentEnemy.ShotCooldown());
-            GameObject bullet = Instantiate(bulletPrefab, currentRB.gameObject.transform.position + bulletPlacement.normalized, transform.rotation);
-            bullet.GetComponent<BulletGroup>().direction = pointing;
-            bullet.GetComponent<BulletGroup>().SetShooter(currentEnemy.gameObject);
+            currentEnemy.Shoot();
 
         }
 

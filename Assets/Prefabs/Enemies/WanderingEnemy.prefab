@@ -99,10 +99,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathSprites: []
   isPlayer: 0
-  maxHealth: 1000
+  maxHealth: 30
   deathSound: {fileID: 8300000, guid: 2d94ebb84ba9f0041b7f793ee1fe09f7, type: 3}
   shotCooldown: 0.3
-  bulletGroup: {fileID: 6973885432061448264, guid: e6318e7f366724543a9563b0ce75d18e,
+  bulletGroup: {fileID: 4723715459326950389, guid: 944177fd4a3f98645b5a5fe18262344a,
     type: 3}
   canShoot: 0
   minPos: -5

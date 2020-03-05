@@ -42,7 +42,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    protected abstract void Shoot();
+    public abstract void Shoot();
     protected abstract void EnemyMovement();
 
     public void Hurt(int damage, bool isPossessive)

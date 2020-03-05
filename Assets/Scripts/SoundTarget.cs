@@ -42,28 +42,25 @@ public class SoundTarget : MonoBehaviour
         {
             direction = new Vector3(mouseX, mouseY, 0);
             direction.Normalize();
-            //direction = Vector2.Perpendicular(direction);
             transform.position += direction * 5 * Time.deltaTime;
         }
-        //Debug.Log(transform.position);
-        if (FitsInBox(transform.position, quitButtonPos, quitButtonSize))
+        if (Target.FitsInBox(transform.position, quitButtonPos, quitButtonSize))
         {
-            Debug.Log("we did it");
             quitButton.GetComponent<Button>().Select();
             if (Input.GetButton("Fire1"))
             {
                 quitButton.GetComponent<Button>().onClick.Invoke();
             }
         }
-        if (FitsInBox(transform.position, masterSliderPos, sliderSize) && Input.GetButton("Fire1"))
+        else if (Target.FitsInBox(transform.position, masterSliderPos, sliderSize) && Input.GetButton("Fire1"))
         {
             masterVolumeSlider.GetComponent<Slider>().value = (transform.position.x - (masterSliderPos - sliderSize).x) / (2 * sliderSize.x);
         }
-        else if (FitsInBox(transform.position, musicSliderPos, sliderSize) && Input.GetButton("Fire1"))
+        else if (Target.FitsInBox(transform.position, musicSliderPos, sliderSize) && Input.GetButton("Fire1"))
         {
             musicVolumeSlider.GetComponent<Slider>().value = (transform.position.x - (musicSliderPos - sliderSize).x) / (2 * sliderSize.x);
         }
-        else if (FitsInBox(transform.position, effectSliderPos, sliderSize) && Input.GetButton("Fire1"))
+        else if (Target.FitsInBox(transform.position, effectSliderPos, sliderSize) && Input.GetButton("Fire1"))
         {
             effectVolumeSlider.GetComponent<Slider>().value = (transform.position.x - (effectSliderPos - sliderSize).x) / (2 * sliderSize.x);
         }
@@ -72,10 +69,4 @@ public class SoundTarget : MonoBehaviour
 
     }
 
-    private bool FitsInBox(Vector3 pos, Vector3 boxPos, Vector3 boxSize)
-    {
-        Vector3 lowerCorner = boxPos - boxSize;
-        Vector3 upperCorner = boxPos + boxSize;
-        return pos.x > lowerCorner.x && pos.y > lowerCorner.y && pos.x < upperCorner.x && pos.y < upperCorner.y;
-    }
 }
