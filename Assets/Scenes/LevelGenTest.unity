@@ -329,6 +329,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2464862800423335008, guid: f7668d4eb32adc2409f302ddebb1e84e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464862800423335008, guid: f7668d4eb32adc2409f302ddebb1e84e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2464862800423335014, guid: f7668d4eb32adc2409f302ddebb1e84e,
         type: 3}
       propertyPath: m_Name
@@ -568,11 +578,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e61c9a2f09b844b9521353797cbe31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 50
+  width: 60
   height: 50
-  minSplitArea: 350
+  minSplitArea: 900
   minRoomArea: 100
-  wall: {fileID: 820907787135490268, guid: 14157829eaa2a844095d839ec5574965, type: 3}
+  hallwayOffset: 1
+  roomShrink: 2
+  wall: {fileID: 1799639454251359033, guid: d7703b7546202dc44af9e324becc85b0, type: 3}
 --- !u!1 &2020268858
 GameObject:
   m_ObjectHideFlags: 0
