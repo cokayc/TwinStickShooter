@@ -7,7 +7,10 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: 
-    guid: 2cda990e2423bbf4892e6590ba056729
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Swag.unity
+    guid: 0cdd85f00e587214f86721fa2666f65f
   - enabled: 1
     path: Assets/Scenes/Title.unity
     guid: 6d4f8b3ef27dba34ea4d4e353ba904e2

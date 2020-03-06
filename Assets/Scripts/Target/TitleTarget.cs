@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class Target : MonoBehaviour
+public class TitleTarget : Target
 {
-    private float movementThreshold;
     public GameObject startButton;
     public GameObject tutorialButton;
     public GameObject creditsButton;
@@ -20,8 +20,6 @@ public class Target : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        movementThreshold = 0.02f;
-        Vector3 screenCenter = Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0));
         buttonSize = Camera.main.ScreenToWorldPoint(new Vector3(350, 50, 0)+screenCenter);
         soundButtonSize = Camera.main.ScreenToWorldPoint(new Vector3(50, 50, 0) + screenCenter);
         startButtonPos = Camera.main.ScreenToWorldPoint(new Vector3(0, 120, 0) + screenCenter);
@@ -32,20 +30,9 @@ public class Target : MonoBehaviour
 }
 
     // Update is called once per frame
-    void Update()
+    protected override void LookForButtons()
     {
-        if (PlayerController.instance.directionMethod == 1)
-            gameObject.SetActive(false);
-        Vector3 direction;
-        float mouseX = Input.GetAxis("Horizontal");
-        float mouseY = Input.GetAxis("Vertical");
-        if (Mathf.Abs(mouseX) > movementThreshold || Mathf.Abs(mouseY) > movementThreshold)
-        {
-            direction = new Vector3(mouseX, mouseY, 0);
-            direction.Normalize();
-            //direction = Vector2.Perpendicular(direction);
-            transform.position += direction * 5 * Time.deltaTime;
-        }
+        
         if (FitsInBox(transform.position, startButtonPos, buttonSize))
             startButton.GetComponent<Button>().Select();
         else if (FitsInBox(transform.position, tutorialButtonPos, buttonSize))
@@ -62,7 +49,7 @@ public class Target : MonoBehaviour
             if (FitsInBox(transform.position, startButtonPos, buttonSize))
                 startButton.GetComponent<Button>().onClick.Invoke();
             else if (FitsInBox(transform.position, tutorialButtonPos, buttonSize))
-                tutorialButton.GetComponent<Button>().onClick.Invoke();
+                SceneManager.LoadScene("Controller Tutorial");
             else if (FitsInBox(transform.position, creditsButtonPos, buttonSize))
                 creditsButton.GetComponent<Button>().onClick.Invoke();
             else if (FitsInBox(transform.position, soundButtonPos, soundButtonSize))
@@ -71,10 +58,5 @@ public class Target : MonoBehaviour
 
     }
 
-    public static bool FitsInBox(Vector3 pos, Vector3 boxPos, Vector3 boxSize)
-    {
-        Vector3 lowerCorner = boxPos - boxSize;
-        Vector3 upperCorner = boxPos + boxSize;
-        return pos.x > lowerCorner.x && pos.y > lowerCorner.y && pos.x < upperCorner.x && pos.y < upperCorner.y;
-    }
+    
 }

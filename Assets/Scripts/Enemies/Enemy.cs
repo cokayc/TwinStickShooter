@@ -82,8 +82,9 @@ public abstract class Enemy : MonoBehaviour
             n = 0;
             k++;
         }
+        if(isPlayer)
+            SceneManager.LoadScene("Gameover");
         Destroy(gameObject);
-        SceneManager.LoadScene("Gameover");
     }
 
     public IEnumerator ShotCooldown()

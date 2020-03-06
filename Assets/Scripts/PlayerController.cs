@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -84,12 +85,12 @@ public class PlayerController : MonoBehaviour
     {
         mainCamera = GameObject.Find("Main Camera");
         UICanvas.worldCamera = mainCamera.GetComponent<Camera>();
-        if(level == 0)
+        if(level == SceneManager.GetSceneByName("Title").buildIndex)
         {
             UICanvas.gameObject.SetActive(false);
             instantiated = false;
         }
-        if (level == 4)
+        if (level == SceneManager.GetSceneByName("Level One").buildIndex)
         {
             UICanvas.gameObject.SetActive(true);
             redFlash.gameObject.SetActive(false);

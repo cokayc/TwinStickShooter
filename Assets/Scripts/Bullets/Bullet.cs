@@ -59,6 +59,10 @@ public abstract class Bullet : MonoBehaviour
     public void SetShooter(GameObject s)
     {
         shooter = s;
+        if(s.GetComponent<Enemy>().isPlayer&&!isPossesive)
+        {
+            GetComponent<SpriteRenderer>().color = Color.blue;
+        }
     }
 
     public bool DifferentTeams(GameObject one, GameObject two)

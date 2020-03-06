@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SoundTarget : MonoBehaviour
+public class SoundTarget : Target
 {
     public GameObject quitButton;
     public GameObject masterVolumeSlider;
     public GameObject musicVolumeSlider;
     public GameObject effectVolumeSlider;
 
-    private float movementThreshold;
     private Vector3 quitButtonPos;
     private Vector3 quitButtonSize;
     private Vector3 sliderSize;
@@ -20,8 +19,6 @@ public class SoundTarget : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        movementThreshold = 0.02f;
-        Vector3 screenCenter = Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0));
         quitButtonPos = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth - 50, Camera.main.pixelHeight - 50, 0));
         quitButtonSize = Camera.main.ScreenToWorldPoint(new Vector3(45, 45, 0) + screenCenter);
         sliderSize = Camera.main.ScreenToWorldPoint(new Vector3(280, 35, 0) + screenCenter);
@@ -31,19 +28,9 @@ public class SoundTarget : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void LookForButtons()
     {
-        if (PlayerController.instance.directionMethod == 1)
-            gameObject.SetActive(false);
-        Vector3 direction;
-        float mouseX = Input.GetAxis("Horizontal");
-        float mouseY = Input.GetAxis("Vertical");
-        if (Mathf.Abs(mouseX) > movementThreshold || Mathf.Abs(mouseY) > movementThreshold)
-        {
-            direction = new Vector3(mouseX, mouseY, 0);
-            direction.Normalize();
-            transform.position += direction * 5 * Time.deltaTime;
-        }
+        
         if (Target.FitsInBox(transform.position, quitButtonPos, quitButtonSize))
         {
             quitButton.GetComponent<Button>().Select();
