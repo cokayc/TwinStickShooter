@@ -7,9 +7,8 @@ public class LevelGenerator : MonoBehaviour
     public int width;
     public int height;
     public float minSplitArea;
-    public float minRoomArea;
-    public float hallwayOffset;
     public int roomShrink;
+    public int wallScale;
     public GameObject wall;
 
     private List<Node> leafList;
@@ -147,8 +146,9 @@ public class LevelGenerator : MonoBehaviour
 
     private void BuildWallMap(int x, int y)
     {
-        Vector2 pos = new Vector2(x, y);
-        Instantiate(wall, pos, Quaternion.identity);
+        Vector2 pos = new Vector2(x * wallScale, y * wallScale);
+        Vector3 scale = new Vector3(wallScale, wallScale);
+        Instantiate(wall, pos, Quaternion.identity).transform.localScale = scale;
     }
 
     private void BuildWall(Vector3 p1, Vector3 p2)
