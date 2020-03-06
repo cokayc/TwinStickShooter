@@ -9,7 +9,7 @@ public class LevelGenerator : MonoBehaviour
     public float minSplitArea;
     public float minRoomArea;
     public float hallwayOffset;
-    public float roomShrink;
+    public int roomShrink;
     public GameObject wall;
 
     private List<Node> leafList;
@@ -85,11 +85,21 @@ public class LevelGenerator : MonoBehaviour
             points[2] = new Vector2(points[1].x, points[0].y);
             points[3] = new Vector2(points[0].x, points[1].y);
 
+            for (int x = (int)leaf.bottomLeft.x + roomShrink; x < leaf.topRight.x - roomShrink; x++)
+            {
+                for (int y = (int)leaf.bottomLeft.y + roomShrink; y < leaf.topRight.y - roomShrink; y++)
+                {
+                    map[x, y] = 1;
+                }
+            }
+
+            /*
             // Build walls
             leaf.walls.Add(BuildWall2D(points[0], points[2]));
             leaf.walls.Add(BuildWall2D(points[2], points[1]));
             leaf.walls.Add(BuildWall2D(points[1], points[3]));
             leaf.walls.Add(BuildWall2D(points[3], points[0]));
+            */
 
             float[] xvals = new float[4];
             float[] yvals = new float[4];
@@ -110,13 +120,35 @@ public class LevelGenerator : MonoBehaviour
             //Debug.Log("Left: " + leaf.bottomLeft.x + ", " + leaf.bottomLeft.y + " Right: " + leaf.topRight.x + ", " + leaf.topRight.y);
         }
 
-        ConnectRooms(head);
+        ConnectRooms(head, map);
+
+        for (int x = 0; x < map.GetUpperBound(0); x++)
+        {
+            for (int y = 0; y < map.GetUpperBound(1); y++)
+            {
+                if (IsWall(map, x, y))
+                {
+                    BuildWallMap(x, y);
+                }
+            }
+        }
+
+        
     }
 
-    // Update is called once per frame
-    void Update()
+    private bool IsWall(int[,] map, int x, int y)
+    { 
+        if (map[x, y] == 0 && ((x - 1 >= 0 && map[x - 1, y] == 1) || (y + 1 < map.GetUpperBound(1) && map[x, y + 1] == 1) || (x + 1 < map.GetUpperBound(0) && map[x + 1, y] == 1) || (y - 1 >= 0 && map[x, y - 1] == 1)))
+            return true;
+        else
+            return false;
+
+    }
+
+    private void BuildWallMap(int x, int y)
     {
-        
+        Vector2 pos = new Vector2(x, y);
+        Instantiate(wall, pos, Quaternion.identity);
     }
 
     private void BuildWall(Vector3 p1, Vector3 p2)
@@ -158,7 +190,7 @@ public class LevelGenerator : MonoBehaviour
         if (Random.Range(0 , 2) == 0)
         {
             // Vertical
-            float cutPointX = Mathf.Lerp(target.bottomLeft.x, target.topRight.x, Random.Range(.25f, .75f));
+            int cutPointX = (int) Mathf.Lerp(target.bottomLeft.x, target.topRight.x, Random.Range(.25f, .75f));
             target.left = new Node(target.bottomLeft.x, target.bottomLeft.y, cutPointX, target.topRight.y);
             target.right = new Node(cutPointX, target.bottomLeft.y, target.topRight.x, target.topRight.y);
 
@@ -166,7 +198,7 @@ public class LevelGenerator : MonoBehaviour
         else
         {
             // Horizontal
-            float cutPointY = Mathf.Lerp(target.bottomLeft.y, target.topRight.y, Random.Range(.25f, .75f));
+            int cutPointY = (int) Mathf.Lerp(target.bottomLeft.y, target.topRight.y, Random.Range(.25f, .75f));
             target.left = new Node(target.bottomLeft.x, cutPointY, target.topRight.x, target.topRight.y);
             target.right = new Node(target.bottomLeft.x, target.bottomLeft.y, target.topRight.x, cutPointY);
         }
@@ -175,16 +207,45 @@ public class LevelGenerator : MonoBehaviour
         SplitGenerate(target.right);
     }
 
-    private void ConnectRooms(Node target)
+    private void ConnectRooms(Node target, int[,] map)
     {
         if (target.left == null || target.right == null)
         {
             return;
         }
-        ConnectRooms(target.left);
-        ConnectRooms(target.right);
+
+        ConnectRooms(target.left, map);
+        ConnectRooms(target.right, map);
         Debug.Log(target.left.walls.Count);
         Debug.Log(target.right.walls.Count);
+
+        Vector2 midpointLeft = new Vector2( (int) ((target.left.bottomLeft.x + target.left.topRight.x) / 2), (int) ((target.left.bottomLeft.y + target.left.topRight.y) / 2));
+        Vector2 midpointRight = new Vector2( (int) ((target.right.bottomLeft.x + target.right.topRight.x) / 2), (int) ((target.right.bottomLeft.y + target.right.topRight.y) / 2));
+
+        while (midpointLeft != midpointRight)
+        {
+            if (midpointLeft.x < midpointRight.x)
+            {
+                midpointLeft.x += 1;
+            }
+            else if (midpointLeft.x > midpointRight.x)
+            {
+                midpointLeft.x -= 1;
+            }
+            else if (midpointLeft.y < midpointRight.y)
+            {
+                midpointLeft.y += 1;
+            }
+            else if (midpointLeft.y > midpointRight.y)
+            {
+                midpointLeft.y -= 1;
+            }
+
+            map[(int) midpointLeft.x, (int) midpointLeft.y] = 1;
+        }
+
+        //Instantiate(wall, midpointLeft, Quaternion.identity);
+        //Instantiate(wall, midpointRight, Quaternion.identity).GetComponent<SpriteRenderer>().color = Color.blue;
 
 
         /*
@@ -221,7 +282,7 @@ public class LevelGenerator : MonoBehaviour
         target.walls.AddRange(target.right.walls);
         */
 
-        
+
 
 
         /*

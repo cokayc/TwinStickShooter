@@ -580,7 +580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 60
   height: 50
-  minSplitArea: 900
+  minSplitArea: 200
   minRoomArea: 100
   hallwayOffset: 1
   roomShrink: 2
