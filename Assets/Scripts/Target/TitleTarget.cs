@@ -26,7 +26,6 @@ public class TitleTarget : Target
         tutorialButtonPos = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0) + screenCenter);
         creditsButtonPos = Camera.main.ScreenToWorldPoint(new Vector3(0, -120, 0) + screenCenter);
         soundButtonPos = Camera.main.ScreenToWorldPoint(new Vector3(0, -380, 0) + screenCenter);
-
 }
 
     // Update is called once per frame

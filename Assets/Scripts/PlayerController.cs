@@ -50,6 +50,11 @@ public class PlayerController : MonoBehaviour
             directionMethod = 1;
         else
             directionMethod = 2;
+
+        if(directionMethod == 2)
+        {
+
+        }
     }
 
     // Update is called once per frame
@@ -90,7 +95,7 @@ public class PlayerController : MonoBehaviour
             UICanvas.gameObject.SetActive(false);
             instantiated = false;
         }
-        if (level == SceneManager.GetSceneByName("Level One").buildIndex)
+        if (level == SceneManager.GetSceneByName("Level One").buildIndex || level == SceneManager.GetSceneByName("Tutorial").buildIndex)
         {
             UICanvas.gameObject.SetActive(true);
             redFlash.gameObject.SetActive(false);

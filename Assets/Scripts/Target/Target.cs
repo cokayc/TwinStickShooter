@@ -11,14 +11,14 @@ public abstract class Target : MonoBehaviour
     private void Awake()
     {
         screenCenter = Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0));
+        if (PlayerController.instance.directionMethod == 1)
+            gameObject.SetActive(false);
     }
 
 
     // Update is called once per frame
     void Update()
-    {
-        if (PlayerController.instance.directionMethod == 1)
-            gameObject.SetActive(false);
+    { 
         Vector3 direction;
         float mouseX = Input.GetAxis("Horizontal");
         float mouseY = Input.GetAxis("Vertical");
