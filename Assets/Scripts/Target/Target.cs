@@ -5,14 +5,15 @@ using UnityEngine;
 public abstract class Target : MonoBehaviour
 {
 
-    protected static float movementThreshold = 0.02f;
+    public static float movementThreshold = 0.02f;
     protected Vector3 screenCenter;
 
-    private void Awake()
+    private void Start()
     {
         screenCenter = Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0));
         if (PlayerController.instance.directionMethod == 1)
             gameObject.SetActive(false);
+        Initialize();
     }
 
 
@@ -40,4 +41,5 @@ public abstract class Target : MonoBehaviour
     }
 
     protected abstract void LookForButtons();
+    protected abstract void Initialize();
 }

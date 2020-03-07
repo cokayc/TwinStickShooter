@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScenes/Michael.unity
     guid: 7556b5d656bdf2e40ad26888f1298f82
+  - enabled: 1
+    path: Assets/Scenes/Controller Tutorial.unity
+    guid: 5dcc7ed695eac9942b78bd6d9999e05e
   m_configObjects: {}

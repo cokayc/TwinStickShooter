@@ -23,7 +23,8 @@ public class FocusedEnemy : Enemy
 
     public override void Shoot()
     {
-
+        if (isPlayer)
+            playerPos = new Vector3(0, 0, 0);
         BulletGroup bullet = Instantiate(bulletGroup, transform.position + playerPos, transform.rotation);
         bullet.GetComponent<BulletGroup>().direction = playerPos;
         bullet.SetShooter(gameObject);

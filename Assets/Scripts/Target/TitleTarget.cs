@@ -18,7 +18,7 @@ public class TitleTarget : Target
     private Vector3 creditsButtonPos;
     private Vector3 soundButtonPos;
     // Start is called before the first frame update
-    void Start()
+    protected override void Initialize()
     {
         buttonSize = Camera.main.ScreenToWorldPoint(new Vector3(350, 50, 0)+screenCenter);
         soundButtonSize = Camera.main.ScreenToWorldPoint(new Vector3(50, 50, 0) + screenCenter);

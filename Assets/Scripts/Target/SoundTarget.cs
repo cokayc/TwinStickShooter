@@ -9,6 +9,7 @@ public class SoundTarget : Target
     public GameObject masterVolumeSlider;
     public GameObject musicVolumeSlider;
     public GameObject effectVolumeSlider;
+    public GameObject dummyButton;
 
     private Vector3 quitButtonPos;
     private Vector3 quitButtonSize;
@@ -17,7 +18,7 @@ public class SoundTarget : Target
     private Vector3 musicSliderPos;
     private Vector3 effectSliderPos;
     // Start is called before the first frame update
-    void Start()
+    protected override void Initialize()
     {
         quitButtonPos = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth - 50, Camera.main.pixelHeight - 50, 0));
         quitButtonSize = Camera.main.ScreenToWorldPoint(new Vector3(45, 45, 0) + screenCenter);
@@ -30,7 +31,7 @@ public class SoundTarget : Target
     // Update is called once per frame
     protected override void LookForButtons()
     {
-        
+
         if (Target.FitsInBox(transform.position, quitButtonPos, quitButtonSize))
         {
             quitButton.GetComponent<Button>().Select();
@@ -38,8 +39,11 @@ public class SoundTarget : Target
             {
                 quitButton.GetComponent<Button>().onClick.Invoke();
             }
+            return;
         }
-        else if (Target.FitsInBox(transform.position, masterSliderPos, sliderSize) && Input.GetButton("Fire1"))
+        else
+            dummyButton.GetComponent<Button>().Select();
+        if (Target.FitsInBox(transform.position, masterSliderPos, sliderSize) && Input.GetButton("Fire1"))
         {
             masterVolumeSlider.GetComponent<Slider>().value = (transform.position.x - (masterSliderPos - sliderSize).x) / (2 * sliderSize.x);
         }
