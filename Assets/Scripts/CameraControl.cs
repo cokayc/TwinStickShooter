@@ -24,7 +24,7 @@ public class CameraControl : MonoBehaviour
 	[Tooltip("Global maximum y value of the cameras postion.")]
 	[SerializeField] float yMax = 10;
 	[Tooltip("duration of the camera to line up with the target.")]
-	[SerializeField] float lerp = 1;
+	[SerializeField] float lerp = 2;
 	[Tooltip("minimum speed of the camera to follow the target.")]
 	[SerializeField] float minSpeed = 1;
 
