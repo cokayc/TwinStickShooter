@@ -38,10 +38,10 @@ public class CameraControl : MonoBehaviour
 	[Tooltip("How much does the camera shake during a light standart screen shake.")]
 	[SerializeField] float strengthStandardLight = 0.2f;
 
-	float screenShakeStrength = 0;
-	float screenShakeTimer = 0;
+	public float screenShakeStrength = 0;
+	public float screenShakeTimer = 0;
 
-	static CameraControl instance;
+	public static CameraControl instance;
 	Vector3 offset;
 
 	void Awake()

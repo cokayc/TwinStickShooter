@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     private bool instantiated;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // Singleton
         if (instance == null)
