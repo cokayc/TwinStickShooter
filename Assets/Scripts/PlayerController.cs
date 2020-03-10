@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
         gm = GameManager.instance;
         mainCamera = GameObject.Find("Main Camera");
-
+        SceneManager.sceneLoaded += OnLevelLoad;
 
 
         var joysticks = Input.GetJoystickNames();
@@ -82,16 +82,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnLevelWasLoaded(int level)
+    public void OnLevelLoad(Scene scene, LoadSceneMode mode)
     {
         mainCamera = GameObject.Find("Main Camera");
         UICanvas.worldCamera = mainCamera.GetComponent<Camera>();
-        if(level == SceneManager.GetSceneByName("Title").buildIndex)
+        if(scene == SceneManager.GetSceneByName("Title"))
         {
             UICanvas.gameObject.SetActive(false);
             instantiated = false;
         }
-        else if (level == SceneManager.GetSceneByName("Level One").buildIndex || level == SceneManager.GetSceneByName("Tutorial").buildIndex || level == SceneManager.GetSceneByName("Controller Tutorial").buildIndex)
+        else if (scene == SceneManager.GetSceneByName("Level One") || scene == SceneManager.GetSceneByName("Tutorial") || scene == SceneManager.GetSceneByName("Controller Tutorial"))
         {
             UICanvas.gameObject.SetActive(true);
             redFlash.gameObject.SetActive(false);
