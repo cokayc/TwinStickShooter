@@ -277,12 +277,12 @@ PrefabInstance:
     - target: {fileID: 2464862800423335008, guid: f7668d4eb32adc2409f302ddebb1e84e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.261785
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2464862800423335008, guid: f7668d4eb32adc2409f302ddebb1e84e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.9368976
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2464862800423335008, guid: f7668d4eb32adc2409f302ddebb1e84e,
         type: 3}
@@ -328,6 +328,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464862800423335008, guid: f7668d4eb32adc2409f302ddebb1e84e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464862800423335008, guid: f7668d4eb32adc2409f302ddebb1e84e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464862800423335011, guid: f7668d4eb32adc2409f302ddebb1e84e,
+        type: 3}
+      propertyPath: speed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2464862800423335014, guid: f7668d4eb32adc2409f302ddebb1e84e,
         type: 3}
@@ -427,16 +442,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 331155694}
-  xMin: -10
-  xMax: 10
-  yMin: -10
-  yMax: 10
+  xMin: -100
+  xMax: 100
+  yMin: -100
+  yMax: 100
   lerp: 1
   minSpeed: 1
-  shakeTimeStandardStrong: 0.5
-  strengthStandardStrong: 0.5
-  shakeTimeStandardLight: 0.2
-  strengthStandardLight: 0.2
+  shakeTimeStandardStrong: 0
+  strengthStandardStrong: 0
+  shakeTimeStandardLight: 0
+  strengthStandardLight: 0
 --- !u!81 &1244262795
 AudioListener:
   m_ObjectHideFlags: 0
@@ -570,9 +585,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 50
   height: 50
-  minSplitArea: 350
-  minRoomArea: 100
-  wall: {fileID: 820907787135490268, guid: 14157829eaa2a844095d839ec5574965, type: 3}
+  minSplitArea: 500
+  roomShrink: 2
+  wallScale: 2
+  wall: {fileID: 1799639454251359033, guid: d7703b7546202dc44af9e324becc85b0, type: 3}
 --- !u!1 &2020268858
 GameObject:
   m_ObjectHideFlags: 0

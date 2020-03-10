@@ -61,4 +61,5 @@ public class Health : MonoBehaviour
         float angle = -direction.eulerAngles.z*Mathf.Deg2Rad;
         return new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
     }
+
 }

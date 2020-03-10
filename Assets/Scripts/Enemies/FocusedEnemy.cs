@@ -21,9 +21,15 @@ public class FocusedEnemy : Enemy
         transform.Translate((player.transform.position - transform.position).normalized * Time.deltaTime, Space.World);
     }
 
-    protected override void Shoot()
+    public override void Shoot()
     {
-
-        Instantiate(bulletGroup, transform.position + playerPos, transform.rotation).GetComponent<BulletGroup>().direction = playerPos;
+        if (isPlayer)
+            playerPos = new Vector3(0, 0, 0);
+        BulletGroup bullet = Instantiate(bulletGroup, transform.position + playerPos, transform.rotation);
+        if (isPlayer)
+            bullet.GetComponent<BulletGroup>().direction = new Vector3(-Mathf.Sin(transform.rotation.eulerAngles.z * Mathf.Deg2Rad), Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad),0);
+        else
+            bullet.GetComponent<BulletGroup>().direction = playerPos;
+        bullet.SetShooter(gameObject);
     }
 }

@@ -12,7 +12,7 @@ public class MusicManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gm = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+        gm = GameManager.instance;
         var volumes = gm.GetVolumes();
         masterVolume = volumes.x;
         musicVolume = volumes.y;
