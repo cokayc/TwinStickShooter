@@ -40,6 +40,22 @@ public class Health : MonoBehaviour
         return currentHealth;
     }
 
+    //restore health for the player
+    public int Restore(int healthpoints)
+    {
+        if(currentHealth + healthpoints > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        currentHealth += healthpoints;
+        healthPercent = (float)currentHealth / (float)maxHealth;
+        hs.value = healthPercent;
+        return currentHealth;
+
+    }
+
+
+
     public Vector2 FindOneUnitAbove(Quaternion direction)
     {
         float angle = -direction.eulerAngles.z*Mathf.Deg2Rad;
