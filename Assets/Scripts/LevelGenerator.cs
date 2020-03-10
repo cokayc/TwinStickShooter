@@ -7,10 +7,14 @@ public class LevelGenerator : MonoBehaviour
     public int width;
     public int height;
     public float minSplitArea;
+    public float cutMin;
+    public float cutMax;
     public int roomShrink;
     public float wallScale;
     public GameObject wall;
+    public GameObject exit;
 
+    private GameObject player;
     private List<Node> leafList;
     private int[,] map;
 
@@ -47,6 +51,7 @@ public class LevelGenerator : MonoBehaviour
     {
         leafList = new List<Node>();
         map = new int[width, height];
+        //player = PlayerController.instance.currentEnemy.gameObject;
 
         Node head = new Node(0, 0, width, height);
         SplitGenerate(head);
@@ -103,7 +108,8 @@ public class LevelGenerator : MonoBehaviour
             */
         }
 
-        leafList[0].GetMidpoint();
+        //Instantiate(player, leafList[0].GetMidpoint(), Quaternion.identity);
+        Instantiate(exit, leafList[leafList.Count - 1].GetMidpoint() * wallScale, Quaternion.identity);
 
         ConnectRooms(head, map);
 
@@ -121,6 +127,7 @@ public class LevelGenerator : MonoBehaviour
         
     }
 
+    // Returns whether or not a respective (x, y) coordinate on map should be a wall
     private bool IsWall(int[,] map, int x, int y)
     { 
         if (map[x, y] == 0 && ((x - 1 >= 0 && map[x - 1, y] == 1) || (y + 1 < map.GetUpperBound(1) && map[x, y + 1] == 1) || (x + 1 < map.GetUpperBound(0) && map[x + 1, y] == 1) || (y - 1 >= 0 && map[x, y - 1] == 1)))
@@ -130,6 +137,7 @@ public class LevelGenerator : MonoBehaviour
 
     }
 
+    // Builds a wall at the (x, y) coordinate adjusted by wallscale
     private void BuildWallMap(int x, int y)
     {
         Vector2 pos = new Vector2(x * wallScale, y * wallScale);
@@ -162,9 +170,10 @@ public class LevelGenerator : MonoBehaviour
         return obj;
     }
 
+    // Generates the BSP tree
     private void SplitGenerate(Node target)
     {
-        // Base Case
+        // Base Case (check if area is above the minimum to continue splitting
         float width = target.topRight.x - target.bottomLeft.x;
         float height = target.topRight.y - target.bottomLeft.y;
         if (width * height < minSplitArea)
@@ -173,33 +182,55 @@ public class LevelGenerator : MonoBehaviour
             return;
         }
 
-        if (Random.Range(0 , 2) == 0)
+        // Too narrow in width
+        if (width > 2.5 * height)
         {
-            // Vertical
-            int cutPointX = (int) Mathf.Lerp(target.bottomLeft.x, target.topRight.x, Random.Range(.35f, .65f));
-            target.left = new Node(target.bottomLeft.x, target.bottomLeft.y, cutPointX, target.topRight.y);
-            target.right = new Node(cutPointX, target.bottomLeft.y, target.topRight.x, target.topRight.y);
-
+            CutVertical(target);
         }
+        // Too narrow in height
+        else if (height > 2.5 * width)
+        {
+            CutHorizontal(target);
+        }
+        // Random split
         else
         {
-            // Horizontal
-            int cutPointY = (int) Mathf.Lerp(target.bottomLeft.y, target.topRight.y, Random.Range(.25f, .75f));
-            target.left = new Node(target.bottomLeft.x, cutPointY, target.topRight.x, target.topRight.y);
-            target.right = new Node(target.bottomLeft.x, target.bottomLeft.y, target.topRight.x, cutPointY);
+            if (Random.Range(0, 2) == 0)
+                CutVertical(target);
+            else
+                CutHorizontal(target);
         }
+        
 
+        // Recursive case
         SplitGenerate(target.left);
         SplitGenerate(target.right);
     }
 
+    private void CutVertical(Node target)
+    {
+        int cutPointX = (int)Mathf.Lerp(target.bottomLeft.x, target.topRight.x, Random.Range(cutMin, cutMax));
+        target.left = new Node(target.bottomLeft.x, target.bottomLeft.y, cutPointX, target.topRight.y);
+        target.right = new Node(cutPointX, target.bottomLeft.y, target.topRight.x, target.topRight.y);
+    }
+
+    private void CutHorizontal(Node target)
+    {
+        int cutPointY = (int)Mathf.Lerp(target.bottomLeft.y, target.topRight.y, Random.Range(cutMin, cutMax));
+        target.left = new Node(target.bottomLeft.x, cutPointY, target.topRight.x, target.topRight.y);
+        target.right = new Node(target.bottomLeft.x, target.bottomLeft.y, target.topRight.x, cutPointY);
+    }
+
+    // Connects all rooms on the map
     private void ConnectRooms(Node target, int[,] map)
     {
+        // Base case
         if (target.left == null || target.right == null)
         {
             return;
         }
 
+        // Recursive case
         ConnectRooms(target.left, map);
         ConnectRooms(target.right, map);
 

@@ -443,9 +443,12 @@ MonoBehaviour:
   width: 50
   height: 50
   minSplitArea: 400
+  cutMin: 0.35
+  cutMax: 0.65
   roomShrink: 2
   wallScale: 1.5
   wall: {fileID: 1799639454251359033, guid: d7703b7546202dc44af9e324becc85b0, type: 3}
+  exit: {fileID: 4225546524439067595, guid: 2424937cb756eb44c95419eb9fd6c24b, type: 3}
 --- !u!1001 &1998389296
 PrefabInstance:
   m_ObjectHideFlags: 0

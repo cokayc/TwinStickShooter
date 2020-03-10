@@ -74,6 +74,10 @@ public abstract class Enemy : MonoBehaviour
             health = GetComponentInChildren<Health>().Restore(1);
             Destroy(otherObj);
         }
+        else if (otherObj.CompareTag("Exit") && isPlayer)
+        {
+            GameManager.instance.NextLevel();
+        }
     }
 
 
