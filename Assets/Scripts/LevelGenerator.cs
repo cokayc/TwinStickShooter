@@ -8,7 +8,7 @@ public class LevelGenerator : MonoBehaviour
     public int height;
     public float minSplitArea;
     public int roomShrink;
-    public int wallScale;
+    public float wallScale;
     public GameObject wall;
 
     private List<Node> leafList;
@@ -18,9 +18,6 @@ public class LevelGenerator : MonoBehaviour
     {
         public Vector2 bottomLeft;
         public Vector2 topRight;
-
-        public Vector2 roomBottomLeft;
-        public Vector2 roomTopRight;
 
         public Node left;
         public Node right;
@@ -36,6 +33,11 @@ public class LevelGenerator : MonoBehaviour
 
             left = null;
             right = null;
+        }
+
+        public Vector2 GetMidpoint()
+        {
+            return new Vector2((int)((bottomLeft.x + topRight.x) / 2), (int)((bottomLeft.y + topRight.y) / 2));
         }
     }
 
@@ -99,25 +101,9 @@ public class LevelGenerator : MonoBehaviour
             leaf.walls.Add(BuildWall2D(points[1], points[3]));
             leaf.walls.Add(BuildWall2D(points[3], points[0]));
             */
-
-            float[] xvals = new float[4];
-            float[] yvals = new float[4];
-
-            for (int i = 0; i < points.Length; i++)
-            {
-                xvals[i] = points[i].x;
-                yvals[i] = points[i].y;
-            }
-
-
-            leaf.roomBottomLeft = new Vector2(Mathf.Min(xvals), Mathf.Min(yvals));
-            leaf.roomTopRight = new Vector2(Mathf.Max(xvals), Mathf.Max(yvals));
-
-            // Testing for correct splitting
-            //Instantiate(wall, leaf.bottomLeft, Quaternion.identity);
-            //Instantiate(wall, leaf.topRight, Quaternion.identity);
-            //Debug.Log("Left: " + leaf.bottomLeft.x + ", " + leaf.bottomLeft.y + " Right: " + leaf.topRight.x + ", " + leaf.topRight.y);
         }
+
+        leafList[0].GetMidpoint();
 
         ConnectRooms(head, map);
 
@@ -190,7 +176,7 @@ public class LevelGenerator : MonoBehaviour
         if (Random.Range(0 , 2) == 0)
         {
             // Vertical
-            int cutPointX = (int) Mathf.Lerp(target.bottomLeft.x, target.topRight.x, Random.Range(.25f, .75f));
+            int cutPointX = (int) Mathf.Lerp(target.bottomLeft.x, target.topRight.x, Random.Range(.35f, .65f));
             target.left = new Node(target.bottomLeft.x, target.bottomLeft.y, cutPointX, target.topRight.y);
             target.right = new Node(cutPointX, target.bottomLeft.y, target.topRight.x, target.topRight.y);
 
@@ -216,29 +202,32 @@ public class LevelGenerator : MonoBehaviour
 
         ConnectRooms(target.left, map);
         ConnectRooms(target.right, map);
-        Debug.Log(target.left.walls.Count);
-        Debug.Log(target.right.walls.Count);
 
-        Vector2 midpointLeft = new Vector2( (int) ((target.left.bottomLeft.x + target.left.topRight.x) / 2), (int) ((target.left.bottomLeft.y + target.left.topRight.y) / 2));
-        Vector2 midpointRight = new Vector2( (int) ((target.right.bottomLeft.x + target.right.topRight.x) / 2), (int) ((target.right.bottomLeft.y + target.right.topRight.y) / 2));
+
+        Vector2 midpointLeft = target.left.GetMidpoint();
+        Vector2 midpointRight = target.right.GetMidpoint();
 
         while (midpointLeft != midpointRight)
         {
             if (midpointLeft.x < midpointRight.x)
             {
                 midpointLeft.x += 1;
+                map[(int) midpointLeft.x, (int) midpointLeft.y - 1] = 1;
             }
             else if (midpointLeft.x > midpointRight.x)
             {
                 midpointLeft.x -= 1;
+                map[(int) midpointLeft.x, (int) midpointLeft.y - 1] = 1;
             }
             else if (midpointLeft.y < midpointRight.y)
             {
                 midpointLeft.y += 1;
+                map[(int)midpointLeft.x - 1, (int)midpointLeft.y] = 1;
             }
             else if (midpointLeft.y > midpointRight.y)
             {
                 midpointLeft.y -= 1;
+                map[(int) midpointLeft.x - 1, (int) midpointLeft.y] = 1;
             }
 
             map[(int) midpointLeft.x, (int) midpointLeft.y] = 1;
@@ -360,7 +349,5 @@ public class LevelGenerator : MonoBehaviour
             }
         }
         */
-
-        Debug.Log("Failed to find connection");
     }
 }
