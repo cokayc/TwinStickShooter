@@ -25,7 +25,8 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Activate()
-    { 
+    {
+        target.transform.position = new Vector3(0, 2.5f, 0);
         target.SetActive(false);
         meat.SetActive(false);
         redFlash.SetActive(false);
@@ -75,7 +76,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseButton.GetComponent<PauseButton>().TogglePause();
         Deactivate();
-        SceneManager.LoadScene("Level One");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Title()

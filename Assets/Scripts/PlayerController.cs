@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     public Image redFlash;
     public Canvas UICanvas;
+    public Canvas PauseMenu;
     public Enemy currentEnemy;
     public GameObject startingEnemy;
 
@@ -103,6 +104,11 @@ public class PlayerController : MonoBehaviour
             instantiated = true;
             currentEnemy = Instantiate(startingEnemy).GetComponent<Enemy>();
             Possess(currentEnemy.gameObject);
+        }
+        else if(scene == SceneManager.GetSceneByName("Gameover"))
+        {
+            UICanvas.gameObject.SetActive(false);
+            PauseMenu.gameObject.SetActive(false);
         }
     }
 
