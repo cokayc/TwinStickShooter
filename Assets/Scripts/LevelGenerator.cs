@@ -6,10 +6,15 @@ public class LevelGenerator : MonoBehaviour
 {
     public int width;
     public int height;
+    [Tooltip("Minimum area for BSP.")]
     public float minSplitArea;
+    [Tooltip("Smallest prorportion of width/height that will be used for splitting.")]
     public float cutMin;
+    [Tooltip("Largest prorportion of width/height that will be used for splitting.")]
     public float cutMax;
+    [Tooltip("Int value that shifts the rooms inward from their respective partition.")]
     public int roomShrink;
+    [Tooltip("Scale value applied to walls")]
     public float wallScale;
     public GameObject wall;
     public GameObject exit;
@@ -39,6 +44,7 @@ public class LevelGenerator : MonoBehaviour
             right = null;
         }
 
+        // Returns the midpoint of this node (based on bottomLeft and topRight)
         public Vector2 GetMidpoint()
         {
             return new Vector2((int)((bottomLeft.x + topRight.x) / 2), (int)((bottomLeft.y + topRight.y) / 2));
@@ -51,7 +57,7 @@ public class LevelGenerator : MonoBehaviour
     {
         leafList = new List<Node>();
         map = new int[width, height];
-        //player = PlayerController.instance.currentEnemy.gameObject;
+        player = PlayerController.instance.currentEnemy.gameObject;
 
         Node head = new Node(0, 0, width, height);
         SplitGenerate(head);
@@ -77,8 +83,9 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
+
         // Place player and exit
-        //Instantiate(player, leafList[0].GetMidpoint(), Quaternion.identity);
+        Instantiate(player, leafList[0].GetMidpoint(), Quaternion.identity);
         Instantiate(exit, leafList[leafList.Count - 1].GetMidpoint() * wallScale, Quaternion.identity);
 
         ConnectRooms(head, map);
