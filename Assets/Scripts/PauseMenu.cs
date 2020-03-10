@@ -9,10 +9,11 @@ public class PauseMenu : MonoBehaviour
     public GameObject target;
     public GameObject meat;
     public GameObject musicManager;
+    public GameObject pauseButton;
+    public GameObject redFlash;
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(musicManager);
         if (!GameManager.instance.isPaused)
             gameObject.SetActive(false);
     }
@@ -24,9 +25,11 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Activate()
-    { 
+    {
+        target.transform.position = new Vector3(0, 2.5f, 0);
         target.SetActive(false);
         meat.SetActive(false);
+        redFlash.SetActive(false);
         StartCoroutine(Activation(true));
     }
 
@@ -71,12 +74,14 @@ public class PauseMenu : MonoBehaviour
 
     public void Restart()
     {
+        pauseButton.GetComponent<PauseButton>().TogglePause();
         Deactivate();
-        SceneManager.LoadScene("Level One");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Title()
     {
+        pauseButton.GetComponent<PauseButton>().TogglePause();
         Deactivate();
         SceneManager.LoadScene("Title");
     }

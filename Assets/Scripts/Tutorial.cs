@@ -9,7 +9,8 @@ public class Tutorial : MonoBehaviour
     public GameObject rightStick;
     public GameObject rightClick;
     public GameObject leftClick;
-    public GameObject enemy;
+    public GameObject enemy1;
+    public GameObject enemy2;
 
     private bool spun;
 
@@ -72,14 +73,10 @@ public class Tutorial : MonoBehaviour
     }
     public IEnumerator Shoot()
     {
+        GameObject weakEnemy = Instantiate(enemy1, new Vector3(-15, 0, 0), Quaternion.identity);
         leftClick.SetActive(true);
-        bool hasShot = false;
-        while (!hasShot)
+        while (weakEnemy != null)
         {
-            if(Input.GetButton("Fire1"))
-            {
-                hasShot = true;
-            }
             yield return null;
         }
         yield return new WaitForSeconds(2);
@@ -89,7 +86,7 @@ public class Tutorial : MonoBehaviour
 
     public IEnumerator Possess()
     {
-        Instantiate(enemy, PlayerController.instance.currentEnemy.transform.position + new Vector3(0, 5, 0), Quaternion.identity);
+        Instantiate(enemy2, new Vector3(15, 0, 0), Quaternion.identity);
         GameObject startingEnemy = PlayerController.instance.currentEnemy.gameObject;
         rightClick.SetActive(true);
         bool hasPossessed = false;

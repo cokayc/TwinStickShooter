@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     public Image redFlash;
     public Canvas UICanvas;
+    public Canvas PauseMenu;
     public Enemy currentEnemy;
     public GameObject startingEnemy;
 
@@ -30,6 +31,13 @@ public class PlayerController : MonoBehaviour
     private bool instantiated;
 
     // Start is called before the first frame update
+    private void Start()
+    {
+        GetComponentInChildren<Canvas>().gameObject.SetActive(false);
+        instantiated = false;
+
+
+    }
     void Awake()
     {
         // Singleton
@@ -37,9 +45,6 @@ public class PlayerController : MonoBehaviour
             instance = this;
         else
             Destroy(this);
-        GetComponentInChildren<Canvas>().gameObject.SetActive(false);
-        instantiated = false;
-
         gm = GameManager.instance;
         mainCamera = GameObject.Find("Main Camera");
         SceneManager.sceneLoaded += OnLevelLoad;
@@ -99,6 +104,11 @@ public class PlayerController : MonoBehaviour
             instantiated = true;
             currentEnemy = Instantiate(startingEnemy).GetComponent<Enemy>();
             Possess(currentEnemy.gameObject);
+        }
+        else if(scene == SceneManager.GetSceneByName("Gameover"))
+        {
+            UICanvas.gameObject.SetActive(false);
+            PauseMenu.gameObject.SetActive(false);
         }
     }
 

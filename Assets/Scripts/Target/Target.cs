@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Target : MonoBehaviour
 {
-
     public static float movementThreshold = 0.02f;
     protected Vector3 screenCenter;
 
