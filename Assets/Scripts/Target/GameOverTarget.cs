@@ -14,7 +14,7 @@ public class GameOverTarget : Target
     // Start is called before the first frame update
     protected override void Initialize()
     {
-        transform.position = Camera.main.ScreenToWorldPoint(new Vector3(0, -250, 0) + screenCenter);
+        transform.position = Camera.main.ScreenToWorldPoint(new Vector3(0, -200, 0) + screenCenter);
         buttonPos = transform.position;
         buttonSize = Camera.main.ScreenToWorldPoint(new Vector3(150, 50, 0) + screenCenter);
     }
