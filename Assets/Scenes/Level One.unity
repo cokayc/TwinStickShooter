@@ -663,12 +663,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  xMin: -10
-  xMax: 10
-  yMin: -10
-  yMax: 10
-  lerp: 1
-  minSpeed: 1
+  xMin: 0
+  xMax: 100
+  yMin: 0
+  yMax: 100
+  lerp: 4
+  minSpeed: 4
   shakeTimeStandardStrong: 0.5
   strengthStandardStrong: 0.5
   shakeTimeStandardLight: 0.2

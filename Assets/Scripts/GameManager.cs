@@ -20,16 +20,16 @@ public class GameManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
         backgroundMusic = GetComponent<AudioSource>();
-        StartCoroutine(StartMusic());
+        
         effectsLevel = 1;
         musicLevel = 1;
         totalSoundLevel = 1;
+    }
+
+    private void Start()
+    {
+        StartCoroutine(StartMusic());
     }
 
     // Update is called once per frame

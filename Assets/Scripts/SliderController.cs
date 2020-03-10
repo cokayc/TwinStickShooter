@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SliderController : MonoBehaviour
 {
@@ -12,11 +13,11 @@ public class SliderController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        musicManager = FindObjectOfType<MusicManager>().gameObject;
         slider = GetComponent<Slider>();
         switch (sliderNum)
         {
-            case 0: 
+            case 0:
                 slider.value = musicManager.GetComponent<MusicManager>().GetVolumes().x;
                 break;
             case 1:
@@ -32,5 +33,10 @@ public class SliderController : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void Title()
+    {
+        SceneManager.LoadScene("Title");
     }
 }
