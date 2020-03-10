@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public bool isPaused;
+    public AudioClip startSound;
     private AudioSource backgroundMusic;
     private float effectsLevel;
     private float totalSoundLevel;
     private float musicLevel;
     public static GameManager instance;
+    private bool startMusicDone;
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         backgroundMusic = GetComponent<AudioSource>();
+        StartCoroutine(StartMusic());
         effectsLevel = 1;
         musicLevel = 1;
         totalSoundLevel = 1;
@@ -36,24 +39,9 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void StartGame()
+    public void LoadLevel(string levelname)
     {
-        SceneManager.LoadScene("Level One");
-    }
-
-    public void Tutorial()
-    {
-        SceneManager.LoadScene("Tutorial");
-    }
-
-    public void Credits()
-    {
-        SceneManager.LoadScene("Credits");
-    }
-
-    public void SoundSettings()
-    {
-        SceneManager.LoadScene("Sound Settings");
+        SceneManager.LoadScene(levelname);
     }
 
     public void SetMasterVolume(float val)
@@ -79,5 +67,22 @@ public class GameManager : MonoBehaviour
     public Vector3 GetVolumes()
     {
         return new Vector3(totalSoundLevel, musicLevel, effectsLevel);
+    }
+
+    public IEnumerator StartMusic()
+    {
+        startMusicDone = false;
+        backgroundMusic.PlayOneShot(startSound);
+        yield return new WaitForSeconds(startSound.length-0.1f);
+        startMusicDone = true;
+        backgroundMusic.Play();
+    }
+
+    public void ToggleMusic()
+    {
+        if (backgroundMusic.isPlaying)
+            backgroundMusic.Pause();
+        else if(startMusicDone)
+            backgroundMusic.Play();
     }
 }

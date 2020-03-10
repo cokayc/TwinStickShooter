@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -40,7 +42,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    protected abstract void Shoot();
+    public abstract void Shoot();
     protected abstract void EnemyMovement();
 
     public void Hurt(int damage, bool isPossessive)
@@ -49,6 +51,10 @@ public abstract class Enemy : MonoBehaviour
         if (!isPossessive)
         {
             health = GetComponentInChildren<Health>().Damage(damage);
+            if(isPlayer)
+            {
+                StartCoroutine(PlayerHurt());
+            }
             if (health <= 0)
             {
                 StartCoroutine(Die());
@@ -76,6 +82,8 @@ public abstract class Enemy : MonoBehaviour
             n = 0;
             k++;
         }
+        if(isPlayer)
+            SceneManager.LoadScene("Gameover");
         Destroy(gameObject);
     }
 
@@ -84,6 +92,14 @@ public abstract class Enemy : MonoBehaviour
         canShoot = false;
         yield return new WaitForSeconds(shotCooldown);
         canShoot = true;
+    }
+
+    public IEnumerator PlayerHurt()
+    {
+        PlayerController.instance.redFlash.gameObject.SetActive(true);
+        CameraControl.ScreenShake(0.5f, 0.3f);
+        yield return new WaitForSeconds(0.5f);
+        PlayerController.instance.redFlash.gameObject.SetActive(false);
     }
 
 }

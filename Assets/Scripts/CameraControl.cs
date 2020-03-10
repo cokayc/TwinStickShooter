@@ -14,7 +14,7 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
 	[Tooltip("The target transform to follow.")]
-	[SerializeField] Transform target = null;
+	public Transform target;
 	[Tooltip("Global minimum x value of the cameras position.")]
 	[SerializeField] float xMin = -10;
 	[Tooltip("Global maximum x value of the cameras position.")]
@@ -24,7 +24,7 @@ public class CameraControl : MonoBehaviour
 	[Tooltip("Global maximum y value of the cameras postion.")]
 	[SerializeField] float yMax = 10;
 	[Tooltip("duration of the camera to line up with the target.")]
-	[SerializeField] float lerp = 1;
+	[SerializeField] float lerp = 2;
 	[Tooltip("minimum speed of the camera to follow the target.")]
 	[SerializeField] float minSpeed = 1;
 
@@ -50,7 +50,7 @@ public class CameraControl : MonoBehaviour
 		instance = this;
 	}
 
-	void Update()
+	void LateUpdate()
 	{
 		if (target == null)
 		{
