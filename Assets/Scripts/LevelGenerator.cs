@@ -85,7 +85,7 @@ public class LevelGenerator : MonoBehaviour
 
 
         // Place player and exit
-        Instantiate(player, leafList[0].GetMidpoint(), Quaternion.identity);
+        Instantiate(player, leafList[0].GetMidpoint() * wallScale, Quaternion.identity);
         Instantiate(exit, leafList[leafList.Count - 1].GetMidpoint() * wallScale, Quaternion.identity);
 
         ConnectRooms(head, map);
