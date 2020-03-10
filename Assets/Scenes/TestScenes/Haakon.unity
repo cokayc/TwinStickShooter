@@ -127,10 +127,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 354684040, guid: 6ce11652b5252bd4c8e21c54afe789a1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 354684041, guid: 6ce11652b5252bd4c8e21c54afe789a1, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -142,14 +138,6 @@ PrefabInstance:
     - target: {fileID: 563080118, guid: 6ce11652b5252bd4c8e21c54afe789a1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 785334587, guid: 6ce11652b5252bd4c8e21c54afe789a1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1057772354, guid: 6ce11652b5252bd4c8e21c54afe789a1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1057772355, guid: 6ce11652b5252bd4c8e21c54afe789a1, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -163,14 +151,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1233351810, guid: 6ce11652b5252bd4c8e21c54afe789a1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1233351811, guid: 6ce11652b5252bd4c8e21c54afe789a1, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 246006830}
     - target: {fileID: 1384890979, guid: 6ce11652b5252bd4c8e21c54afe789a1, type: 3}
       propertyPath: m_Camera
       value: 
@@ -186,10 +166,6 @@ PrefabInstance:
     - target: {fileID: 1993673696, guid: 6ce11652b5252bd4c8e21c54afe789a1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2076818497, guid: 6ce11652b5252bd4c8e21c54afe789a1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2076818498, guid: 6ce11652b5252bd4c8e21c54afe789a1, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
