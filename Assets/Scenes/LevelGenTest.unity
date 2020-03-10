@@ -309,6 +309,8 @@ MonoBehaviour:
   strengthStandardStrong: 0
   shakeTimeStandardLight: 0
   strengthStandardLight: 0
+  screenShakeStrength: 0
+  screenShakeTimer: 0
 --- !u!81 &1244262795
 AudioListener:
   m_ObjectHideFlags: 0
@@ -449,6 +451,10 @@ MonoBehaviour:
   wallScale: 1.5
   wall: {fileID: 1799639454251359033, guid: d7703b7546202dc44af9e324becc85b0, type: 3}
   exit: {fileID: 4225546524439067595, guid: 2424937cb756eb44c95419eb9fd6c24b, type: 3}
+  enemies:
+  - {fileID: 8631149581478993494, guid: 1843ce738f9cfc040baaecee96d74d91, type: 3}
+  - {fileID: 1132434685808590360, guid: 7afb528e95cf7ac46812792587897c79, type: 3}
+  enemySpawnChance: 15
 --- !u!1001 &1998389296
 PrefabInstance:
   m_ObjectHideFlags: 0

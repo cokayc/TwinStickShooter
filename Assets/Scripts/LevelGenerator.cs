@@ -18,6 +18,9 @@ public class LevelGenerator : MonoBehaviour
     public float wallScale;
     public GameObject wall;
     public GameObject exit;
+    [Tooltip("Enemy array for random enemy generations.")]
+    public GameObject[] enemies;
+    public int enemySpawnChance;
 
     private GameObject player;
     private List<Node> leafList;
@@ -57,7 +60,7 @@ public class LevelGenerator : MonoBehaviour
     {
         leafList = new List<Node>();
         map = new int[width, height];
-        player = PlayerController.instance.currentEnemy.gameObject;
+        //player = PlayerController.instance.currentEnemy.gameObject;
 
         Node head = new Node(0, 0, width, height);
         SplitGenerate(head);
@@ -85,8 +88,10 @@ public class LevelGenerator : MonoBehaviour
 
 
         // Place player and exit
-        Instantiate(player, leafList[0].GetMidpoint() * wallScale, Quaternion.identity);
+        //Instantiate(player, leafList[0].GetMidpoint() * wallScale, Quaternion.identity);
         Instantiate(exit, leafList[leafList.Count - 1].GetMidpoint() * wallScale, Quaternion.identity);
+
+
 
         ConnectRooms(head, map);
 
@@ -97,7 +102,18 @@ public class LevelGenerator : MonoBehaviour
             {
                 if (IsWall(map, x, y))
                 {
-                    BuildWall(x, y);
+                    // Build Wall
+                    Vector2 pos = new Vector2(x * wallScale, y * wallScale);
+                    Vector3 scale = new Vector3(wallScale, wallScale);
+                    Instantiate(wall, pos, Quaternion.identity).transform.localScale = scale;
+                }
+                else if (IsSurroundedBy(map, x, y, 1))
+                {
+                    if (Random.Range(0, 100) < enemySpawnChance)
+                    {
+                        map[x, y] = 2;
+                        Instantiate(enemies[Random.Range(0, enemies.Length)], new Vector2(x * wallScale, y * wallScale), Quaternion.identity);
+                    }
                 }
             }
         }
@@ -105,21 +121,68 @@ public class LevelGenerator : MonoBehaviour
         
     }
 
-    // Returns whether or not a respective (x, y) coordinate on map should be a wall
-    private bool IsWall(int[,] map, int x, int y)
-    { 
-        if (map[x, y] == 0 && ((x - 1 >= 0 && map[x - 1, y] == 1) || (y + 1 < map.GetUpperBound(1) && map[x, y + 1] == 1) || (x + 1 < map.GetUpperBound(0) && map[x + 1, y] == 1) || (y - 1 >= 0 && map[x, y - 1] == 1)))
+    // Checks if x and y are within the bounds of map
+    private bool IsValidCoordinate(int[,] map, int x, int y)
+    {
+        if (x - 1 < 0 || x + 1 >= map.GetUpperBound(0) || y - 1 < 0 || y + 1 >= map.GetUpperBound(1))
+            return false;
+        else
+            return true;
+    }
+
+    // Test if map[x, y] == check and is within bounds of map
+    private bool IsEqualCoordinate(int[,] map, int x, int y, int check)
+    {   
+        // Check equality
+        if (IsValidCoordinate(map, x, y) && map[x, y] == check)
             return true;
         else
             return false;
     }
 
-    // Builds a wall at the (x, y) coordinate adjusted by wallscale
-    private void BuildWall(int x, int y)
+    // Test if map[x, y] != check and is within bounds of map
+    private bool IsNotEqualCoordinate(int[,] map, int x, int y, int check)
     {
-        Vector2 pos = new Vector2(x * wallScale, y * wallScale);
-        Vector3 scale = new Vector3(wallScale, wallScale);
-        Instantiate(wall, pos, Quaternion.identity).transform.localScale = scale;
+        // Check equality
+        if (IsValidCoordinate(map, x, y) && map[x, y] != check)
+            return true;
+        else
+            return false;
+    }
+
+    // Returns whether or not a respective (x, y) coordinate on map should be a wall
+    private bool IsWall(int[,] map, int x, int y)
+    { 
+        if (map[x, y] == 0 && (IsNotEqualCoordinate(map, x-1, y, 0) || IsNotEqualCoordinate(map, x-1, y+1, 0) || IsNotEqualCoordinate(map, x, y+1, 0) || IsNotEqualCoordinate(map, x + 1, y+1, 0) 
+            || IsNotEqualCoordinate(map, x + 1, y, 0) || IsNotEqualCoordinate(map, x + 1, y - 1, 0) || IsNotEqualCoordinate(map, x, y - 1, 0) || IsNotEqualCoordinate(map, x - 1, y - 1, 0)))
+            return true;
+        else
+            return false;
+    }
+
+    // Returns true if (x, y) is surrounded by check, else false
+    private bool IsSurroundedBy(int[,] map, int x, int y, int check)
+    {
+        if (map[x, y] == 1 && map[x - 1, y] == check && map[x - 1, y + 1] == check && map[x, y + 1] == check && map[x + 1, y + 1] == check && map[x + 1, y] == check 
+            && map[x + 1, y - 1] == check && map[x, y - 1] == check && map[x - 1, y - 1] == check)
+            return true;
+        else
+            return false;
+    }
+
+    // Sets adjacent index of map[x, y] to target
+    private void FillAdjacent(int[,] map, int x, int y, int target)
+    {
+        int temp = map[x, y];
+        for (int i = x - 1; i <= x + 1; i++)
+        {
+            for (int j = y -1; j <= y + 1; j++)
+            {
+                map[i, j] = target;
+            }
+        }
+
+        map[x, y] = temp;
     }
 
     // Generates the BSP tree
