@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -63,5 +64,11 @@ public class PauseMenu : MonoBehaviour
             else
                 target.SetActive(true);
         }
+    }
+
+    public void Restart()
+    {
+        Deactivate();
+        SceneManager.LoadScene("Level One");
     }
 }
