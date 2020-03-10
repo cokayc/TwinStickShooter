@@ -101,7 +101,7 @@ MonoBehaviour:
   isPlayer: 0
   maxHealth: 10
   deathSound: {fileID: 8300000, guid: 2d94ebb84ba9f0041b7f793ee1fe09f7, type: 3}
-  shotCooldown: 2
+  shotCooldown: 1
   bulletGroup: {fileID: 6973885432061448264, guid: e6318e7f366724543a9563b0ce75d18e,
     type: 3}
   canShoot: 0

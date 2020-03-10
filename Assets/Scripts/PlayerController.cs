@@ -30,6 +30,13 @@ public class PlayerController : MonoBehaviour
     private bool instantiated;
 
     // Start is called before the first frame update
+    private void Start()
+    {
+        GetComponentInChildren<Canvas>().gameObject.SetActive(false);
+        instantiated = false;
+
+
+    }
     void Awake()
     {
         // Singleton
@@ -37,9 +44,6 @@ public class PlayerController : MonoBehaviour
             instance = this;
         else
             Destroy(this);
-        GetComponentInChildren<Canvas>().gameObject.SetActive(false);
-        instantiated = false;
-
         gm = GameManager.instance;
         mainCamera = GameObject.Find("Main Camera");
         SceneManager.sceneLoaded += OnLevelLoad;
