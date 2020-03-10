@@ -18,12 +18,6 @@ public abstract class Enemy : MonoBehaviour
     [HideInInspector]
     public bool canShoot;
 
-    //generates a random position between min and max
-    protected Vector3 GeneratePosition(float min, float max)
-    {
-        return new Vector3(Random.Range(min, max), Random.Range(min, max), 0.0f);
-    }
-
     private void Awake()
     {
         canShoot = true;
@@ -40,6 +34,12 @@ public abstract class Enemy : MonoBehaviour
                 StartCoroutine(ShotCooldown());
             }
         }
+    }
+
+    //generates a random position between min and max
+    protected Vector3 GeneratePosition(float min, float max)
+    {
+        return new Vector3(Random.Range(min, max), Random.Range(min, max), 0.0f);
     }
 
     public abstract void Shoot();
