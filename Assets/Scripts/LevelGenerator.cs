@@ -7,10 +7,14 @@ public class LevelGenerator : MonoBehaviour
     public int width;
     public int height;
     public float minSplitArea;
+    public float cutMin;
+    public float cutMax;
     public int roomShrink;
     public float wallScale;
     public GameObject wall;
+    public GameObject exit;
 
+    private GameObject player;
     private List<Node> leafList;
     private int[,] map;
 
@@ -47,37 +51,14 @@ public class LevelGenerator : MonoBehaviour
     {
         leafList = new List<Node>();
         map = new int[width, height];
+        //player = PlayerController.instance.currentEnemy.gameObject;
 
         Node head = new Node(0, 0, width, height);
         SplitGenerate(head);
 
-        //TODO: Tidy up (non repeating code, better var names)
         foreach (Node leaf in leafList)
         {
-            // Generate two points of the room in the split section
-            //TODO: Generate in a smarter way (keeps generating until a room matches the area)
-            float area = 0;
             Vector3[] points = new Vector3[4];
-
-            /*
-            //TODO: Random generation of coordinates
-            int count = 0;
-            while (area < minRoomArea)
-            {
-                if (count >= 100)
-                {
-                    points[0] = new Vector2(leaf.bottomLeft.x, leaf.bottomLeft.y);
-                    points[1] = new Vector2(leaf.topRight.x, leaf.topRight.y);
-                    break;
-                }
-                
-                points[0] = new Vector2(Mathf.Lerp(leaf.bottomLeft.x, leaf.topRight.x, Random.Range(0f, 1f)), Mathf.Lerp(leaf.bottomLeft.y, leaf.topRight.y, Random.Range(0f, 1f)));
-                points[1] = new Vector2(Mathf.Lerp(leaf.bottomLeft.x, leaf.topRight.x, Random.Range(0f, 1f)), Mathf.Lerp(leaf.bottomLeft.y, leaf.topRight.y, Random.Range(0f, 1f)));
-
-                area = Mathf.Abs(points[0].x - points[1].x) * Mathf.Abs(points[0].y - points[1].y);
-                count++;
-            }
-            */
 
             // Shrink down room coordinates to not fully fill the partition
             points[0] = new Vector2(leaf.bottomLeft.x + roomShrink, leaf.bottomLeft.y + roomShrink);
@@ -86,6 +67,7 @@ public class LevelGenerator : MonoBehaviour
             points[2] = new Vector2(points[1].x, points[0].y);
             points[3] = new Vector2(points[0].x, points[1].y);
 
+            // Adjust map to correctly represent rooms
             for (int x = (int)leaf.bottomLeft.x + roomShrink; x < leaf.topRight.x - roomShrink; x++)
             {
                 for (int y = (int)leaf.bottomLeft.y + roomShrink; y < leaf.topRight.y - roomShrink; y++)
@@ -93,27 +75,22 @@ public class LevelGenerator : MonoBehaviour
                     map[x, y] = 1;
                 }
             }
-
-            /*
-            // Build walls
-            leaf.walls.Add(BuildWall2D(points[0], points[2]));
-            leaf.walls.Add(BuildWall2D(points[2], points[1]));
-            leaf.walls.Add(BuildWall2D(points[1], points[3]));
-            leaf.walls.Add(BuildWall2D(points[3], points[0]));
-            */
         }
 
-        leafList[0].GetMidpoint();
+        // Place player and exit
+        //Instantiate(player, leafList[0].GetMidpoint(), Quaternion.identity);
+        Instantiate(exit, leafList[leafList.Count - 1].GetMidpoint() * wallScale, Quaternion.identity);
 
         ConnectRooms(head, map);
 
+        // Build walls
         for (int x = 0; x < map.GetUpperBound(0); x++)
         {
             for (int y = 0; y < map.GetUpperBound(1); y++)
             {
                 if (IsWall(map, x, y))
                 {
-                    BuildWallMap(x, y);
+                    BuildWall(x, y);
                 }
             }
         }
@@ -121,50 +98,27 @@ public class LevelGenerator : MonoBehaviour
         
     }
 
+    // Returns whether or not a respective (x, y) coordinate on map should be a wall
     private bool IsWall(int[,] map, int x, int y)
     { 
         if (map[x, y] == 0 && ((x - 1 >= 0 && map[x - 1, y] == 1) || (y + 1 < map.GetUpperBound(1) && map[x, y + 1] == 1) || (x + 1 < map.GetUpperBound(0) && map[x + 1, y] == 1) || (y - 1 >= 0 && map[x, y - 1] == 1)))
             return true;
         else
             return false;
-
     }
 
-    private void BuildWallMap(int x, int y)
+    // Builds a wall at the (x, y) coordinate adjusted by wallscale
+    private void BuildWall(int x, int y)
     {
         Vector2 pos = new Vector2(x * wallScale, y * wallScale);
         Vector3 scale = new Vector3(wallScale, wallScale);
         Instantiate(wall, pos, Quaternion.identity).transform.localScale = scale;
     }
 
-    private void BuildWall(Vector3 p1, Vector3 p2)
-    {
-        Vector3 between = p2 - p1;
-        float distance = between.magnitude;
-        Vector3 midPoint = p1 + (between / 2);
-
-        var obj = Instantiate(wall, midPoint, Quaternion.identity);
-        obj.transform.localScale = new Vector3(1, 1, distance);
-        obj.transform.LookAt(p2);
-    }
-
-    private GameObject BuildWall2D(Vector3 p1, Vector3 p2)
-    {
-        Vector3 between = p2 - p1;
-        float distance = between.magnitude;
-        Vector3 midPoint = p1 + (between / 2);
-
-        var obj = Instantiate(wall, midPoint, Quaternion.identity);
-        obj.transform.localScale = new Vector3(1, distance, 1);
-        float angle = Mathf.Atan2(between.y, between.x) * Mathf.Rad2Deg + 90;
-        obj.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-        return obj;
-    }
-
+    // Generates the BSP tree
     private void SplitGenerate(Node target)
     {
-        // Base Case
+        // Base Case (check if area is above the minimum to continue splitting
         float width = target.topRight.x - target.bottomLeft.x;
         float height = target.topRight.y - target.bottomLeft.y;
         if (width * height < minSplitArea)
@@ -173,33 +127,55 @@ public class LevelGenerator : MonoBehaviour
             return;
         }
 
-        if (Random.Range(0 , 2) == 0)
+        // Too narrow in width
+        if (width > 2.5 * height)
         {
-            // Vertical
-            int cutPointX = (int) Mathf.Lerp(target.bottomLeft.x, target.topRight.x, Random.Range(.35f, .65f));
-            target.left = new Node(target.bottomLeft.x, target.bottomLeft.y, cutPointX, target.topRight.y);
-            target.right = new Node(cutPointX, target.bottomLeft.y, target.topRight.x, target.topRight.y);
-
+            CutVertical(target);
         }
+        // Too narrow in height
+        else if (height > 2.5 * width)
+        {
+            CutHorizontal(target);
+        }
+        // Random split
         else
         {
-            // Horizontal
-            int cutPointY = (int) Mathf.Lerp(target.bottomLeft.y, target.topRight.y, Random.Range(.25f, .75f));
-            target.left = new Node(target.bottomLeft.x, cutPointY, target.topRight.x, target.topRight.y);
-            target.right = new Node(target.bottomLeft.x, target.bottomLeft.y, target.topRight.x, cutPointY);
+            if (Random.Range(0, 2) == 0)
+                CutVertical(target);
+            else
+                CutHorizontal(target);
         }
+        
 
+        // Recursive case
         SplitGenerate(target.left);
         SplitGenerate(target.right);
     }
 
+    private void CutVertical(Node target)
+    {
+        int cutPointX = (int)Mathf.Lerp(target.bottomLeft.x, target.topRight.x, Random.Range(cutMin, cutMax));
+        target.left = new Node(target.bottomLeft.x, target.bottomLeft.y, cutPointX, target.topRight.y);
+        target.right = new Node(cutPointX, target.bottomLeft.y, target.topRight.x, target.topRight.y);
+    }
+
+    private void CutHorizontal(Node target)
+    {
+        int cutPointY = (int)Mathf.Lerp(target.bottomLeft.y, target.topRight.y, Random.Range(cutMin, cutMax));
+        target.left = new Node(target.bottomLeft.x, cutPointY, target.topRight.x, target.topRight.y);
+        target.right = new Node(target.bottomLeft.x, target.bottomLeft.y, target.topRight.x, cutPointY);
+    }
+
+    // Connects all rooms on the map
     private void ConnectRooms(Node target, int[,] map)
     {
+        // Base case
         if (target.left == null || target.right == null)
         {
             return;
         }
 
+        // Recursive case
         ConnectRooms(target.left, map);
         ConnectRooms(target.right, map);
 
@@ -232,122 +208,5 @@ public class LevelGenerator : MonoBehaviour
 
             map[(int) midpointLeft.x, (int) midpointLeft.y] = 1;
         }
-
-        //Instantiate(wall, midpointLeft, Quaternion.identity);
-        //Instantiate(wall, midpointRight, Quaternion.identity).GetComponent<SpriteRenderer>().color = Color.blue;
-
-
-        /*
-        // Find midpoints of both rooms
-        Vector2 midpointLeft = new Vector2((target.left.bottomLeft.x + target.left.topRight.x) / 2, (target.left.bottomLeft.y + target.left.topRight.y) / 2);
-        Vector2 midpointRight = new Vector2((target.right.bottomLeft.x + target.right.topRight.x) / 2, (target.right.bottomLeft.y + target.right.topRight.y) / 2);
-        Vector2 direction = midpointRight - midpointLeft;
-        direction.Normalize();
-
-        
-        RaycastHit2D[] hits = Physics2D.RaycastAll(midpointLeft, direction, Mathf.Infinity, LayerMask.GetMask("Wall"));
-        System.Array.Sort(hits, (x, y) => x.distance.CompareTo(y.distance));
-
-        Debug.Log(hits.Length);
-        int wallIndex = 0;
-        for (int i = 0; i < hits.Length; i++)
-        {
-            Debug.Log(target.right.walls.Contains(hits[i].collider.gameObject));
-            Debug.Log(hits[i].collider.transform.position);
-            if (target.right.walls.Contains(hits[i].collider.gameObject))
-            {
-                wallIndex = i;
-                break;
-            }
-        }
-        Debug.Log(wallIndex);
-
-        Instantiate(wall, midpointLeft, Quaternion.identity);
-        Instantiate(wall, midpointRight, Quaternion.identity).GetComponent<SpriteRenderer>().color = Color.blue;
-        var newWall = BuildWall2D(hits[wallIndex - 1].transform.position, hits[wallIndex].transform.position);
-        //BuildWall2D(midpointLeft, midpointRight);
-        target.walls.Add(newWall);
-        target.walls.AddRange(target.left.walls);
-        target.walls.AddRange(target.right.walls);
-        */
-
-
-
-
-        /*
-        foreach (GameObject wall in target.left.walls) 
-        {
-            RaycastHit2D[] hits = new RaycastHit2D[4];
-            hits[0] = Physics2D.Raycast(wall.transform.position, Vector2.up);
-            hits[1] = Physics2D.Raycast(wall.transform.position, Vector2.right);
-            hits[2] = Physics2D.Raycast(wall.transform.position, Vector2.down);
-            hits[3] = Physics2D.Raycast(wall.transform.position, Vector2.left);
-
-            for (int i = 0; i < 4; i ++)
-            {
-                if (hits[i].collider != null && target.right.walls.Contains(hits[i].collider.gameObject))
-                {
-                    Debug.Log("success");
-                    var newWall = BuildWall2D(wall.transform.position, hits[i].point);
-                    target.walls.Add(newWall);
-                    target.walls.AddRange(target.left.walls);
-                    target.walls.AddRange(target.right.walls);
-                    return;
-                }
-            }
-        }
-        
-        target.walls.AddRange(target.left.walls);
-        target.walls.AddRange(target.right.walls);
-        */
-
-        /*
-        // Search for a place where a wall can connect to rooms
-        for (float i = target.left.roomBottomLeft.x + hallwayOffset; i < target.left.roomTopRight.x; i += .5f)
-        {
-            Vector2 top = new Vector2(i, target.left.roomTopRight.y);
-            RaycastHit2D hitUp = Physics2D.Raycast(top, Vector2.up);
-            Vector2 bottom = new Vector2(i, target.left.roomBottomLeft.y);
-            RaycastHit2D hitDown = Physics2D.Raycast(bottom, Vector2.down);
-
-            if (hitUp.collider != null)
-            {
-                BuildWall2D(top, new Vector2(i, hitUp.collider.transform.position.y));
-                target.roomBottomLeft = target.left.roomBottomLeft;
-                target.roomTopRight = target.right.roomTopRight;
-                return;
-            }
-            else if (hitDown.collider != null)
-            {
-                BuildWall2D(bottom, new Vector2(i, hitDown.collider.transform.position.y));
-                target.roomBottomLeft = target.right.roomBottomLeft;
-                target.roomTopRight = target.left.roomTopRight;
-                return;
-            }
-        }
-
-        for (float i = target.left.roomBottomLeft.y + hallwayOffset; i < target.left.roomTopRight.y; i += .5f)
-        {
-            Vector2 left = new Vector2(target.left.roomBottomLeft.x, i);
-            RaycastHit2D hitLeft = Physics2D.Raycast(left, Vector2.up);
-            Vector2 right = new Vector2(target.left.roomTopRight.x, i);
-            RaycastHit2D hitRight = Physics2D.Raycast(right, Vector2.down);
-
-            if (hitLeft.collider != null)
-            {
-                BuildWall2D(left, new Vector2(i, hitLeft.collider.transform.position.y));
-                target.roomBottomLeft = target.right.roomBottomLeft;
-                target.roomTopRight = target.left.roomTopRight;
-                return;
-            }
-            else if (hitRight.collider != null)
-            {
-                BuildWall2D(right, new Vector2(i, hitRight.collider.transform.position.y));
-                target.roomBottomLeft = target.left.roomBottomLeft;
-                target.roomTopRight = target.right.roomTopRight;
-                return;
-            }
-        }
-        */
     }
 }
