@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MusicManager : MonoBehaviour
 {
-    private float masterVolume;
-    private float musicVolume;
-    private float effectsVolume;
+    private static float masterVolume;
+    private static float musicVolume;
+    private static float effectsVolume;
     private GameManager gm;
     // Start is called before the first frame update
     void Start()

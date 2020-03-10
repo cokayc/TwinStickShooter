@@ -1,16 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject menu;
     public GameObject target;
     public GameObject meat;
+    public GameObject musicManager;
     // Start is called before the first frame update
     void Start()
     {
-
+        Instantiate(musicManager);
+        if (!GameManager.instance.isPaused)
+            gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -20,7 +24,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Activate()
-    {
+    { 
         target.SetActive(false);
         meat.SetActive(false);
         StartCoroutine(Activation(true));
@@ -63,5 +67,17 @@ public class PauseMenu : MonoBehaviour
             else
                 target.SetActive(true);
         }
+    }
+
+    public void Restart()
+    {
+        Deactivate();
+        SceneManager.LoadScene("Level One");
+    }
+
+    public void Title()
+    {
+        Deactivate();
+        SceneManager.LoadScene("Title");
     }
 }

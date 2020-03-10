@@ -85,4 +85,9 @@ public class GameManager : MonoBehaviour
         else if(startMusicDone)
             backgroundMusic.Play();
     }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene("Level One");
+    }
 }

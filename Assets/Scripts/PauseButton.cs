@@ -50,6 +50,8 @@ public class PauseButton : MonoBehaviour
             gm.isPaused = true;
             pauseMenu.SetActive(true);
             pauseMenu.GetComponent<PauseMenu>().Activate();
+            CameraControl.instance.screenShakeStrength = 0;
+            CameraControl.instance.screenShakeTimer = 0;
         }
 
     }
