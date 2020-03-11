@@ -16,12 +16,14 @@ public class LevelGenerator : MonoBehaviour
     public int roomShrink;
     [Tooltip("Scale value applied to walls")]
     public float wallScale;
+    public GameObject camera;
     public GameObject wall;
     public GameObject floor;
     public GameObject exit;
     [Tooltip("Enemy array for random enemy generations.")]
     public GameObject[] enemies;
     public int enemySpawnChance;
+    
 
     private GameObject player;
     private List<Node> leafList;
@@ -102,6 +104,7 @@ public class LevelGenerator : MonoBehaviour
 
         // Place player and exit
         player.transform.position = leafList[0].GetMidpoint() * wallScale;
+        camera.transform.position = leafList[0].GetMidpoint() * wallScale;
         Instantiate(exit, leafList[leafList.Count - 1].GetMidpoint() * wallScale, Quaternion.identity);
 
 
