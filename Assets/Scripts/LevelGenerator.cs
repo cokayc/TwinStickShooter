@@ -60,10 +60,12 @@ public class LevelGenerator : MonoBehaviour
     {
         leafList = new List<Node>();
         map = new int[width, height];
-        //player = PlayerController.instance.currentEnemy.gameObject;
+        player = PlayerController.instance.currentEnemy.gameObject;
 
         Node head = new Node(0, 0, width, height);
         SplitGenerate(head);
+
+        
 
         foreach (Node leaf in leafList)
         {
@@ -86,9 +88,19 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
+        Node firstRoom = leafList[0];
+        for (int x = (int)firstRoom.bottomLeft.x + roomShrink; x < firstRoom.topRight.x - roomShrink; x++)
+        {
+            for (int y = (int)firstRoom.bottomLeft.y + roomShrink; y < firstRoom.topRight.y - roomShrink; y++)
+            {
+                map[x, y] = 3;
+            }
+        }
+
+
 
         // Place player and exit
-        //Instantiate(player, leafList[0].GetMidpoint() * wallScale, Quaternion.identity);
+        player.transform.position = leafList[0].GetMidpoint() * wallScale;
         Instantiate(exit, leafList[leafList.Count - 1].GetMidpoint() * wallScale, Quaternion.identity);
 
 
@@ -109,6 +121,7 @@ public class LevelGenerator : MonoBehaviour
                 }
                 else if (IsSurroundedBy(map, x, y, 1))
                 {
+                    // Place Enemy
                     if (Random.Range(0, 100) < enemySpawnChance)
                     {
                         map[x, y] = 2;
