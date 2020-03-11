@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1132434685808590359}
   - component: {fileID: 1132434685808590358}
   - component: {fileID: 1132434685808590361}
-  - component: {fileID: 1132434685808590357}
   - component: {fileID: 1132434685808590356}
   - component: {fileID: 3162902270950925349}
+  - component: {fileID: 6159746646008628914}
   m_Layer: 0
   m_Name: WanderingEnemy
   m_TagString: Enemy
@@ -74,8 +74,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300006, guid: fd419bef7a36af8459a810bc72573105, type: 3}
-  m_Color: {r: 0.6603774, g: 0.17132434, b: 0.17132434, a: 1}
+  m_Sprite: {fileID: 8678084196306156669, guid: cddeb93658ab95f46aa251ceaaa76ab5,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,7 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 154928a0e6402a14d8d7dbc9ee69f329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathSprites: []
   isPlayer: 0
   maxHealth: 20
   deathSound: {fileID: 8300000, guid: 2d94ebb84ba9f0041b7f793ee1fe09f7, type: 3}
@@ -105,34 +105,11 @@ MonoBehaviour:
   bulletGroup: {fileID: 4723715459326950389, guid: 944177fd4a3f98645b5a5fe18262344a,
     type: 3}
   canShoot: 0
+  moveSprites: []
+  deathSprites: []
+  framesPerSecond: 0
   minPos: -5
   maxPos: 5
---- !u!61 &1132434685808590357
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1132434685808590360}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!50 &1132434685808590356
 Rigidbody2D:
   serializedVersion: 4
@@ -250,6 +227,42 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!60 &6159746646008628914
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132434685808590360}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.48, y: 0.52}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.19790673, y: -0.15561247}
+      - {x: 0.17071295, y: -0.08262795}
+      - {x: 0.24, y: -0.01}
+      - {x: 0.24, y: 0.13}
+      - {x: 0.16, y: 0.25}
+      - {x: 0.089999996, y: 0.26}
+      - {x: -0.099999994, y: 0.26}
+      - {x: -0.24, y: 0.22999999}
+      - {x: -0.24, y: -0.24}
+      - {x: -0.22, y: -0.26}
+      - {x: 0.24, y: -0.26}
 --- !u!1001 &5996741143491329842
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8888703145466609407}
   - component: {fileID: 8888703145466609406}
   - component: {fileID: 8888703145466609346}
-  - component: {fileID: 8888703145466609405}
   - component: {fileID: 1994239107818534551}
+  - component: {fileID: 5784379632969726572}
   m_Layer: 0
   m_Name: WeakEnemy
   m_TagString: Enemy
@@ -145,32 +145,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &8888703145466609405
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8888703145466609401}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!82 &1994239107818534551
 AudioSource:
   m_ObjectHideFlags: 0
@@ -267,6 +241,63 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!60 &5784379632969726572
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8888703145466609401}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.32, y: 0.62}
+      - {x: 0.26, y: 0.53999996}
+      - {x: 0.26, y: 0.48}
+      - {x: 0.26, y: 0.56}
+      - {x: 0.22, y: 0.64}
+      - {x: -0.17999999, y: 0.64}
+      - {x: -0.26, y: 0.56}
+      - {x: -0.26, y: 0.52}
+      - {x: -0.19999999, y: 0.45999998}
+      - {x: -0.28, y: 0.39999998}
+      - {x: -0.26, y: 0.48}
+      - {x: -0.26, y: 0.53999996}
+      - {x: -0.34, y: 0.59999996}
+      - {x: -0.39999998, y: 0.59999996}
+      - {x: -0.5, y: 0.56}
+      - {x: -0.45033932, y: -0.005535841}
+      - {x: -0.64, y: -0.02}
+      - {x: -0.64, y: -0.58}
+      - {x: -0.3614955, y: -0.5389123}
+      - {x: -0.36720228, y: -0.30091214}
+      - {x: -0.25661373, y: -0.103417635}
+      - {x: -0.060218334, y: -0.37604547}
+      - {x: 0.01306057, y: -0.54517317}
+      - {x: 0.18075752, y: -0.5458443}
+      - {x: 0.10903597, y: -0.37912893}
+      - {x: 0.2721691, y: -0.15176296}
+      - {x: 0.370636, y: -0.2747438}
+      - {x: 0.36219025, y: -0.5326371}
+      - {x: 0.64, y: -0.58}
+      - {x: 0.6532426, y: -0.06208968}
+      - {x: 0.45815706, y: -0.012444973}
+      - {x: 0.5, y: 0.56}
 --- !u!1001 &8512687349907580054
 PrefabInstance:
   m_ObjectHideFlags: 0
