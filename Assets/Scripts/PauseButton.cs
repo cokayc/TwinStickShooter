@@ -7,6 +7,7 @@ public class PauseButton : MonoBehaviour
 {
     public Sprite pauseImage;
     public Sprite playImage;
+    public Sprite triangle;
     public GameObject pauseMenu;
 
     private bool isPaused;
@@ -18,6 +19,8 @@ public class PauseButton : MonoBehaviour
         isPaused = false;
         pauseMenu.SetActive(false);
         image = GetComponent<Image>();
+        if (PlayerController.instance.directionMethod == 2)
+            image.sprite = triangle;
         gm = GameManager.instance;
         gm.isPaused = false;
     }
@@ -53,6 +56,7 @@ public class PauseButton : MonoBehaviour
             CameraControl.instance.screenShakeStrength = 0;
             CameraControl.instance.screenShakeTimer = 0;
         }
-
+        if (PlayerController.instance.directionMethod == 2)
+            image.sprite = triangle;
     }
 }

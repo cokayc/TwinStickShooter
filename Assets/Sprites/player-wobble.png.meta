@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: cd5da17f94f047046af155ff92c09e8e
+guid: b3c5eae7366aaed4ab4011b454fb3425
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6401146097817311539
-    second: chitiniac-move_0
+      213: -5215578577737056091
+    second: player-wobble_0
   - first:
-      213: -2871317072581217669
-    second: chitiniac-move_1
+      213: -8006101423126698078
+    second: player-wobble_1
   - first:
-      213: 7913848294296533749
-    second: chitiniac-move_2
+      213: 1824080621996264526
+    second: player-wobble_2
   - first:
-      213: -3026867147905860900
-    second: chitiniac-move_3
+      213: -8747248412668167030
+    second: player-wobble_3
   - first:
-      213: 5803606168471038065
-    second: chitiniac-move_4
+      213: -456644462691996284
+    second: player-wobble_4
   - first:
-      213: -2423650918941345559
-    second: chitiniac-move_5
+      213: -4290566110553808051
+    second: player-wobble_5
   - first:
-      213: 8889615766114291470
-    second: chitiniac-move_6
+      213: -4550306966193565730
+    second: player-wobble_6
   - first:
-      213: -3699792458687409521
-    second: chitiniac-move_7
+      213: 2636275976535496769
+    second: player-wobble_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -69,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -182,13 +182,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chitiniac-move_0
+      name: player-wobble_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
+        x: 9
+        y: 5
+        width: 48
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,20 +196,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cf5531c34cb8424e81ebd47f766e11a
-      internalID: -6401146097817311539
+      spriteID: e80e066fc5dee6746b711dedc0f1a953
+      internalID: -5215578577737056091
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_1
+      name: player-wobble_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
+        x: 73
+        y: 6
+        width: 46
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,20 +217,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63111970b5a0b294ebb326a19c6e8c77
-      internalID: -2871317072581217669
+      spriteID: 01f1e824cc4ff7a4e9902a44efd9e600
+      internalID: -8006101423126698078
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_2
+      name: player-wobble_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
+        x: 136
+        y: 7
+        width: 48
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -238,20 +238,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b470db5ab111474ea53e25836e50b4d
-      internalID: 7913848294296533749
+      spriteID: d427ad3c20e556d4cbe0eeaad41373b6
+      internalID: 1824080621996264526
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_3
+      name: player-wobble_3
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
+        x: 201
+        y: 8
+        width: 46
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,20 +259,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de16342ecccd68d4bb375b0288118cf5
-      internalID: -3026867147905860900
+      spriteID: 105c7cf5d4c576b43ac3d98e1a26b460
+      internalID: -8747248412668167030
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_4
+      name: player-wobble_4
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
+        x: 265
+        y: 9
+        width: 46
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -280,20 +280,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 103d59b00f62d0d439770b40dbf1de4a
-      internalID: 5803606168471038065
+      spriteID: 3759f28ce786973478c38bd4b384c60b
+      internalID: -456644462691996284
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_5
+      name: player-wobble_5
       rect:
         serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
+        x: 329
+        y: 7
+        width: 46
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -301,20 +301,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e41c758f395929a4e9b091140fdd978e
-      internalID: -2423650918941345559
+      spriteID: 1d6f067a11bacd944a865dabcb2b8515
+      internalID: -4290566110553808051
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_6
+      name: player-wobble_6
       rect:
         serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
+        x: 392
+        y: 7
+        width: 48
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -322,20 +322,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a50b4dfb540bf842a56cd857afa288d
-      internalID: 8889615766114291470
+      spriteID: 932f2becc3e6c794387d6bddfa8c190d
+      internalID: -4550306966193565730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_7
+      name: player-wobble_7
       rect:
         serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
+        x: 457
+        y: 6
+        width: 47
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -343,8 +343,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88175cb7fa2b5994791a1d9b90ad5ce7
-      internalID: -3699792458687409521
+      spriteID: d15d4b1509318204b8fba37da267ba86
+      internalID: 2636275976535496769
       vertices: []
       indices: 
       edges: []

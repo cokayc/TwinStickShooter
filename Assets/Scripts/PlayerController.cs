@@ -33,11 +33,9 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        GetComponentInChildren<Canvas>().gameObject.SetActive(false);
         instantiated = false;
-
-
     }
+
     void Awake()
     {
         // Singleton
@@ -48,7 +46,6 @@ public class PlayerController : MonoBehaviour
         gm = GameManager.instance;
         mainCamera = GameObject.Find("Main Camera");
         SceneManager.sceneLoaded += OnLevelLoad;
-
 
         var joysticks = Input.GetJoystickNames();
         if (joysticks.Length == 0 || joysticks[0].Length == 0)
@@ -61,20 +58,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gm.isPaused||!instantiated)
+        if (gm.isPaused||!instantiated||currentEnemy == null||currentRB == null)
         {
             return;
         }
-        mainCamera = GameObject.Find("Main Camera");
         currentRB.velocity = speed * new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         pointing = Vector3.up;
-        pointing = determineDirection(pointing);
+        pointing = DetermineDirection(pointing);
         Vector3 bulletPlacement = pointing;
         if(Input.GetButton("Fire1") && currentEnemy.canShoot)
         {
             StartCoroutine(currentEnemy.ShotCooldown());
             currentEnemy.Shoot();
-
         }
 
         if (Input.GetButton("Fire2") && currentEnemy.canShoot)
@@ -100,19 +95,20 @@ public class PlayerController : MonoBehaviour
         {
             UICanvas.gameObject.SetActive(true);
             redFlash.gameObject.SetActive(false);
-            
+
+            //instantiates an enemy controlled by PlayerController at start of level
             instantiated = true;
             currentEnemy = Instantiate(startingEnemy).GetComponent<Enemy>();
             Possess(currentEnemy.gameObject);
         }
-        else if(scene == SceneManager.GetSceneByName("Gameover"))
+        else if (scene == SceneManager.GetSceneByName("Gameover"))
         {
             UICanvas.gameObject.SetActive(false);
             PauseMenu.gameObject.SetActive(false);
         }
     }
 
-    private Vector2 determineDirection(Vector2 directionIn)
+    private Vector2 DetermineDirection(Vector2 directionIn)
     {
         Vector2 direction = directionIn;
         switch (directionMethod)
@@ -159,8 +155,8 @@ public class PlayerController : MonoBehaviour
     public void Possess(GameObject target)
     {
         currentEnemy.isPlayer = false;
-        currentRB = target.GetComponent<Rigidbody2D>();
         currentEnemy = target.GetComponent<Enemy>();
+        currentRB = target.GetComponent<Rigidbody2D>();
         currentEnemy.isPlayer = true;
         mainCamera.GetComponent<CameraControl>().target = currentEnemy.gameObject.transform;
     }

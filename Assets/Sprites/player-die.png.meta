@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: cd5da17f94f047046af155ff92c09e8e
+guid: 8166ac7e2d6baf848a524da6431d110b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6401146097817311539
-    second: chitiniac-move_0
+      213: -6746752878622776159
+    second: player-die_0
   - first:
-      213: -2871317072581217669
-    second: chitiniac-move_1
+      213: -7803422563525107020
+    second: player-die_1
   - first:
-      213: 7913848294296533749
-    second: chitiniac-move_2
+      213: 3344950531406905496
+    second: player-die_2
   - first:
-      213: -3026867147905860900
-    second: chitiniac-move_3
+      213: 7186357893786500757
+    second: player-die_3
   - first:
-      213: 5803606168471038065
-    second: chitiniac-move_4
+      213: 4681813991669466152
+    second: player-die_4
   - first:
-      213: -2423650918941345559
-    second: chitiniac-move_5
+      213: -6623275762035868258
+    second: player-die_5
   - first:
-      213: 8889615766114291470
-    second: chitiniac-move_6
+      213: 3523684958284085526
+    second: player-die_6
   - first:
-      213: -3699792458687409521
-    second: chitiniac-move_7
+      213: 1702473049742294058
+    second: player-die_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -69,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -182,7 +182,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chitiniac-move_0
+      name: player-die_0
       rect:
         serializedVersion: 2
         x: 0
@@ -196,14 +196,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cf5531c34cb8424e81ebd47f766e11a
-      internalID: -6401146097817311539
+      spriteID: ba2c54cf2c5efd746b7555e88b30d05e
+      internalID: -6746752878622776159
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_1
+      name: player-die_1
       rect:
         serializedVersion: 2
         x: 64
@@ -217,14 +217,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63111970b5a0b294ebb326a19c6e8c77
-      internalID: -2871317072581217669
+      spriteID: 2ea15abbe7d2ecc43843f6b51d577591
+      internalID: -7803422563525107020
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_2
+      name: player-die_2
       rect:
         serializedVersion: 2
         x: 128
@@ -238,14 +238,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b470db5ab111474ea53e25836e50b4d
-      internalID: 7913848294296533749
+      spriteID: 7f4c8897d35535a469d613b1a56306f2
+      internalID: 3344950531406905496
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_3
+      name: player-die_3
       rect:
         serializedVersion: 2
         x: 192
@@ -259,14 +259,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de16342ecccd68d4bb375b0288118cf5
-      internalID: -3026867147905860900
+      spriteID: 8f604a1be27cb804ba4213c30180dd67
+      internalID: 7186357893786500757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_4
+      name: player-die_4
       rect:
         serializedVersion: 2
         x: 256
@@ -280,14 +280,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 103d59b00f62d0d439770b40dbf1de4a
-      internalID: 5803606168471038065
+      spriteID: 0831bd47f71788541a6889a74d122290
+      internalID: 4681813991669466152
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_5
+      name: player-die_5
       rect:
         serializedVersion: 2
         x: 320
@@ -301,14 +301,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e41c758f395929a4e9b091140fdd978e
-      internalID: -2423650918941345559
+      spriteID: fbe874be8b90b8e408bb929fdefbe02a
+      internalID: -6623275762035868258
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_6
+      name: player-die_6
       rect:
         serializedVersion: 2
         x: 384
@@ -322,14 +322,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a50b4dfb540bf842a56cd857afa288d
-      internalID: 8889615766114291470
+      spriteID: f8758cf65fb03dd41b5c092e28ca61ac
+      internalID: 3523684958284085526
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_7
+      name: player-die_7
       rect:
         serializedVersion: 2
         x: 448
@@ -343,8 +343,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88175cb7fa2b5994791a1d9b90ad5ce7
-      internalID: -3699792458687409521
+      spriteID: a8831daeb2cba2746981d2dfc92137d6
+      internalID: 1702473049742294058
       vertices: []
       indices: 
       edges: []

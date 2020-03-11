@@ -19,12 +19,6 @@ public class MusicManager : MonoBehaviour
         effectsVolume = volumes.z;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SetMasterVolume(float val)
     {
         gm.SetMasterVolume(val);

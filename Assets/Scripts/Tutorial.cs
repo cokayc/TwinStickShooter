@@ -12,7 +12,6 @@ public class Tutorial : MonoBehaviour
     public GameObject enemy1;
     public GameObject enemy2;
 
-    private bool spun;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +22,19 @@ public class Tutorial : MonoBehaviour
         if (rightStick != null)
             rightStick.SetActive(false);
         StartCoroutine(Move());
+    }
+
+    void Update()
+    {
+
+        if (PlayerController.instance.currentEnemy.GetComponentInChildren<Health>().healthPercent<0.5)
+            StartCoroutine(Heal());
+    }
+
+    public IEnumerator Heal()
+    {
+        yield return new WaitForSeconds(0.3f);
+        PlayerController.instance.currentEnemy.GetComponentInChildren<Health>().Restore(1);
     }
 
     public IEnumerator Move()
@@ -86,7 +98,7 @@ public class Tutorial : MonoBehaviour
 
     public IEnumerator Possess()
     {
-        Instantiate(enemy2, new Vector3(15, 0, 0), Quaternion.identity);
+        var bigBadEnemy = Instantiate(enemy2, new Vector3(15, 0, 0), Quaternion.identity);
         GameObject startingEnemy = PlayerController.instance.currentEnemy.gameObject;
         rightClick.SetActive(true);
         bool hasPossessed = false;
@@ -95,6 +107,8 @@ public class Tutorial : MonoBehaviour
             if (!startingEnemy.Equals(PlayerController.instance.currentEnemy.gameObject))
                 hasPossessed = true;
             yield return null;
+            if(bigBadEnemy == null)
+                bigBadEnemy = Instantiate(enemy2, new Vector3(15, 0, 0), Quaternion.identity);
         }
         yield return new WaitForSeconds(6);
         SceneManager.LoadScene("Title");

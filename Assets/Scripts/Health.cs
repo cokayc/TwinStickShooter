@@ -8,7 +8,8 @@ public class Health : MonoBehaviour
     public static int healthScale = 10;
     private int maxHealth;
     private int currentHealth;
-    private float healthPercent;
+    [HideInInspector]
+    public float healthPercent;
     private Slider hs;
     // Start is called before the first frame update
     void Start()
@@ -47,7 +48,8 @@ public class Health : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-        currentHealth += healthpoints;
+        else
+            currentHealth += healthpoints;
         healthPercent = (float)currentHealth / (float)maxHealth;
         hs.value = healthPercent;
         return currentHealth;

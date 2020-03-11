@@ -151,11 +151,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1384890976, guid: 6ce11652b5252bd4c8e21c54afe789a1, type: 3}
-      propertyPath: menuManager
-      value: 
-      objectReference: {fileID: 4152956692598455833, guid: 798cd99e606462c41a2a6d0ae82f84d7,
-        type: 3}
     - target: {fileID: 1384890979, guid: 6ce11652b5252bd4c8e21c54afe789a1, type: 3}
       propertyPath: m_Camera
       value: 

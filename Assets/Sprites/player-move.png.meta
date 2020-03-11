@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: cd5da17f94f047046af155ff92c09e8e
+guid: cddeb93658ab95f46aa251ceaaa76ab5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6401146097817311539
-    second: chitiniac-move_0
+      213: 8678084196306156669
+    second: player-move_0
   - first:
-      213: -2871317072581217669
-    second: chitiniac-move_1
+      213: 7201988891506204938
+    second: player-move_1
   - first:
-      213: 7913848294296533749
-    second: chitiniac-move_2
+      213: 4289615015141917352
+    second: player-move_2
   - first:
-      213: -3026867147905860900
-    second: chitiniac-move_3
+      213: -5213602432656535644
+    second: player-move_3
   - first:
-      213: 5803606168471038065
-    second: chitiniac-move_4
+      213: -816847529129501005
+    second: player-move_4
   - first:
-      213: -2423650918941345559
-    second: chitiniac-move_5
+      213: 250145302058535961
+    second: player-move_5
   - first:
-      213: 8889615766114291470
-    second: chitiniac-move_6
+      213: -4551068742646082303
+    second: player-move_6
   - first:
-      213: -3699792458687409521
-    second: chitiniac-move_7
+      213: 7253514084844936150
+    second: player-move_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -69,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -182,13 +182,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chitiniac-move_0
+      name: player-move_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
+        x: 9
+        y: 5
+        width: 48
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,20 +196,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cf5531c34cb8424e81ebd47f766e11a
-      internalID: -6401146097817311539
+      spriteID: ba6e28d56aeff2f40942efb07a4aa524
+      internalID: 8678084196306156669
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_1
+      name: player-move_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
+        x: 73
+        y: 5
+        width: 46
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,20 +217,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63111970b5a0b294ebb326a19c6e8c77
-      internalID: -2871317072581217669
+      spriteID: 6981ed6420c0f5b43a4bad1bc9340554
+      internalID: 7201988891506204938
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_2
+      name: player-move_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
+        x: 136
+        y: 5
+        width: 48
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -238,20 +238,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b470db5ab111474ea53e25836e50b4d
-      internalID: 7913848294296533749
+      spriteID: ab99fc7ed4efb2448b2c9982a2429315
+      internalID: 4289615015141917352
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_3
+      name: player-move_3
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
+        x: 201
+        y: 5
+        width: 46
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,20 +259,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de16342ecccd68d4bb375b0288118cf5
-      internalID: -3026867147905860900
+      spriteID: 2618ed54336c2a845963ebac2443c4e3
+      internalID: -5213602432656535644
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_4
+      name: player-move_4
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
+        x: 265
+        y: 5
+        width: 46
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -280,20 +280,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 103d59b00f62d0d439770b40dbf1de4a
-      internalID: 5803606168471038065
+      spriteID: 2756a3b06a64ccd4ca0d9338d4ef8652
+      internalID: -816847529129501005
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_5
+      name: player-move_5
       rect:
         serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
+        x: 329
+        y: 4
+        width: 46
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -301,20 +301,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e41c758f395929a4e9b091140fdd978e
-      internalID: -2423650918941345559
+      spriteID: 2bb8ed7d7c82ebf4e9ae3bf5740aae5c
+      internalID: 250145302058535961
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_6
+      name: player-move_6
       rect:
         serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
+        x: 392
+        y: 5
+        width: 48
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -322,20 +322,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a50b4dfb540bf842a56cd857afa288d
-      internalID: 8889615766114291470
+      spriteID: f08cf2ecc38d14944bf3ac4b9fd0a10c
+      internalID: -4551068742646082303
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-move_7
+      name: player-move_7
       rect:
         serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
+        x: 457
+        y: 5
+        width: 47
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -343,8 +343,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88175cb7fa2b5994791a1d9b90ad5ce7
-      internalID: -3699792458687409521
+      spriteID: 5bffaa4284d074f4d9e6db2e4b47ed14
+      internalID: 7253514084844936150
       vertices: []
       indices: 
       edges: []

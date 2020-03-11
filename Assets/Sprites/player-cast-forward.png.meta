@@ -1,31 +1,22 @@
 fileFormatVersion: 2
-guid: 68fa603cf8b871949a5976b2b8a4df2f
+guid: bdb08b9bb19d8344ca8b3561849f1f10
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2391595800949702875
-    second: chitiniac-idle_0
+      213: 1133415471570616372
+    second: player-cast-forward_0
   - first:
-      213: 5730453285099491759
-    second: chitiniac-idle_1
+      213: 8999573165982152370
+    second: player-cast-forward_1
   - first:
-      213: 3662493455340433724
-    second: chitiniac-idle_2
+      213: 7018414458194755985
+    second: player-cast-forward_2
   - first:
-      213: 6335075442181792512
-    second: chitiniac-idle_3
+      213: -4971984501778172632
+    second: player-cast-forward_3
   - first:
-      213: 4991439076819570146
-    second: chitiniac-idle_4
-  - first:
-      213: -4194058883604574958
-    second: chitiniac-idle_5
-  - first:
-      213: -3930495030797303171
-    second: chitiniac-idle_6
-  - first:
-      213: -4635646488240214939
-    second: chitiniac-idle_7
+      213: -6500189028519939211
+    second: player-cast-forward_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -182,13 +173,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chitiniac-idle_0
+      name: player-cast-forward_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
+        x: 9
+        y: 5
+        width: 48
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d79737e2b95ceec4b8e4838ae227794b
-      internalID: -2391595800949702875
+      spriteID: 21c91fded417e72419bdea9e0afb378b
+      internalID: 1133415471570616372
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-idle_1
+      name: player-cast-forward_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
+        x: 73
+        y: 5
+        width: 48
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aabe84f9159fbfc48a6129e48230cde1
-      internalID: 5730453285099491759
+      spriteID: 5ca2e074311c4a8438996e393096fbfa
+      internalID: 8999573165982152370
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-idle_2
+      name: player-cast-forward_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
+        x: 137
+        y: 5
+        width: 48
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -238,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d02f7d7d5dff004790ecfa2374d8b31
-      internalID: 3662493455340433724
+      spriteID: a156ed895607a644595136d6385e34f7
+      internalID: 7018414458194755985
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-idle_3
+      name: player-cast-forward_3
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
+        x: 201
+        y: 5
+        width: 48
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e822d744731d954294229299e6d42d5
-      internalID: 6335075442181792512
+      spriteID: 73db2c601f2ec6b41be7d9aa5b35ac86
+      internalID: -4971984501778172632
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chitiniac-idle_4
+      name: player-cast-forward_4
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
+        x: 265
+        y: 5
+        width: 48
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -280,71 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a86f113ea2d14ec4a8fb612573907efd
-      internalID: 4991439076819570146
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: chitiniac-idle_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 014ae38c601812841beef8333b34f7c9
-      internalID: -4194058883604574958
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: chitiniac-idle_6
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ad00feff7b8683147a1495fc3fb082aa
-      internalID: -3930495030797303171
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: chitiniac-idle_7
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a4efecdd31496084b846f18a939d8d55
-      internalID: -4635646488240214939
+      spriteID: 4875fa40c5cbd96409b6f0d020073395
+      internalID: -6500189028519939211
       vertices: []
       indices: 
       edges: []
