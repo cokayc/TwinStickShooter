@@ -17,6 +17,7 @@ public class LevelGenerator : MonoBehaviour
     [Tooltip("Scale value applied to walls")]
     public float wallScale;
     public GameObject wall;
+    public GameObject floor;
     public GameObject exit;
     [Tooltip("Enemy array for random enemy generations.")]
     public GameObject[] enemies;
@@ -111,7 +112,7 @@ public class LevelGenerator : MonoBehaviour
         for (int x = 0; x < map.GetUpperBound(0); x++)
         {
             for (int y = 0; y < map.GetUpperBound(1); y++)
-            {
+            { 
                 if (IsWall(map, x, y))
                 {
                     // Build Wall
@@ -128,6 +129,13 @@ public class LevelGenerator : MonoBehaviour
                         Instantiate(enemies[Random.Range(0, enemies.Length)], new Vector2(x * wallScale, y * wallScale), Quaternion.identity);
                     }
                 }
+
+                if (map[x,y] > 0)
+                {
+                    var newFloor = Instantiate(floor, new Vector2(x, y) * wallScale, Quaternion.identity);
+                    newFloor.transform.localScale = newFloor.transform.localScale * wallScale;
+                }
+                
             }
         }
     }
