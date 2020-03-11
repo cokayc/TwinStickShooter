@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class RotatingEnemy : Enemy
 {
-
     GameObject player;
-
     private Vector3 playerPos;
+
+    private void Start()
+    {
+        moving = true;
+    }
     protected override void EnemyMovement()
     {
         player = PlayerController.instance.currentEnemy.gameObject;

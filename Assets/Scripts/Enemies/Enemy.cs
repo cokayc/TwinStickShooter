@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public abstract class Enemy : MonoBehaviour
 {
-    public Sprite[] deathSprites;
     public bool isPlayer;
     public int maxHealth;
     public AudioClip deathSound;
@@ -15,16 +14,31 @@ public abstract class Enemy : MonoBehaviour
 
     private int health;
 
+    private Rigidbody2D rb2d;
+
     [HideInInspector]
     public bool canShoot;
 
+    //animation variables
+    public Sprite[] moveSprites;
+    public Sprite[] deathSprites;
+    public int framesPerSecond;
+    private int currentFrameIndex;
+    private SpriteRenderer sr;
+    protected bool moving;
+
     private void Awake()
     {
+        sr = GetComponent<SpriteRenderer>();
+        rb2d = GetComponent<Rigidbody2D>();
         canShoot = true;
+        StartCoroutine("PlayAnimation");
     }
 
     private void Update()
     {
+        //handle movement of this enemy, unless it is being controlled by the player
+        //in that case, PlayerController handles the movement and shooting of this enemy
         if (!isPlayer)
         {
             EnemyMovement();
@@ -32,6 +46,17 @@ public abstract class Enemy : MonoBehaviour
             {
                 Shoot();
                 StartCoroutine(ShotCooldown());
+            }
+        }
+        else
+        {
+            //determines whether player is moving enemy, used for animation
+            if (rb2d.velocity.magnitude != 0)
+            {
+                moving = true;
+            } else
+            {
+                moving = false;
             }
         }
     }
@@ -45,6 +70,7 @@ public abstract class Enemy : MonoBehaviour
     public abstract void Shoot();
     protected abstract void EnemyMovement();
 
+    //if isPossessive is false, deals damage to enemy. if isPossessive is true, causes possession  
     public void Hurt(int damage, bool isPossessive)
     {
         //if normal bullet
@@ -80,25 +106,23 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-
-
     public IEnumerator Die()
     {
         AudioSource.PlayClipAtPoint(deathSound, transform.position);
         int n = 0;
-        int k = 0;
-        while(k<deathSprites.Length)
+
+        //play death animation
+        for (int k = 0;  k < deathSprites.Length; k++)
         {
-            GetComponent<SpriteRenderer>().sprite = deathSprites[k];
-            while(n<5)
+            sr.sprite = deathSprites[k];
+            while (n < 5)
             {
                 yield return null;
                 n++;
             }
             n = 0;
-            k++;
         }
-        if(isPlayer)
+        if (isPlayer)
             SceneManager.LoadScene("Gameover");
         Destroy(gameObject);
     }
@@ -116,6 +140,25 @@ public abstract class Enemy : MonoBehaviour
         CameraControl.ScreenShake(0.5f, 0.3f);
         yield return new WaitForSeconds(0.5f);
         PlayerController.instance.redFlash.gameObject.SetActive(false);
+    }
+
+
+    IEnumerator PlayAnimation()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f / framesPerSecond);
+
+            if (moving)
+            {
+                if (currentFrameIndex >= moveSprites.Length)
+                {
+                    currentFrameIndex = 0;
+                }
+                sr.sprite = moveSprites[currentFrameIndex];
+                currentFrameIndex++;
+            }
+        }
     }
 
 }
