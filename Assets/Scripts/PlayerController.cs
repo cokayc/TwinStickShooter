@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
         {
             UICanvas.gameObject.SetActive(true);
             redFlash.gameObject.SetActive(false);
-
+            mainCamera.transform.position = transform.position;
             //instantiates an enemy controlled by PlayerController at start of level
             instantiated = true;
             currentEnemy = Instantiate(startingEnemy).GetComponent<Enemy>();
