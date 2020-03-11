@@ -51,12 +51,12 @@ public abstract class Enemy : MonoBehaviour
         else
         {
             //determines whether player is moving enemy, used for animation
-            if (rb2d.velocity.magnitude != 0)
-            {
-                moving = true;
-            } else
+            if (rb2d == null || rb2d.velocity.magnitude == 0)
             {
                 moving = false;
+            } else
+            {
+                moving = true;
             }
         }
     }
@@ -110,10 +110,11 @@ public abstract class Enemy : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(deathSound, transform.position);
         int n = 0;
-
+        Destroy(rb2d);
         //play death animation
         for (int k = 0;  k < deathSprites.Length; k++)
         {
+            canShoot = false;
             sr.sprite = deathSprites[k];
             while (n < 5)
             {

@@ -58,13 +58,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gm.isPaused||!instantiated||currentEnemy == null)
+        if (gm.isPaused||!instantiated||currentEnemy == null||currentRB == null)
         {
             return;
         }
         currentRB.velocity = speed * new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         pointing = Vector3.up;
-        pointing = determineDirection(pointing);
+        pointing = DetermineDirection(pointing);
         Vector3 bulletPlacement = pointing;
         if(Input.GetButton("Fire1") && currentEnemy.canShoot)
         {
@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private Vector2 determineDirection(Vector2 directionIn)
+    private Vector2 DetermineDirection(Vector2 directionIn)
     {
         Vector2 direction = directionIn;
         switch (directionMethod)

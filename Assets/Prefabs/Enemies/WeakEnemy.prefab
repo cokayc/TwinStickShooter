@@ -102,7 +102,7 @@ MonoBehaviour:
   maxHealth: 5
   deathSound: {fileID: 8300000, guid: 2d94ebb84ba9f0041b7f793ee1fe09f7, type: 3}
   shotCooldown: 3
-  bulletGroup: {fileID: 6973885432061448264, guid: e6318e7f366724543a9563b0ce75d18e,
+  bulletGroup: {fileID: 7566246771060954706, guid: 3876e1d9447f5524f8fe39359715bbaf,
     type: 3}
   canShoot: 0
   moveSprites:
