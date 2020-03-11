@@ -117,8 +117,6 @@ public class LevelGenerator : MonoBehaviour
                 }
             }
         }
-
-        
     }
 
     // Checks if x and y are within the bounds of map
