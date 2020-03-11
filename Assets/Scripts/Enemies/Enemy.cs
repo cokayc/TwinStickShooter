@@ -26,6 +26,7 @@ public abstract class Enemy : MonoBehaviour
     private int currentFrameIndex;
     private SpriteRenderer sr;
     protected bool moving;
+    private bool isDying;
 
     private void Awake()
     {
@@ -33,10 +34,13 @@ public abstract class Enemy : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         canShoot = true;
         StartCoroutine("PlayAnimation");
+        isDying = false;
     }
 
     private void Update()
     {
+        if (isDying)
+            return;
         //handle movement of this enemy, unless it is being controlled by the player
         //in that case, PlayerController handles the movement and shooting of this enemy
         if (!isPlayer)
@@ -73,6 +77,8 @@ public abstract class Enemy : MonoBehaviour
     //if isPossessive is false, deals damage to enemy. if isPossessive is true, causes possession  
     public void Hurt(int damage, bool isPossessive)
     {
+        if (isDying)
+            return;
         //if normal bullet
         if (!isPossessive)
         {
@@ -108,6 +114,7 @@ public abstract class Enemy : MonoBehaviour
 
     public IEnumerator Die()
     {
+        isDying = true;
         AudioSource.PlayClipAtPoint(deathSound, transform.position);
         int n = 0;
         Destroy(rb2d);
