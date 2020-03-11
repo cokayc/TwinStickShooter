@@ -7,10 +7,8 @@ public class WanderingEnemy : Enemy
     public float minPos;
     public float maxPos; 
 
-    private float speed;
     private float wait;
     private float waitTime;
-    private bool moving;
 
     private Vector3 wayPoint;
 
@@ -40,7 +38,6 @@ public class WanderingEnemy : Enemy
             moving = true;
             waitTime = 0f;
             wayPoint = GeneratePosition(minPos, maxPos);
-            speed = Random.Range(2, 10);
         }
     }
 
