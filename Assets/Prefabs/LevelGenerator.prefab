@@ -51,8 +51,11 @@ MonoBehaviour:
   roomShrink: 2
   wallScale: 1.5
   wall: {fileID: 1799639454251359033, guid: d7703b7546202dc44af9e324becc85b0, type: 3}
+  floor: {fileID: 7015351285455551957, guid: 7896c9a079d3b3c4e92aec8019a2b77b, type: 3}
   exit: {fileID: 4225546524439067595, guid: 2424937cb756eb44c95419eb9fd6c24b, type: 3}
   enemies:
   - {fileID: 8631149581478993494, guid: 1843ce738f9cfc040baaecee96d74d91, type: 3}
   - {fileID: 1132434685808590360, guid: 7afb528e95cf7ac46812792587897c79, type: 3}
+  - {fileID: 8717952037850380789, guid: 317f9516c71d1634c9b83f799f0e337e, type: 3}
+  - {fileID: 8888703145466609401, guid: 9ded123fc10c8c545859eaceef783df9, type: 3}
   enemySpawnChance: 15
