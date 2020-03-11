@@ -86,7 +86,7 @@ public class Tutorial : MonoBehaviour
 
     public IEnumerator Possess()
     {
-        Instantiate(enemy2, new Vector3(15, 0, 0), Quaternion.identity);
+        var bigBadEnemy = Instantiate(enemy2, new Vector3(15, 0, 0), Quaternion.identity);
         GameObject startingEnemy = PlayerController.instance.currentEnemy.gameObject;
         rightClick.SetActive(true);
         bool hasPossessed = false;
@@ -95,6 +95,8 @@ public class Tutorial : MonoBehaviour
             if (!startingEnemy.Equals(PlayerController.instance.currentEnemy.gameObject))
                 hasPossessed = true;
             yield return null;
+            if(bigBadEnemy == null)
+                bigBadEnemy = Instantiate(enemy2, new Vector3(15, 0, 0), Quaternion.identity);
         }
         yield return new WaitForSeconds(6);
         SceneManager.LoadScene("Title");

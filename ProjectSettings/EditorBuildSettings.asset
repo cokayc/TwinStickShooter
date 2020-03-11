@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Swag.unity
     guid: 0cdd85f00e587214f86721fa2666f65f
@@ -18,14 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Tutorial.unity
     guid: 7f24888b7d6d1fa4d9f1b38f20467574
   - enabled: 1
-    path: Assets/Scenes/Menus/Sound Settings.unity
-    guid: ddf7f8c7759c325418ea22188b4531cc
-  - enabled: 1
     path: Assets/Scenes/Menus/Gameover.unity
     guid: 1d9b0c6c5b61a4a4fb24c08dd561267f
-  - enabled: 1
-    path: Assets/Scenes/TestScenes/Michael.unity
-    guid: 3d7ef4e41e510f64fb6ec61eed33260b
   - enabled: 1
     path: Assets/Scenes/Menus/Credits.unity
     guid: 8afabe47f59bb1940aa2b76279bd7c95
