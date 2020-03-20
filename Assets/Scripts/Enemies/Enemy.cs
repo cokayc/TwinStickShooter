@@ -153,7 +153,7 @@ public abstract class Enemy : MonoBehaviour
 
     IEnumerator PlayAnimation()
     {
-        while (true)
+        while (!isDying)
         {
             yield return new WaitForSeconds(1f / framesPerSecond);
 
