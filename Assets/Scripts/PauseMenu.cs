@@ -21,7 +21,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void Activate()
@@ -85,4 +85,5 @@ public class PauseMenu : MonoBehaviour
         Deactivate();
         SceneManager.LoadScene("Title");
     }
+        
 }

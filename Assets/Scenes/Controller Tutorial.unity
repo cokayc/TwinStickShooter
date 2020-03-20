@@ -229,8 +229,8 @@ MonoBehaviour:
   rightStick: {fileID: 1706791653}
   rightClick: {fileID: 1590562984}
   leftClick: {fileID: 566707429}
-  enemy1: {fileID: 0}
-  enemy2: {fileID: 0}
+  enemy1: {fileID: 8888703145466609401, guid: 9ded123fc10c8c545859eaceef783df9, type: 3}
+  enemy2: {fileID: 8631149581478993494, guid: 1843ce738f9cfc040baaecee96d74d91, type: 3}
 --- !u!114 &612591857
 MonoBehaviour:
   m_ObjectHideFlags: 0

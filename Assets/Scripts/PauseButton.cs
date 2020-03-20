@@ -39,11 +39,7 @@ public class PauseButton : MonoBehaviour
         gm.ToggleMusic();
         if (isPaused)
         {
-            image.sprite = pauseImage;
-            Time.timeScale = 1;
-            isPaused = false;
-            gm.isPaused = false;
-            pauseMenu.GetComponent<PauseMenu>().Deactivate();
+            Resume();
         }
         else
         {
@@ -55,7 +51,18 @@ public class PauseButton : MonoBehaviour
             pauseMenu.GetComponent<PauseMenu>().Activate();
             CameraControl.instance.screenShakeStrength = 0;
             CameraControl.instance.screenShakeTimer = 0;
+            if (PlayerController.instance.directionMethod == 2)
+                image.sprite = triangle;
         }
+    }
+
+    public void Resume()
+    {
+        image.sprite = pauseImage;
+        Time.timeScale = 1;
+        isPaused = false;
+        gm.isPaused = false;
+        pauseMenu.GetComponent<PauseMenu>().Deactivate();
         if (PlayerController.instance.directionMethod == 2)
             image.sprite = triangle;
     }

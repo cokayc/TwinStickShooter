@@ -18,7 +18,7 @@ public class MusicManager : MonoBehaviour
         musicVolume = volumes.y;
         effectsVolume = volumes.z;
     }
-
+    
     public void SetMasterVolume(float val)
     {
         gm.SetMasterVolume(val);
