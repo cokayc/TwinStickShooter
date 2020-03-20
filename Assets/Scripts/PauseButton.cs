@@ -28,7 +28,7 @@ public class PauseButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Jump"))
+        if(Input.GetButtonDown("Jump")&&!isPaused)
         {
             TogglePause();
         }
@@ -58,6 +58,7 @@ public class PauseButton : MonoBehaviour
 
     public void Resume()
     {
+        gm.ToggleMusic();
         image.sprite = pauseImage;
         Time.timeScale = 1;
         isPaused = false;

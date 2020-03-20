@@ -13,26 +13,33 @@ public class MusicManager : MonoBehaviour
     void Start()
     {
         gm = GameManager.instance;
+    }
+
+    private void Update()
+    {
         var volumes = gm.GetVolumes();
         masterVolume = volumes.x;
         musicVolume = volumes.y;
         effectsVolume = volumes.z;
     }
-    
+
     public void SetMasterVolume(float val)
     {
+        gm = GameManager.instance;
         gm.SetMasterVolume(val);
         masterVolume = val;
     }
 
     public void SetEffectsVolume(float val)
     {
+        gm = GameManager.instance;
         gm.SetEffectsVolume(val);
         effectsVolume = val;
     }
 
     public void SetMusicLevel(float val)
     {
+        gm = GameManager.instance;
         gm.SetMusicLevel(val);
         musicVolume = val;
     }

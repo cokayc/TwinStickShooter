@@ -21,21 +21,23 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
         backgroundMusic = GetComponent<AudioSource>();
-        
-        effectsLevel = 1;
-        musicLevel = 1;
-        totalSoundLevel = 1;
+
     }
 
     private void Start()
     {
         StartCoroutine(StartMusic());
+
+        effectsLevel = 1;
+        musicLevel = 1;
+        totalSoundLevel = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
         backgroundMusic.volume = totalSoundLevel * musicLevel;
+        Debug.Log(GetVolumes());
     }
 
 

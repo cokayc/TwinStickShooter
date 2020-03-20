@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
         maxHealth = transform.parent.parent.GetComponent<Enemy>().maxHealth;
         if(maxHealth==0)
         {
-            Application.ForceCrash(4);
+            Debug.Log("We really messed it up");
         }
         currentHealth = maxHealth;
         transform.parent.localScale = new Vector3(maxHealth / (float)healthScale, 0.4f, 1);

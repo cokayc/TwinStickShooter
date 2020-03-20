@@ -15,6 +15,12 @@ public class SliderController : MonoBehaviour
     {
         musicManager = FindObjectOfType<MusicManager>().gameObject;
         slider = GetComponent<Slider>();
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         switch (sliderNum)
         {
             case 0:
@@ -27,12 +33,6 @@ public class SliderController : MonoBehaviour
                 slider.value = musicManager.GetComponent<MusicManager>().GetVolumes().z;
                 break;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void Title()
