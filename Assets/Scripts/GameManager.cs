@@ -6,13 +6,11 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public bool isPaused;
-    public AudioClip startSound;
     private AudioSource backgroundMusic;
     private float effectsLevel;
     private float totalSoundLevel;
     private float musicLevel;
     public static GameManager instance;
-    private bool startMusicDone;
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -29,7 +27,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(StartMusic());
 
         effectsLevel = 1;
-        musicLevel = 1;
         totalSoundLevel = 1;
     }
 
@@ -37,7 +34,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         backgroundMusic.volume = totalSoundLevel * musicLevel;
-        Debug.Log(GetVolumes());
     }
 
 
@@ -73,18 +69,20 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator StartMusic()
     {
-        startMusicDone = false;
-        backgroundMusic.PlayOneShot(startSound);
-        yield return new WaitForSeconds(startSound.length-0.1f);
-        startMusicDone = true;
+        musicLevel = 0;
         backgroundMusic.Play();
+        while(musicLevel < 1)
+        {
+            musicLevel += 0.001f;
+            yield return null;
+        }
     }
 
     public void ToggleMusic()
     {
         if (backgroundMusic.isPlaying)
             backgroundMusic.Pause();
-        else if(startMusicDone)
+        else
             backgroundMusic.Play();
     }
 

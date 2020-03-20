@@ -16,15 +16,15 @@ public class Credits : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+     
     }
 
     public IEnumerator Scroll()
     {
         yield return new WaitForSeconds(3);
-        while (transform.position.y < maxHeight)
+        while (transform.localPosition.y < maxHeight)
         {
-            transform.position += scrollSpeed * Vector3.up;
+            transform.localPosition += scrollSpeed * Vector3.up;
             yield return null;
         }
         yield return new WaitForSeconds(1);
