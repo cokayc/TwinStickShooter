@@ -75,14 +75,14 @@ public class PauseMenu : MonoBehaviour
 
     public void Restart()
     {
-        pauseButton.GetComponent<PauseButton>().TogglePause();
+        pauseButton.GetComponent<PauseButton>().Resume();
         Deactivate();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Title()
     {
-        pauseButton.GetComponent<PauseButton>().TogglePause();
+        pauseButton.GetComponent<PauseButton>().Resume();
         Deactivate();
         SceneManager.LoadScene("Title");
     }

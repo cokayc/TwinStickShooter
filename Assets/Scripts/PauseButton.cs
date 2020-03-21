@@ -30,30 +30,24 @@ public class PauseButton : MonoBehaviour
     {
         if(Input.GetButtonDown("Jump")&&!isPaused)
         {
-            TogglePause();
+            Pause();
         }
     }
+    
 
-    public void TogglePause()
+    public void Pause()
     {
         gm.ToggleMusic();
-        if (isPaused)
-        {
-            Resume();
-        }
-        else
-        {
-            image.sprite = playImage;
-            Time.timeScale = 0;
-            isPaused = true;
-            gm.isPaused = true;
-            pauseMenu.SetActive(true);
-            pauseMenu.GetComponent<PauseMenu>().Activate();
-            CameraControl.instance.screenShakeStrength = 0;
-            CameraControl.instance.screenShakeTimer = 0;
-            if (PlayerController.instance.directionMethod == 2)
-                image.sprite = triangle;
-        }
+        image.sprite = playImage;
+        Time.timeScale = 0;
+        isPaused = true;
+        gm.isPaused = true;
+        pauseMenu.SetActive(true);
+        pauseMenu.GetComponent<PauseMenu>().Activate();
+        CameraControl.instance.screenShakeStrength = 0;
+        CameraControl.instance.screenShakeTimer = 0;
+        if (PlayerController.instance.directionMethod == 2)
+            image.sprite = triangle;
     }
 
     public void Resume()
