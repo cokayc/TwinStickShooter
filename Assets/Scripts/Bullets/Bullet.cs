@@ -12,6 +12,7 @@ public abstract class Bullet : MonoBehaviour
     public AudioClip hitEnemySound;
     [HideInInspector]
     public Vector3 direction;
+    public float lifeTime;
 
     private float volume;
     private GameManager gm;
@@ -20,7 +21,7 @@ public abstract class Bullet : MonoBehaviour
     public virtual void Start()
     {
         direction = Vector3.Normalize(direction);
-        StartCoroutine(Lifetime());
+        StartCoroutine(Lifetime(lifeTime));
         gm = GameManager.instance;
         volume = gm.GetEffectsLevel();
         AudioSource.PlayClipAtPoint(shotSound, transform.position, volume);
@@ -50,9 +51,9 @@ public abstract class Bullet : MonoBehaviour
         }
     }
 
-    public IEnumerator Lifetime()
+    public IEnumerator Lifetime(float time)
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(time);
         Destroy(gameObject);
     }
 
