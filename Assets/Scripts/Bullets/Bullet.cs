@@ -42,9 +42,10 @@ public abstract class Bullet : MonoBehaviour
         {
             otherObj.GetComponent<Enemy>().Hurt(damage, isPossesive);
             AudioSource.PlayClipAtPoint(hitEnemySound, transform.position, volume);
-            Destroy(gameObject);
+            if(speed>0)
+                Destroy(gameObject);
         }
-        else if (otherObj.CompareTag("Wall"))
+        else if (otherObj.CompareTag("Wall")&&speed > 0)
         {
             AudioSource.PlayClipAtPoint(hitWallSound, transform.position, volume);
             Destroy(gameObject);

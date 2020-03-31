@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance;
 
     public float speed;
+    public float possessiveShotCooldown = 5;
     public GameObject bulletPrefab;
     public GameObject possessBulletPrefab;
 
@@ -29,11 +30,13 @@ public class PlayerController : MonoBehaviour
     private GameObject mainCamera;
 
     private bool instantiated;
+    private bool canShootPossessive;
 
     // Start is called before the first frame update
     private void Start()
     {
         instantiated = false;
+        canShootPossessive = true;
     }
 
     void Awake()
@@ -72,9 +75,9 @@ public class PlayerController : MonoBehaviour
             currentEnemy.Shoot();
         }
 
-        if (Input.GetButton("Fire2") && currentEnemy.canShoot)
+        if (Input.GetButton("Fire2") && canShootPossessive)
         {
-            StartCoroutine(currentEnemy.ShotCooldown());
+            StartCoroutine(PossessiveCooldown());
             GameObject bullet = Instantiate(possessBulletPrefab, currentRB.gameObject.transform.position, transform.rotation);
             bullet.GetComponent<BulletGroup>().direction = new Vector3(-Mathf.Sin(currentEnemy.gameObject.transform.rotation.eulerAngles.z * Mathf.Deg2Rad), Mathf.Cos(currentEnemy.gameObject.transform.rotation.eulerAngles.z * Mathf.Deg2Rad), 0);
             bullet.GetComponent<BulletGroup>().SetShooter(currentEnemy.gameObject);
@@ -161,5 +164,11 @@ public class PlayerController : MonoBehaviour
         mainCamera.GetComponent<CameraControl>().target = currentEnemy.gameObject.transform;
     }
 
+    public IEnumerator PossessiveCooldown()
+    {
+        canShootPossessive = false;
+        yield return new WaitForSeconds(possessiveShotCooldown);
+        canShootPossessive = true;
+    }
 
 }
