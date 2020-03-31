@@ -36,7 +36,7 @@ public class TitleTarget : Target
         else
             dummyButton.GetComponent<Button>().Select();
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1")||Input.GetButton("Submit"))
         {
             if (FitsInBox(transform.position, startButtonPos, buttonSize))
                 startButton.GetComponent<Button>().onClick.Invoke();

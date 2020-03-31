@@ -18,17 +18,18 @@ public abstract class Target : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     { 
         Vector3 direction;
         float mouseX = Input.GetAxis("Horizontal");
         float mouseY = Input.GetAxis("Vertical");
         if (Mathf.Abs(mouseX) > movementThreshold || Mathf.Abs(mouseY) > movementThreshold)
         {
+
             direction = new Vector3(mouseX, mouseY, 0);
             direction.Normalize();
             //direction = Vector2.Perpendicular(direction);
-            transform.position += direction * 5 * Time.deltaTime;
+            transform.localPosition += direction * 5 * Time.deltaTime;
         }
         LookForButtons();
     }

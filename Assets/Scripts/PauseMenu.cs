@@ -16,18 +16,20 @@ public class PauseMenu : MonoBehaviour
     {
         if (!GameManager.instance.isPaused)
             gameObject.SetActive(false);
+        target.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        GetComponent<Canvas>().worldCamera = Camera.main;
         if (Input.GetButtonDown("Jump"))
             pauseButton.GetComponent<PauseButton>().Resume();
     }
 
     public void Activate()
     {
-        target.transform.position = new Vector3(0, 2.5f, 0);
+        
         target.SetActive(false);
         meat.SetActive(false);
         redFlash.SetActive(false);
@@ -69,7 +71,10 @@ public class PauseMenu : MonoBehaviour
             if (PlayerController.instance.directionMethod == 1)
                 target.SetActive(false);
             else
+            {
                 target.SetActive(true);
+                target.transform.localPosition = new Vector3(0, 2.5f, 0);
+            }
         }
     }
 

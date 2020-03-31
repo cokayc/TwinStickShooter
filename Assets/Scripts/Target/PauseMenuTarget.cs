@@ -21,7 +21,6 @@ public class PauseMenuTarget : Target
     private Vector3 musicVolumePos;
     private Vector3 effectsVolumePos;
 
-
     protected override void Initialize()
     {
         buttonSize = Camera.main.ScreenToWorldPoint(new Vector3(80, 30, 0) + screenCenter);
@@ -32,50 +31,65 @@ public class PauseMenuTarget : Target
         masterVolumePos = new Vector3(0, -1.5f, 0);
         musicVolumePos = new Vector3(0, -2.5f, 0);
         effectsVolumePos = new Vector3(0, -3.5f, 0);
-
     }
 
     protected override void LookForButtons()
     {
-        if(FitsInBox(transform.position, resumeButtonPos, buttonSize))
+        if(FitsInBox(transform.localPosition, resumeButtonPos, buttonSize))
         {
+            Debug.Log("in Resume");
             resumeButton.GetComponent<Button>().Select();
         }
-        else if(FitsInBox(transform.position, restartButtonPos, buttonSize))
+        else if(FitsInBox(transform.localPosition, restartButtonPos, buttonSize))
         {
             restartButton.GetComponent<Button>().Select();
         }
-        else if(FitsInBox(transform.position, quitButtonPos, buttonSize))
+        else if(FitsInBox(transform.localPosition, quitButtonPos, buttonSize))
         {
             quitButton.GetComponent<Button>().Select();
         }
 
         if(Input.GetButton("Fire1"))
         {
-            if (FitsInBox(transform.position, resumeButtonPos, buttonSize))
+            if (FitsInBox(transform.localPosition, resumeButtonPos, buttonSize))
             {
                 resumeButton.GetComponent<Button>().onClick.Invoke();
             }
-            else if (FitsInBox(transform.position, restartButtonPos, buttonSize))
+            else if (FitsInBox(transform.localPosition, restartButtonPos, buttonSize))
             {
                 restartButton.GetComponent<Button>().onClick.Invoke();
             }
-            else if (FitsInBox(transform.position, quitButtonPos, buttonSize))
+            else if (FitsInBox(transform.localPosition, quitButtonPos, buttonSize))
             {
                 quitButton.GetComponent<Button>().onClick.Invoke();
             }
-            else if (FitsInBox(transform.position, masterVolumePos, sliderSize))
+            else if (FitsInBox(transform.localPosition, masterVolumePos, sliderSize))
             {
-                masterVolumeSlider.GetComponent<Slider>().value = (transform.position.x - (masterVolumePos - sliderSize).x) / (2 * sliderSize.x);
+                masterVolumeSlider.GetComponent<Slider>().value = (transform.localPosition.x - (masterVolumePos - sliderSize).x) / (2 * sliderSize.x);
             }
-            else if (FitsInBox(transform.position, musicVolumePos, sliderSize))
+            else if (FitsInBox(transform.localPosition, musicVolumePos, sliderSize))
             {
-                musicVolumeSlider.GetComponent<Slider>().value = (transform.position.x - (musicVolumePos - sliderSize).x) / (2 * sliderSize.x);
+                musicVolumeSlider.GetComponent<Slider>().value = (transform.localPosition.x - (musicVolumePos - sliderSize).x) / (2 * sliderSize.x);
             }
-            else if (FitsInBox(transform.position, effectsVolumePos, sliderSize))
+            else if (FitsInBox(transform.localPosition, effectsVolumePos, sliderSize))
             {
-                effectsVolumeSlider.GetComponent<Slider>().value = (transform.position.x - (effectsVolumePos - sliderSize).x) / (2 * sliderSize.x);
+                effectsVolumeSlider.GetComponent<Slider>().value = (transform.localPosition.x - (effectsVolumePos - sliderSize).x) / (2 * sliderSize.x);
             }
         }
+    }
+
+    new public void Update()
+    {
+        Vector3 direction;
+        float mouseX = Input.GetAxisRaw("Horizontal");
+        float mouseY = Input.GetAxisRaw("Vertical");
+        if (Mathf.Abs(mouseX) > movementThreshold || Mathf.Abs(mouseY) > movementThreshold)
+        {
+            direction = new Vector3(mouseX, mouseY, 0);
+            direction.Normalize();
+            //direction = Vector2.Perpendicular(direction);
+            transform.localPosition += direction * 5 * Time.unscaledDeltaTime;
+        }
+        LookForButtons();
     }
 }

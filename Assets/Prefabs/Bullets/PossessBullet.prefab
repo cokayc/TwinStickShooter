@@ -102,6 +102,7 @@ MonoBehaviour:
   hitWallSound: {fileID: 8300000, guid: 89fa7445a37533d4e8fd8ef59e2d5dc0, type: 3}
   hitEnemySound: {fileID: 8300000, guid: 410c11cab492e7246b9beb958acea651, type: 3}
   direction: {x: 0, y: 0, z: 0}
+  lifeTime: 10
 --- !u!70 &-9135931855197503892
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

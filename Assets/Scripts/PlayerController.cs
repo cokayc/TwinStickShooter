@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour
             directionMethod = 1;
         else
             directionMethod = 2;
+        pointing = Vector3.up;
+
 
     }
 
@@ -63,9 +65,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
         currentRB.velocity = speed * new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        pointing = Vector3.up;
         pointing = DetermineDirection(pointing);
-        Vector3 bulletPlacement = pointing;
         if(Input.GetButton("Fire1") && currentEnemy.canShoot)
         {
             StartCoroutine(currentEnemy.ShotCooldown());
@@ -75,8 +75,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Fire2") && currentEnemy.canShoot)
         {
             StartCoroutine(currentEnemy.ShotCooldown());
-            GameObject bullet = Instantiate(possessBulletPrefab, currentRB.gameObject.transform.position + bulletPlacement.normalized, transform.rotation);
-            bullet.GetComponent<BulletGroup>().direction = pointing;
+            GameObject bullet = Instantiate(possessBulletPrefab, currentRB.gameObject.transform.position, transform.rotation);
+            bullet.GetComponent<BulletGroup>().direction = new Vector3(-Mathf.Sin(currentEnemy.gameObject.transform.rotation.eulerAngles.z * Mathf.Deg2Rad), Mathf.Cos(currentEnemy.gameObject.transform.rotation.eulerAngles.z * Mathf.Deg2Rad), 0);
             bullet.GetComponent<BulletGroup>().SetShooter(currentEnemy.gameObject);
 
         }
