@@ -153,7 +153,7 @@ public class LevelGenerator : MonoBehaviour
     }
 
     // Test if map[x, y] == check and is within bounds of map
-    private bool IsEqualCoordinate(int[,] map, int x, int y, int check)
+    private bool IsEqual(int[,] map, int x, int y, int check)
     {   
         // Check equality
         if (IsValidCoordinate(map, x, y) && map[x, y] == check)
@@ -162,21 +162,11 @@ public class LevelGenerator : MonoBehaviour
             return false;
     }
 
-    // Test if map[x, y] != check and is within bounds of map
-    private bool IsNotEqualCoordinate(int[,] map, int x, int y, int check)
-    {
-        // Check equality
-        if (IsValidCoordinate(map, x, y) && map[x, y] != check)
-            return true;
-        else
-            return false;
-    }
-
     // Returns whether or not a respective (x, y) coordinate on map should be a wall
     private bool IsWall(int[,] map, int x, int y)
     { 
-        if (map[x, y] == 0 && (IsNotEqualCoordinate(map, x-1, y, 0) || IsNotEqualCoordinate(map, x-1, y+1, 0) || IsNotEqualCoordinate(map, x, y+1, 0) || IsNotEqualCoordinate(map, x + 1, y+1, 0) 
-            || IsNotEqualCoordinate(map, x + 1, y, 0) || IsNotEqualCoordinate(map, x + 1, y - 1, 0) || IsNotEqualCoordinate(map, x, y - 1, 0) || IsNotEqualCoordinate(map, x - 1, y - 1, 0)))
+        if (map[x, y] == 0 && (!IsEqual(map, x-1, y, 0) || !IsEqual(map, x-1, y+1, 0) || !IsEqual(map, x, y+1, 0) || !IsEqual(map, x + 1, y+1, 0) 
+            || !IsEqual(map, x + 1, y, 0) || !IsEqual(map, x + 1, y - 1, 0) || !IsEqual(map, x, y - 1, 0) || !IsEqual(map, x - 1, y - 1, 0)))
             return true;
         else
             return false;
