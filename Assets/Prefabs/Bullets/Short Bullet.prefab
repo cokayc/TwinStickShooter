@@ -96,14 +96,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e619c412951fae448bb0d0330daaa67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 0.2
   isPossesive: 0
   damage: 6
   shotSound: {fileID: 8300000, guid: d5a7f10028191464cb7948ddf753a3e4, type: 3}
   hitWallSound: {fileID: 8300000, guid: 89fa7445a37533d4e8fd8ef59e2d5dc0, type: 3}
   hitEnemySound: {fileID: 8300000, guid: 410c11cab492e7246b9beb958acea651, type: 3}
   direction: {x: 0, y: 0, z: 0}
-  lifeTime: 1
+  lifeTime: 0.75
 --- !u!50 &7727040794156166149
 Rigidbody2D:
   serializedVersion: 4
