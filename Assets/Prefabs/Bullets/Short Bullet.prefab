@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5260419598528807744}
   - component: {fileID: 4271832623060340084}
   - component: {fileID: 7727040794156166149}
-  - component: {fileID: 4016039555180597584}
+  - component: {fileID: 2048934524711969493}
   m_Layer: 0
   m_Name: Short Bullet
   m_TagString: Untagged
@@ -76,7 +76,7 @@ SpriteRenderer:
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 0.54, y: 0.96}
   m_AdaptiveModeThreshold: 0.5
@@ -125,8 +125,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &4016039555180597584
-PolygonCollider2D:
+--- !u!70 &2048934524711969493
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -138,31 +138,6 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.4, y: 2.2}
-    newSize: {x: 0.54, y: 0.96}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.20489597, y: 2.2106729}
-      - {x: -0.20817375, y: 2.2113297}
-      - {x: -0.4956293, y: 1.898483}
-      - {x: -0.61515236, y: 1.7020447}
-      - {x: -0.6188879, y: 1.206239}
-      - {x: -0.5248394, y: 1.0148809}
-      - {x: -0.41166782, y: 0.8116653}
-      - {x: -0.3024845, y: 0.5984794}
-      - {x: -0.20133686, y: 0.31846356}
-      - {x: -0.07957077, y: -0.011597037}
-      - {x: 0.09848213, y: 0}
-      - {x: 0.31150627, y: 0.6058881}
-      - {x: 0.41097736, y: 0.8110845}
-      - {x: 0.6007414, y: 1.2004204}
-      - {x: 0.59808826, y: 1.7036524}
-      - {x: 0.50285435, y: 1.9042816}
+  m_Offset: {x: 0.004123211, y: -1.1}
+  m_Size: {x: 1.2103434, y: 2.2}
+  m_Direction: 0
