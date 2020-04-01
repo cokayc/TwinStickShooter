@@ -142,6 +142,13 @@ public abstract class Enemy : MonoBehaviour
         canShoot = true;
     }
 
+    public IEnumerator ShotCooldown(float multiplier)
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(shotCooldown * multiplier);
+        canShoot = true;
+    }
+
     public IEnumerator PlayerHurt()
     {
         PlayerController.instance.redFlash.gameObject.SetActive(true);

@@ -2716,6 +2716,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  possessiveShotCooldown: 5
+  shotCooldownMultiplier: 0.5
   bulletPrefab: {fileID: 6022568692942639834, guid: e6318e7f366724543a9563b0ce75d18e,
     type: 3}
   possessBulletPrefab: {fileID: 6022568692942639834, guid: df468d2f516385448a08d321b0d7a618,

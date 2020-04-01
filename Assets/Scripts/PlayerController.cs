@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance;
 
     public float speed;
-    public float possessiveShotCooldown = 5;
+    public float possessiveShotCooldown = 4;
+    public float shotCooldownMultiplier;
     public GameObject bulletPrefab;
     public GameObject possessBulletPrefab;
 
@@ -71,7 +72,7 @@ public class PlayerController : MonoBehaviour
         pointing = DetermineDirection(pointing);
         if(Input.GetButton("Fire1") && currentEnemy.canShoot)
         {
-            StartCoroutine(currentEnemy.ShotCooldown());
+            StartCoroutine(currentEnemy.ShotCooldown(shotCooldownMultiplier));
             currentEnemy.Shoot();
         }
 
