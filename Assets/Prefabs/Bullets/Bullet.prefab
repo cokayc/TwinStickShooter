@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e619c412951fae448bb0d0330daaa67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 6
   isPossesive: 0
   damage: 2
   shotSound: {fileID: 8300000, guid: d5a7f10028191464cb7948ddf753a3e4, type: 3}
