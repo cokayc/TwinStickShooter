@@ -101,9 +101,17 @@ public class PlayerController : MonoBehaviour
             redFlash.gameObject.SetActive(false);
             mainCamera.transform.position = transform.position;
             //instantiates an enemy controlled by PlayerController at start of level
-            instantiated = true;
-            currentEnemy = Instantiate(startingEnemy).GetComponent<Enemy>();
-            Possess(currentEnemy.gameObject);
+            if (instantiated)
+            {
+
+                //Possess();
+            }
+            else
+            {
+                currentEnemy = Instantiate(startingEnemy).GetComponent<Enemy>();
+                Possess(currentEnemy.gameObject);
+                instantiated = true;
+            }
         }
         else if (scene == SceneManager.GetSceneByName("Gameover"))
         {

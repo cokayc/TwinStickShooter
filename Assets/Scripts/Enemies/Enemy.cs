@@ -108,6 +108,7 @@ public abstract class Enemy : MonoBehaviour
         }
         else if (otherObj.CompareTag("Exit") && isPlayer)
         {
+            DontDestroyOnLoad(gameObject);
             GameManager.instance.NextLevel();
         }
     }
