@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     // Singleton
     public static PlayerController instance;
 
+    public bool isADeveloper = false;
     public float speed;
     public float possessiveShotCooldown = 4;
     public float shotCooldownMultiplier;
@@ -64,6 +65,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isADeveloper)
+        {
+            currentEnemy.GetComponentInChildren<Health>().increaseHealth();
+            currentEnemy.GetComponentInChildren<Health>().Restore(10);
+        }
         if (gm.isPaused||!instantiated||currentEnemy == null||currentRB == null)
         {
             return;
@@ -99,7 +105,6 @@ public class PlayerController : MonoBehaviour
         {
             UICanvas.gameObject.SetActive(true);
             redFlash.gameObject.SetActive(false);
-            mainCamera.transform.position = transform.position;
             //instantiates an enemy controlled by PlayerController at start of level
             if (instantiated)
             {
@@ -112,6 +117,7 @@ public class PlayerController : MonoBehaviour
                 Possess(currentEnemy.gameObject);
                 instantiated = true;
             }
+            mainCamera.GetComponent<CameraControl>().target = currentEnemy.gameObject.transform;
         }
         else if (scene == SceneManager.GetSceneByName("Gameover"))
         {

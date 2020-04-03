@@ -64,4 +64,10 @@ public class Health : MonoBehaviour
         return new Vector2(Mathf.Sin(angle), Mathf.Cos(angle));
     }
 
+
+    public void increaseHealth()
+    {
+        maxHealth += 10;
+        currentHealth += 10;
+    }
 }
