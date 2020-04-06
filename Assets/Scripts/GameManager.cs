@@ -1,7 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +14,14 @@ public class GameManager : MonoBehaviour
     private float totalSoundLevel;
     private float musicLevel;
     public static GameManager instance;
+    public Text timerText;
+    public Text scoreText;
+
+    [HideInInspector]
+    public float timer;
+    [HideInInspector]
+    public int score;
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -28,12 +39,17 @@ public class GameManager : MonoBehaviour
 
         effectsLevel = 1;
         totalSoundLevel = 1;
+        timer = 0;
+        score = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         backgroundMusic.volume = totalSoundLevel * musicLevel;
+        timer += Time.deltaTime;
+        timerText.text = TimeSpan.FromSeconds(timer).ToString(@"mm\:ss");
+        scoreText.text = "Score: " + score;
     }
 
 
@@ -88,6 +104,7 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
+        score += 100;
         SceneManager.LoadScene("Level One");
     }
 }

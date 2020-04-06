@@ -217,6 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   maxHealth: 10
+  scoreValue: 10
   deathSound: {fileID: 8300000, guid: 2d94ebb84ba9f0041b7f793ee1fe09f7, type: 3}
   shotCooldown: 2
   bulletGroup: {fileID: 8060987023403541301, guid: 8787f4979efa3dd47ba0ae6fdd1bd844,

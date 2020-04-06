@@ -8,6 +8,7 @@ public abstract class Enemy : MonoBehaviour
 {
     public bool isPlayer;
     public int maxHealth;
+    public int scoreValue;
     public AudioClip deathSound;
     public float shotCooldown;
     public BulletGroup bulletGroup;
@@ -133,6 +134,8 @@ public abstract class Enemy : MonoBehaviour
         }
         if (isPlayer)
             SceneManager.LoadScene("Gameover");
+        else
+            GameManager.instance.score += scoreValue;
         Destroy(gameObject);
     }
 
