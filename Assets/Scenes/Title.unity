@@ -548,7 +548,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2076818498, guid: 6ce11652b5252bd4c8e21c54afe789a1, type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2076818498, guid: 6ce11652b5252bd4c8e21c54afe789a1, type: 3}
+      propertyPath: m_MaxValue
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2076818499, guid: 6ce11652b5252bd4c8e21c54afe789a1, type: 3}
       propertyPath: musicManager
@@ -657,7 +661,7 @@ PrefabInstance:
     - target: {fileID: 7027137682238734054, guid: 6ce11652b5252bd4c8e21c54afe789a1,
         type: 3}
       propertyPath: isADeveloper
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7027137682238734055, guid: 6ce11652b5252bd4c8e21c54afe789a1,
         type: 3}

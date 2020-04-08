@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
     {
         musicLevel = 0;
         backgroundMusic.Play();
-        while(musicLevel < 1)
+        while(musicLevel < 0.5)
         {
             musicLevel += 0.001f;
             yield return null;

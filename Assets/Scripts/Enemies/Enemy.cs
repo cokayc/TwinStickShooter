@@ -120,6 +120,7 @@ public abstract class Enemy : MonoBehaviour
         AudioSource.PlayClipAtPoint(deathSound, transform.position);
         int n = 0;
         Destroy(rb2d);
+        Destroy(GetComponent<Collider2D>());
         //play death animation
         for (int k = 0;  k < deathSprites.Length; k++)
         {
