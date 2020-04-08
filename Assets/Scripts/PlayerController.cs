@@ -31,7 +31,8 @@ public class PlayerController : MonoBehaviour
     private GameManager gm;
     private GameObject mainCamera;
 
-    private bool instantiated;
+    [HideInInspector]
+    public bool instantiated;
     private bool canShootPossessive;
     private bool firstLoadSinceTitle;
 
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         instantiated = false;
         canShootPossessive = true;
+        gm = GameManager.instance;
     }
 
     void Awake()
@@ -49,7 +51,7 @@ public class PlayerController : MonoBehaviour
             instance = this;
         else
             Destroy(this);
-        gm = GameManager.instance;
+        
         mainCamera = GameObject.Find("Main Camera");
         SceneManager.sceneLoaded += OnLevelLoad;
 

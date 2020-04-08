@@ -37,7 +37,6 @@ public class PauseButton : MonoBehaviour
 
     public void Pause()
     {
-        gm.ToggleMusic();
         image.sprite = playImage;
         Time.timeScale = 0;
         isPaused = true;
@@ -52,7 +51,6 @@ public class PauseButton : MonoBehaviour
 
     public void Resume()
     {
-        gm.ToggleMusic();
         image.sprite = pauseImage;
         Time.timeScale = 1;
         isPaused = false;

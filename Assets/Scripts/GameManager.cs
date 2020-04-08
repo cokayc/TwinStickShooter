@@ -95,14 +95,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ToggleMusic()
-    {
-        if (backgroundMusic.isPlaying)
-            backgroundMusic.Pause();
-        else
-            backgroundMusic.Play();
-    }
-
     public void NextLevel()
     {
         score += 100;

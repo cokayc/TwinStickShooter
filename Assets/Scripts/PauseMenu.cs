@@ -82,6 +82,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseButton.GetComponent<PauseButton>().Resume();
         Deactivate();
+        PlayerController.instance.instantiated = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
