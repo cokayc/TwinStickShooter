@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
     private bool instantiated;
     private bool canShootPossessive;
+    private bool firstLoadSinceTitle;
 
     // Start is called before the first frame update
     private void Start()
@@ -101,6 +102,11 @@ public class PlayerController : MonoBehaviour
             GameManager.instance.timerText.gameObject.SetActive(false);
             GameManager.instance.scoreText.gameObject.SetActive(false);
         }
+        else if(firstLoadSinceTitle)
+        {
+            GameManager.instance.timer = 0;
+            firstLoadSinceTitle = false;
+        }
         mainCamera = GameObject.Find("Main Camera");
         UICanvas.worldCamera = mainCamera.GetComponent<Camera>();
         if(scene == SceneManager.GetSceneByName("Title"))
@@ -108,10 +114,10 @@ public class PlayerController : MonoBehaviour
             UICanvas.gameObject.SetActive(false);
             instantiated = false;
             GameManager.instance.score = 0;
+            firstLoadSinceTitle = true;
         }
         else if (scene == SceneManager.GetSceneByName("Level One") || scene == SceneManager.GetSceneByName("Tutorial") || scene == SceneManager.GetSceneByName("Controller Tutorial"))
         {
-            GameManager.instance.timer = 0;
             UICanvas.gameObject.SetActive(true);
             redFlash.gameObject.SetActive(false);
             //instantiates an enemy controlled by PlayerController at start of level
