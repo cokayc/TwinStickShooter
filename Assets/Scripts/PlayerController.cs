@@ -94,15 +94,24 @@ public class PlayerController : MonoBehaviour
 
     public void OnLevelLoad(Scene scene, LoadSceneMode mode)
     {
+        GameManager.instance.timerText.gameObject.SetActive(true);
+        GameManager.instance.scoreText.gameObject.SetActive(true);
+        if (scene != SceneManager.GetSceneByName("Level One"))
+        {
+            GameManager.instance.timerText.gameObject.SetActive(false);
+            GameManager.instance.scoreText.gameObject.SetActive(false);
+        }
         mainCamera = GameObject.Find("Main Camera");
         UICanvas.worldCamera = mainCamera.GetComponent<Camera>();
         if(scene == SceneManager.GetSceneByName("Title"))
         {
             UICanvas.gameObject.SetActive(false);
             instantiated = false;
+            GameManager.instance.score = 0;
         }
         else if (scene == SceneManager.GetSceneByName("Level One") || scene == SceneManager.GetSceneByName("Tutorial") || scene == SceneManager.GetSceneByName("Controller Tutorial"))
         {
+            GameManager.instance.timer = 0;
             UICanvas.gameObject.SetActive(true);
             redFlash.gameObject.SetActive(false);
             //instantiates an enemy controlled by PlayerController at start of level

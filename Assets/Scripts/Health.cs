@@ -28,7 +28,7 @@ public class Health : MonoBehaviour
 
     // Update is called once per frame
     void LateUpdate()
-    { 
+    {
         transform.parent.localRotation = Quaternion.Euler(new Vector3(0,0,-transform.parent.parent.rotation.eulerAngles.z));
         transform.parent.localPosition = FindOneUnitAbove(transform.parent.localRotation);
     }
