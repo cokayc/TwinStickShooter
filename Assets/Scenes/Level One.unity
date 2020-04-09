@@ -129,6 +129,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6924301562521637884, guid: af4b02ac4b1d747498b8e33f06a723b1,
         type: 3}
+      propertyPath: enemies.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6924301562521637884, guid: af4b02ac4b1d747498b8e33f06a723b1,
+        type: 3}
       propertyPath: camera
       value: 
       objectReference: {fileID: 1244262792}
@@ -137,6 +142,12 @@ PrefabInstance:
       propertyPath: enemySpawnChance
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6924301562521637884, guid: af4b02ac4b1d747498b8e33f06a723b1,
+        type: 3}
+      propertyPath: enemies.Array.data[4]
+      value: 
+      objectReference: {fileID: 8631149581478993494, guid: f7ef12120c86d0a4b8d8b373af21df55,
+        type: 3}
     - target: {fileID: 6924301562521637885, guid: af4b02ac4b1d747498b8e33f06a723b1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -245,7 +256,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

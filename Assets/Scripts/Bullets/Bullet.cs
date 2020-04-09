@@ -12,17 +12,21 @@ public abstract class Bullet : MonoBehaviour
     public AudioClip hitEnemySound;
     [HideInInspector]
     public Vector3 direction;
+    [HideInInspector]
+    public Rigidbody2D rb;
     public float lifeTime;
 
     private float volume;
     private GameManager gm;
     private GameObject shooter;
+    
 
     public virtual void Start()
     {
         direction = Vector3.Normalize(direction);
         StartCoroutine(Lifetime(lifeTime));
         gm = GameManager.instance;
+        rb = GetComponent<Rigidbody2D>();
         volume = gm.GetEffectsLevel();
         AudioSource.PlayClipAtPoint(shotSound, transform.position, volume);
     }
