@@ -29,20 +29,19 @@ public class LevelGenerator : MonoBehaviour
     private List<Node> leafList;
     private int[,] map;
 
+    // Node class for use in BSP tree
     private class Node
     {
+        // Coordinates of the two corners of the space
         public Vector2 bottomLeft;
         public Vector2 topRight;
 
+        // Left and right nodes
         public Node left;
         public Node right;
 
-        public List<GameObject> walls;
-
         public Node(float blX, float blY, float trX, float trY)
         {
-            walls = new List<GameObject>();
-
             bottomLeft = new Vector2(blX, blY);
             topRight = new Vector2(trX, trY);
 
@@ -234,6 +233,7 @@ public class LevelGenerator : MonoBehaviour
         SplitGenerate(target.right);
     }
 
+    // Cut a Node with a vertical line
     private void CutVertical(Node target)
     {
         int cutPointX = (int)Mathf.Lerp(target.bottomLeft.x, target.topRight.x, Random.Range(cutMin, cutMax));
@@ -241,6 +241,7 @@ public class LevelGenerator : MonoBehaviour
         target.right = new Node(cutPointX, target.bottomLeft.y, target.topRight.x, target.topRight.y);
     }
 
+    // Cut a Node with a horizontal line
     private void CutHorizontal(Node target)
     {
         int cutPointY = (int)Mathf.Lerp(target.bottomLeft.y, target.topRight.y, Random.Range(cutMin, cutMax));
@@ -261,7 +262,7 @@ public class LevelGenerator : MonoBehaviour
         ConnectRooms(target.left, map);
         ConnectRooms(target.right, map);
 
-
+        // Get midpoints and attempt to connect them
         Vector2 midpointLeft = target.left.GetMidpoint();
         Vector2 midpointRight = target.right.GetMidpoint();
 
