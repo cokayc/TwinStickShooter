@@ -21,6 +21,7 @@ public class WanderingEnemy : Enemy
     }
 
     protected override void EnemyMovement() {
+        /* Commented out to make stationary. Wandering code did not work with level generation setup
         if (moving) 
         {
             transform.Translate((wayPoint - transform.position).normalized * Time.deltaTime);
@@ -39,6 +40,7 @@ public class WanderingEnemy : Enemy
             waitTime = 0f;
             wayPoint = GeneratePosition(minPos, maxPos);
         }
+        */
     }
 
     public override void Shoot()

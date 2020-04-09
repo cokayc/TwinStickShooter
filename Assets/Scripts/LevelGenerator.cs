@@ -111,9 +111,9 @@ public class LevelGenerator : MonoBehaviour
         ConnectRooms(head, map);
 
         // Build walls
-        for (int x = 0; x < map.GetUpperBound(0); x++)
+        for (int x = 1; x < map.GetUpperBound(0); x++)
         {
-            for (int y = 0; y < map.GetUpperBound(1); y++)
+            for (int y = 1; y < map.GetUpperBound(1); y++)
             { 
                 if (IsWall(map, x, y))
                 {
@@ -164,7 +164,7 @@ public class LevelGenerator : MonoBehaviour
     // Returns whether or not a respective (x, y) coordinate on map should be a wall
     private bool IsWall(int[,] map, int x, int y)
     { 
-        if (map[x, y] == 0 && (!IsEqual(map, x-1, y, 0) || !IsEqual(map, x-1, y+1, 0) || !IsEqual(map, x, y+1, 0) || !IsEqual(map, x + 1, y+1, 0) 
+        if (map[x, y] == 0 && (!IsEqual(map, x - 1, y, 0) || !IsEqual(map, x - 1, y + 1, 0) || !IsEqual(map, x, y + 1, 0) || !IsEqual(map, x + 1, y + 1, 0) 
             || !IsEqual(map, x + 1, y, 0) || !IsEqual(map, x + 1, y - 1, 0) || !IsEqual(map, x, y - 1, 0) || !IsEqual(map, x - 1, y - 1, 0)))
             return true;
         else

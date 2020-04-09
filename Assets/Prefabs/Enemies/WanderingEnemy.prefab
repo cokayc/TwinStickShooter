@@ -109,8 +109,8 @@ MonoBehaviour:
   moveSprites: []
   deathSprites: []
   framesPerSecond: 0
-  minPos: -5
-  maxPos: 5
+  minPos: 0
+  maxPos: 72
 --- !u!50 &1132434685808590356
 Rigidbody2D:
   serializedVersion: 4
