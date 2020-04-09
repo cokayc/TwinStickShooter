@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int score;
 
+    private float currentLevelStartTime;
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
         totalSoundLevel = 1;
         timer = 0;
         score = 0;
+        currentLevelStartTime = 0;
     }
 
     // Update is called once per frame
@@ -97,7 +100,10 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
+        float timeRemaining = 75 + currentLevelStartTime - timer;
+        score += ((timeRemaining > 0) ? (int) timeRemaining : 0);
         score += 100;
+        currentLevelStartTime = timer;
         SceneManager.LoadScene("Level One");
     }
 }

@@ -285,10 +285,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  xMin: 9
-  xMax: 64
-  yMin: 6
-  yMax: 68
+  xMin: 13
+  xMax: 60
+  yMin: 8
+  yMax: 66
   lerp: 4
   minSpeed: 4
   shakeTimeStandardStrong: 0.5
